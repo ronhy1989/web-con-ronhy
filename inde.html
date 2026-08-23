@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web con Ronhy | Desarrollo Web Profesional para Emprendedores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET Y VARIABLES (Estilo WordPress Premium) ===== */
+        :root {
+            --wp-primary: #0073E6;
+            --wp-secondary: #2D3748;
+            --wp-accent: #FF6B35;
+            --wp-light: #F7FAFC;
+            --wp-dark: #1A202C;
+            --wp-gray: #718096;
+            --wp-border: #E2E8F0;
+            --wp-success: #38A169;
+            --wp-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --wp-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --wp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --wp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --wp-spacing-xs: 0.5rem;
+            --wp-spacing-sm: 1rem;
+            --wp-spacing-md: 1.5rem;
+            --wp-spacing-lg: 2rem;
+            --wp-spacing-xl: 3rem;
+            --wp-spacing-2xl: 4rem;
+            --wp-radius-sm: 4px;
+            --wp-radius: 8px;
+            --wp-radius-lg: 12px;
+            --wp-radius-xl: 16px;
+            --wp-radius-full: 9999px;
+            --wp-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --wp-transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --wp-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--wp-secondary);
+            background-color: #ffffff;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--wp-dark);
+            margin-bottom: var(--wp-spacing-md);
+        }
+
+        p {
+            margin-bottom: var(--wp-spacing-md);
+            color: var(--wp-gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--wp-transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--wp-spacing-lg);
+        }
+
+        .section {
+            padding: var(--wp-spacing-2xl) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--wp-spacing-xl);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--wp-spacing-sm);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--wp-accent);
+            border-radius: var(--wp-radius-full);
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--wp-gray);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--wp-radius);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--wp-transition);
+            font-family: 'Montserrat', sans-serif;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--wp-primary);
+            color: white;
+            box-shadow: var(--wp-shadow);
+        }
+
+        .btn-primary:hover {
+            background: #0066CC;
+            transform: translateY(-2px);
+            box-shadow: var(--wp-shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--wp-primary);
+            border-color: var(--wp-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--wp-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background: var(--wp-accent);
+            color: white;
+            box-shadow: var(--wp-shadow);
+        }
+
+        .btn-accent:hover {
+            background: #E55A2E;
+            transform: translateY(-2px);
+            box-shadow: var(--wp-shadow-lg);
+        }
+
+        /* ===== HEADER WORDPRESS PREMIUM ===== */
+        .wp-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: white;
+            box-shadow: var(--wp-shadow-sm);
+            transition: var(--wp-transition);
+        }
+
+        .wp-header.scrolled {
+            box-shadow: var(--wp-shadow);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--wp-primary) 0%, var(--wp-accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--wp-dark);
+        }
+
+        .logo-text span {
+            color: var(--wp-primary);
+        }
+
+        .primary-menu {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+        }
+
+        .menu-item {
+            position: relative;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            font-weight: 600;
+            color: var(--wp-dark);
+            font-size: 1rem;
+            transition: var(--wp-transition);
+            border-radius: var(--wp-radius);
+            gap: 6px;
+        }
+
+        .menu-link:hover {
+            color: var(--wp-primary);
+            background: var(--wp-light);
+        }
+
+        .menu-link.active {
+            color: var(--wp-primary);
+            background: var(--wp-light);
+        }
+
+        .menu-link i {
+            font-size: 0.9rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--wp-spacing-sm);
+        }
+
+        .header-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--wp-light);
+            color: var(--wp-gray);
+            border-radius: 50%;
+            transition: var(--wp-transition);
+        }
+
+        .social-link:hover {
+            background: var(--wp-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #25D366;
+            color: white;
+            border-radius: var(--wp-radius);
+            font-weight: 600;
+            transition: var(--wp-transition);
+        }
+
+        .whatsapp-header:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--wp-dark);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--wp-radius);
+            transition: var(--wp-transition);
+        }
+
+        .mobile-toggle:hover {
+            background: var(--wp-light);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .wp-hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .wp-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 L1000,0 L1000,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--wp-spacing-2xl);
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--wp-radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--wp-spacing-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--wp-spacing-md);
+            color: white;
+        }
+
+        .hero-title span {
+            color: #FFD166;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: var(--wp-spacing-xl);
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--wp-spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--wp-spacing-lg);
+            margin-top: var(--wp-spacing-xl);
+            padding-top: var(--wp-spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            border-radius: var(--wp-radius-xl);
+            box-shadow: var(--wp-shadow-xl);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--wp-transition-slow);
+            border: 8px solid white;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--wp-spacing-xl);
+            margin-top: var(--wp-spacing-xl);
+        }
+
+        .feature-card {
+            background: white;
+            padding: var(--wp-spacing-xl);
+            border-radius: var(--wp-radius-lg);
+            box-shadow: var(--wp-shadow);
+            transition: var(--wp-transition);
+            border: 1px solid var(--wp-border);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--wp-shadow-xl);
+            border-color: var(--wp-primary);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--wp-spacing-lg);
+            background: linear-gradient(135deg, var(--wp-primary) 0%, var(--wp-accent) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            position: relative;
+        }
+
+        .feature-icon:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid rgba(0, 115, 230, 0.1);
+            border-radius: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--wp-spacing-sm);
+        }
+
+        /* ===== IA ASSISTANT ===== */
+        .ia-section {
+            background: linear-gradient(135deg, var(--wp-light) 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        .ia-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--wp-border), transparent);
+        }
+
+        .ia-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--wp-radius-xl);
+            box-shadow: var(--wp-shadow-xl);
+            overflow: hidden;
+            border: 1px solid var(--wp-border);
+        }
+
+        .ia-header {
+            background: linear-gradient(135deg, var(--wp-dark) 0%, var(--wp-secondary) 100%);
+            padding: var(--wp-spacing-xl);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: var(--wp-spacing-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ia-header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .ia-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--wp-accent) 0%, #FF8B66 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: var(--wp-shadow-lg);
+        }
+
+        .ia-avatar:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--wp-success);
+            border-radius: 50%;
+            border: 2px solid var(--wp-dark);
+        }
+
+        .ia-info h3 {
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .ia-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--wp-spacing-sm);
+        }
+
+        .ia-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .ia-tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: var(--wp-radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ia-chat {
+            padding: var(--wp-spacing-xl);
+            height: 500px;
+            overflow-y: auto;
+            background: #fafafa;
+        }
+
+        .message {
+            display: flex;
+            gap: var(--wp-spacing-md);
+            margin-bottom: var(--wp-spacing-lg);
+            animation: messageAppear 0.3s ease;
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .message-ai .message-avatar {
+            background: linear-gradient(135deg, var(--wp-primary) 0%, var(--wp-accent) 100%);
+        }
+
+        .message-user .message-avatar {
+            background: linear-gradient(135deg, var(--wp-success) 0%, #4ADE80 100%);
+        }
+
+        .message-content {
+            background: white;
+            padding: var(--wp-spacing-lg);
+            border-radius: var(--wp-radius-lg);
+            box-shadow: var(--wp-shadow);
+            max-width: 70%;
+            border: 1px solid var(--wp-border);
+        }
+
+        .message-ai .message-content {
+            border-top-left-radius: 4px;
+        }
+
+        .message-user .message-content {
+            border-top-right-radius: 4px;
+            background: #F0F9FF;
+            border-color: #BEE3F8;
+            margin-left: auto;
+        }
+
+        .message-text {
+            line-height: 1.7;
+        }
+
+        .message-list {
+            margin: var(--wp-spacing-sm) 0;
+            padding-left: var(--wp-spacing-lg);
+        }
+
+        .ia-input-area {
+            padding: var(--wp-spacing-xl);
+            background: white;
+            border-top: 1px solid var(--wp-border);
+        }
+
+        .input-group {
+            display: flex;
+            gap: var(--wp-spacing-sm);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 16px 24px;
+            border: 2px solid var(--wp-border);
+            border-radius: var(--wp-radius);
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--wp-transition);
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--wp-primary);
+            box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.1);
+        }
+
+        .send-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--wp-primary);
+            color: white;
+            border: none;
+            border-radius: var(--wp-radius);
+            cursor: pointer;
+            font-size: 20px;
+            transition: var(--wp-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-btn:hover {
+            background: #0066CC;
+            transform: scale(1.05);
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: var(--wp-spacing-lg);
+        }
+
+        .quick-btn {
+            padding: 10px 20px;
+            background: var(--wp-light);
+            border: 1px solid var(--wp-border);
+            border-radius: var(--wp-radius-full);
+            cursor: pointer;
+            transition: var(--wp-transition);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .quick-btn:hover {
+            background: var(--wp-primary);
+            color: white;
+            border-color: var(--wp-primary);
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--wp-spacing-xl);
+            margin-top: var(--wp-spacing-xl);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--wp-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--wp-shadow);
+            transition: var(--wp-transition);
+            border: 1px solid var(--wp-border);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--wp-shadow-xl);
+        }
+
+        .service-header {
+            padding: var(--wp-spacing-xl);
+            background: linear-gradient(135deg, var(--wp-primary) 0%, var(--wp-accent) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: var(--wp-spacing-md);
+        }
+
+        .service-header h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .service-body {
+            padding: var(--wp-spacing-xl);
+        }
+
+        .service-features {
+            list-style: none;
+            margin: var(--wp-spacing-lg) 0;
+        }
+
+        .service-features li {
+            padding: var(--wp-spacing-xs) 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features i {
+            color: var(--wp-success);
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--wp-dark);
+            text-align: center;
+            margin: var(--wp-spacing-lg) 0;
+        }
+
+        .service-price span {
+            font-size: 1rem;
+            color: var(--wp-gray);
+            font-weight: normal;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--wp-light);
+            position: relative;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: var(--wp-spacing-xl) auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: var(--wp-spacing-2xl);
+            border-radius: var(--wp-radius-xl);
+            box-shadow: var(--wp-shadow);
+            text-align: center;
+            border: 1px solid var(--wp-border);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto var(--wp-spacing-lg);
+            border: 4px solid white;
+            box-shadow: var(--wp-shadow);
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            margin-bottom: var(--wp-spacing-lg);
+            position: relative;
+        }
+
+        .testimonial-text:before,
+        .testimonial-text:after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--wp-primary);
+            opacity: 0.2;
+            position: absolute;
+        }
+
+        .testimonial-text:before {
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-text:after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--wp-dark);
+        }
+
+        .testimonial-role {
+            color: var(--wp-gray);
+            font-size: 0.875rem;
+        }
+
+        /* ===== CATÁLOGO DE TRABAJOS ===== */
+        .catalogo-section {
+            background: var(--wp-light);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: var(--wp-spacing-xl);
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--wp-border);
+            background: transparent;
+            color: var(--wp-secondary);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--wp-transition);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--wp-shadow);
+        }
+
+        .filter-btn.active {
+            background: var(--wp-primary);
+            color: white;
+            border-color: var(--wp-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--wp-spacing-xl);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--wp-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--wp-shadow);
+            transition: var(--wp-transition);
+            border: 1px solid var(--wp-border);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--wp-shadow-xl);
+            border-color: var(--wp-primary);
+        }
+
+        .lang-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--wp-light);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--wp-gray);
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: var(--wp-primary);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .loading-projects {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 0;
+            color: var(--wp-gray);
+        }
+
+        /* ===== MODAL ===== */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            border-radius: var(--wp-radius-xl);
+            padding: var(--wp-spacing-xl);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--wp-shadow-xl);
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--wp-light);
+            border-radius: 10px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--wp-primary);
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--wp-gray);
+            transition: var(--wp-transition);
+        }
+
+        .modal-close:hover {
+            color: var(--wp-dark);
+        }
+
+        /* ===== FOOTER ===== */
+        .wp-footer {
+            background: var(--wp-dark);
+            color: white;
+            padding: var(--wp-spacing-2xl) 0 var(--wp-spacing-xl);
+        }
+
+        .footer-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--wp-spacing-2xl);
+            margin-bottom: var(--wp-spacing-2xl);
+        }
+
+        .widget-title {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: var(--wp-spacing-lg);
+            position: relative;
+            padding-bottom: var(--wp-spacing-sm);
+        }
+
+        .widget-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--wp-accent);
+            border-radius: var(--wp-radius-full);
+        }
+
+        .widget-links {
+            list-style: none;
+        }
+
+        .widget-links li {
+            margin-bottom: var(--wp-spacing-sm);
+        }
+
+        .widget-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--wp-transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+
+        .widget-links i {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: var(--wp-spacing-md);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact i {
+            color: var(--wp-accent);
+            width: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: var(--wp-spacing-lg);
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--wp-transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--wp-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--wp-spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom a {
+            color: var(--wp-accent);
+        }
+
+        /* ===== ANIMACIONES ===== */
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 115, 230, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 115, 230, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 115, 230, 0);
+            }
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            padding: 20px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--wp-gray);
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .hero-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .primary-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: var(--wp-spacing-lg);
+                box-shadow: var(--wp-shadow-lg);
+                transition: var(--wp-transition);
+                z-index: 999;
+            }
+            .primary-menu.active {
+                left: 0;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .header-actions .social-link,
+            .whatsapp-header span {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .section {
+                padding: var(--wp-spacing-xl) 0;
+            }
+            .ia-chat {
+                height: 400px;
+                padding: var(--wp-spacing-lg);
+            }
+            .message-content {
+                max-width: 85%;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .filter-buttons {
+                gap: 8px !important;
+            }
+            .filter-btn {
+                padding: 8px 16px !important;
+                font-size: 0.85rem !important;
+            }
+            .modal-content {
+                padding: var(--wp-spacing-lg) !important;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                justify-content: center;
+            }
+            .services-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .input-group {
+                flex-direction: column;
+            }
+            .send-btn {
+                width: 100%;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="wp-header" id="header">
+        <div class="container header-container">
+            <a href="#" class="site-logo">
+                <div class="logo-icon">R</div>
+                <div class="logo-text">Web con <span>Ronhy</span></div>
+            </a>
+
+            <nav class="primary-menu" id="primaryMenu">
+                <li class="menu-item"><a href="#inicio" class="menu-link active"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="menu-item"><a href="#catalogo" class="menu-link"><i class="fas fa-code"></i> Proyectos</a></li>
+                <li class="menu-item"><a href="#servicios" class="menu-link"><i class="fas fa-briefcase"></i> Servicios</a></li>
+                <li class="menu-item"><a href="#ia" class="menu-link"><i class="fas fa-robot"></i> IA Asistente</a></li>
+                <li class="menu-item"><a href="#testimonios" class="menu-link"><i class="fas fa-star"></i> Testimonios</a></li>
+                <li class="menu-item"><a href="#contacto" class="menu-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </nav>
+
+            <div class="header-actions">
+                <div class="header-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <a href="https://wa.me/5491122334455" class="whatsapp-header" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="wp-hero" id="inicio">
+        <div class="container hero-container">
+            <div class="hero-content animate-in">
+                <span class="hero-badge"><i class="fas fa-bolt"></i> Desarrollo Web Profesional</span>
+                <h1 class="hero-title">Transforma tu emprendimiento con una <span>web poderosa</span></h1>
+                <p class="hero-description">
+                    Creo sitios web profesionales, optimizados y escalables que convierten visitantes en clientes.
+                    Diseño personalizado, desarrollo técnico impecable y resultados reales.
+                </p>
+                <div class="hero-actions">
+                    <a href="#ia" class="btn btn-accent pulse">
+                        <i class="fas fa-robot"></i>
+                        Consultar a la IA
+                    </a>
+                    <a href="#contacto" class="btn btn-secondary">
+                        <i class="fas fa-calendar"></i>
+                        Agenda una consulta
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Proyectos Completados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Satisfacción Clientes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Soporte Técnico</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual animate-in" style="animation-delay: 0.2s;">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                     alt="Desarrollo Web" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>¿Por qué elegir Web con Ronhy?</h2>
+                <p>Combinamos diseño moderno, desarrollo técnico impecable y estrategias que generan resultados reales para tu negocio.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Rendimiento Óptimo</h3>
+                    <p>Sitios web ultra rápidos con tiempos de carga optimizados para mejor SEO y experiencia de usuario.</p>
+                </div>
+                <div class="feature-card animate-in" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>100% Responsive</h3>
+                    <p>Diseño perfecto en todos los dispositivos: móviles, tablets y escritorio. Mobile-first approach.</p>
+                </div>
+                <div class="feature-card animate-in" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Máxima</h3>
+                    <p>Implementación de SSL, protección contra ataques y backups automáticos para tu tranquilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATÁLOGO DE TRABAJOS (NUEVO) ===== -->
+    <section class="section catalogo-section" id="catalogo">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>🚀 Mis Proyectos</h2>
+                <p>Una muestra de mi trabajo en desarrollo web y aplicaciones. Todos los proyectos son funcionales y están optimizados.</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">🌐 Web</button>
+                <button class="filter-btn" data-filter="app">📱 App</button>
+                <button class="filter-btn" data-filter="ecommerce">🛒 E-commerce</button>
+                <button class="filter-btn" data-filter="landing">🎯 Landing Page</button>
+            </div>
+
+            <!-- Grid de proyectos -->
+            <div class="projects-grid" id="projectsGrid">
+                <div class="loading-projects">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--wp-primary);"></i>
+                    <p style="margin-top: 20px;">Cargando proyectos desde GitHub...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IA ASSISTANT SECTION -->
+    <section class="section ia-section" id="ia">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Asistente IA Especializado</h2>
+                <p>Consulta con nuestra inteligencia artificial experta en desarrollo web. Obtén recomendaciones técnicas personalizadas, presupuestos detallados y planes de implementación.</p>
+            </div>
+
+            <div class="ia-container animate-in" style="animation-delay: 0.2s;">
+                <div class="ia-header">
+                    <div class="ia-avatar">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="ia-info">
+                        <h3>DevBot Pro</h3>
+                        <p>Asistente IA especializado en desarrollo web, SEO y estrategias digitales</p>
+                        <div class="ia-tags">
+                            <span class="ia-tag">HTML5/CSS3/JS</span>
+                            <span class="ia-tag">React/Vue.js</span>
+                            <span class="ia-tag">WordPress</span>
+                            <span class="ia-tag">SEO Avanzado</span>
+                            <span class="ia-tag">E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ia-chat" id="chatContainer">
+                    <div class="message message-ai">
+                        <div class="message-avatar">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                <p>¡Hola! Soy <strong>DevBot Pro</strong>, tu asistente IA especializado en desarrollo web con más de 5 años de experiencia virtual.</p>
+                                <p>Puedo ayudarte con análisis técnicos detallados, recomendaciones personalizadas y estrategias para tu proyecto web.</p>
+                                <p><strong>¿Qué tipo de sitio web necesitas?</strong></p>
+                                <ul class="message-list">
+                                    <li>• Tienda online (e-commerce)</li>
+                                    <li>• Sitio corporativo</li>
+                                    <li>• Landing page</li>
+                                    <li>• Blog profesional</li>
+                                    <li>• Aplicación web</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="chatMessages"></div>
+                </div>
+
+                <div class="ia-input-area">
+                    <div class="input-group">
+                        <input type="text"
+                               class="chat-input"
+                               id="userInput"
+                               placeholder="Describe tu proyecto en detalle... Ej: 'Necesito una tienda online para 50 productos con carrito, pasarela de pagos y sistema de inventario'">
+                        <button class="send-btn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="quick-questions">
+                        <button class="quick-btn" onclick="askQuestion('Presupuesto para web corporativa')">
+                            <i class="fas fa-briefcase"></i> Web Corporativa
+                        </button>
+                        <button class="quick-btn" onclick="askQuestion('¿Cuánto cuesta una tienda online?')">
+                            <i class="fas fa-shopping-cart"></i> E-commerce
+                        </button>
+                        <button class="quick-btn" onclick="askQuestion('Optimización SEO para mi web')">
+                            <i class="fas fa-chart-line"></i> SEO
+                        </button>
+                        <button class="quick-btn" onclick="askQuestion('Tecnologías recomendadas para mi proyecto')">
+                            <i class="fas fa-cogs"></i> Tecnologías
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" id="servicios">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Servicios Premium</h2>
+                <p>Soluciones web completas diseñadas para impulsar tu presencia digital y generar resultados tangibles.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card animate-in">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Desarrollo Web Personalizado</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Sitios web hechos a medida con las últimas tecnologías y mejores prácticas de desarrollo.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Diseño 100% responsive</li>
+                            <li><i class="fas fa-check"></i> Optimización SEO técnica</li>
+                            <li><i class="fas fa-check"></i> Integración de APIs</li>
+                            <li><i class="fas fa-check"></i> Panel de administración</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico 6 meses</li>
+                        </ul>
+                        <div class="service-price">
+                            Desde $1,200 <span>USD</span>
+                        </div>
+                        <a href="#ia" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-robot"></i> Consultar con IA
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card animate-in" style="animation-delay: 0.1s;">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Tienda Online Premium</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>E-commerce completo con todas las funcionalidades para vender exitosamente en línea.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Catálogo ilimitado de productos</li>
+                            <li><i class="fas fa-check"></i> Carrito y checkout optimizado</li>
+                            <li><i class="fas fa-check"></i> 3+ pasarelas de pago</li>
+                            <li><i class="fas fa-check"></i> Sistema de inventario</li>
+                            <li><i class="fas fa-check"></i> Reportes avanzados</li>
+                        </ul>
+                        <div class="service-price">
+                            Desde $2,500 <span>USD</span>
+                        </div>
+                        <a href="#ia" class="btn btn-accent" style="width: 100%;">
+                            <i class="fas fa-robot"></i> Presupuesto con IA
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card animate-in" style="animation-delay: 0.2s;">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Mantenimiento Web</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Servicio continuo para mantener tu web segura, actualizada y funcionando perfectamente.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Backups diarios automáticos</li>
+                            <li><i class="fas fa-check"></i> Actualizaciones de seguridad</li>
+                            <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico prioritario</li>
+                            <li><i class="fas fa-check"></i> Reportes mensuales</li>
+                        </ul>
+                        <div class="service-price">
+                            $200 <span>/mes</span>
+                        </div>
+                        <a href="#contacto" class="btn btn-secondary" style="width: 100%;">
+                            <i class="fas fa-calendar"></i> Agendar consulta
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title animate-in">
+                <h2>Clientes Satisfechos</h2>
+                <p>Lo que dicen emprendedores que han transformado su negocio con Web con Ronhy.</p>
+            </div>
+
+            <div class="testimonials-slider animate-in">
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                         alt="Cliente" class="testimonial-avatar">
+                    <div class="testimonial-text">
+                        "El trabajo de Ronhy transformó completamente mi negocio. La web que creó no solo es hermosa, sino que convierte un 40% mejor que antes. ¡Recomendado 100%!"
+                    </div>
+                    <div class="testimonial-author">María González</div>
+                    <div class="testimonial-role">CEO - Boutique Online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="wp-footer" id="contacto">
+        <div class="container">
+            <div class="footer-widgets">
+                <div class="footer-widget">
+                    <h3 class="widget-title">Web con Ronhy</h3>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: var(--wp-spacing-lg);">
+                        Desarrollo web profesional para emprendedores que buscan resultados. Transformamos ideas en realidades digitales exitosas.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-widget">
+                    <h3 class="widget-title">Enlaces Rápidos</h3>
+                    <ul class="widget-links">
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#catalogo"><i class="fas fa-chevron-right"></i> Proyectos</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+                        <li><a href="#ia"><i class="fas fa-chevron-right"></i> IA Asistente</a></li>
+                        <li><a href="#testimonios"><i class="fas fa-chevron-right"></i> Testimonios</a></li>
+                        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h3 class="widget-title">Contacto</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> +54 9 11 2233-4455</p>
+                        <p><i class="fas fa-envelope"></i> hola@webconronhy.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+                        <p><i class="fas fa-clock"></i> Lun-Vie: 9:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Web con Ronhy. Todos los derechos reservados. |
+                   <a href="#">Política de Privacidad</a> |
+                   <a href="#">Términos de Servicio</a>
+                </p>
+                <p style="margin-top: 10px;">Desarrollado con ❤️ para emprendedores digitales</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MODAL PARA PROYECTOS ===== -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalContent">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ===== HEADER Y NAVEGACIÓN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const primaryMenu = document.getElementById('primaryMenu');
+
+            mobileToggle.addEventListener('click', function() {
+                primaryMenu.classList.toggle('active');
+                mobileToggle.innerHTML = primaryMenu.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close menu on link click
+            document.querySelectorAll('.menu-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    primaryMenu.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Set active menu item on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.menu-link');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-in').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Inicializar el catálogo
+            renderProjects();
+
+            // Inicializar chat con pregunta de ejemplo
+            setTimeout(() => {
+                askQuestion('Presupuesto para web corporativa');
+            }, 3000);
+        });
+
+        // ===== SISTEMA DE IA =====
+        const aiKnowledge = {
+            "corporativa": {
+                title: "🏢 Web Corporativa Premium",
+                response: `Para una web corporativa profesional, recomiendo una **arquitectura escalable**:
+
+            **Stack Tecnológico Recomendado:**
+            - **Frontend:** HTML5, CSS3 (Tailwind CSS), JavaScript (Vue.js para interactividad)
+            - **Backend:** Node.js + Express o PHP 8.2 (Laravel para proyectos grandes)
+            - **Base de datos:** PostgreSQL (para relaciones complejas) o MySQL
+            - **Hosting:** VPS gestionado (DigitalOcean, AWS Lightsail)
+            - **CMS:** Opcional - Strapi para headless CMS
+
+            **Características Esenciales:**
+            1. **Diseño Responsive:** Mobile-first approach, tested en todos los dispositivos
+            2. **Performance:** Lighthouse score > 90, carga < 2s
+            3. **SEO Técnico:** Schema markup, sitemap XML, URLs optimizadas
+            4. **Seguridad:** SSL, protección DDoS, backups automáticos
+            5. **Integraciones:** Google Analytics 4, Google Search Console, CRM
+
+            **Estructura de Páginas:**
+            - Homepage con value proposition clara
+            - Nosotros (historia, equipo, valores)
+            - Servicios/PRODUCTOS detallados
+            - Portafolio/Casos de estudio
+            - Blog con sistema de categorías
+            - Contacto (formulario + mapa)
+
+            **Presupuesto Estimado:**
+            - **Básico (5 páginas):** $1,200 - $1,800 USD
+            - **Profesional (8-10 páginas + blog):** $2,000 - $3,500 USD
+            - **Avanzado (Panel admin + funcionalidades custom):** $4,000+ USD
+
+            **Timeline de Desarrollo:**
+            - Fase 1: Discovery & Planning (1 semana)
+            - Fase 2: UI/UX Design (1-2 semanas)
+            - Fase 3: Development (2-3 semanas)
+            - Fase 4: Testing & Launch (1 semana)
+
+            **¿Necesitas alguna funcionalidad específica para tu corporación?**`
+            },
+
+            "ecommerce": {
+                title: "🛒 Tienda Online (E-commerce) Completa",
+                response: `Para un e-commerce exitoso, necesitas una **plataforma robusta y escalable**:
+
+            **Opciones Tecnológicas:**
+            1. **WordPress + WooCommerce** (Recomendado para inicio):
+               - Costo: $2,500 - $4,000 USD
+               - Tiempo: 3-4 semanas
+               - Ventajas: Económico, miles de plugins
+               - Desventajas: Menos personalizable a largo plazo
+
+            2. **Laravel + Vue.js** (Para crecimiento):
+               - Costo: $4,000 - $8,000 USD
+               - Tiempo: 6-8 semanas
+               - Ventajas: Máximo control, mejor performance
+               - Desventajas: Mayor costo inicial
+
+            3. **Shopify Plus** (Para alto volumen):
+               - Costo: $299+/mes + desarrollo
+               - Tiempo: 2-3 semanas
+               - Ventajas: Escalabilidad automática
+               - Desventajas: Menos control sobre código
+
+            **Funcionalidades Críticas:**
+            - Catálogo de productos con filtros avanzados
+            - Carrito persistente (cookies + database)
+            - Checkout optimizado (máximo 3 pasos)
+            - Múltiples pasarelas de pago
+            - Sistema de inventario en tiempo real
+            - Email marketing automation
+            - Panel de administración completo
+
+            **Consideraciones Legales:**
+            - Políticas de privacidad y términos
+            - Certificado SSL obligatorio
+            - Cumplimiento PCI-DSS para pagos
+            - Política de devoluciones clara
+
+            **Presupuesto Desglosado:**
+            - Desarrollo: $2,500 - $8,000 USD
+            - Diseño UI/UX: $800 - $1,500 USD
+            - Configuración hosting: $200 - $500 USD
+            - Mantenimiento mensual: $150 - $300 USD
+
+            **¿Cuántos productos planeas vender inicialmente?**`
+            },
+
+            "seo": {
+                title: "🔍 Estrategia SEO Avanzada",
+                response: `El SEO requiere un **enfoque integral técnico + contenido**:
+
+            **SEO Técnico (Mes 1-2):**
+            1. Auditoría completa del sitio
+            2. Optimización de velocidad (target: < 2s)
+            3. Estructura de URLs semánticas
+            4. Implementación de schema markup
+            5. Sitemap XML y robots.txt
+            6. Mobile-first optimization
+
+            **SEO de Contenido (Mes 3-6):**
+            - Keyword research con Ahrefs/Semrush
+            - Estrategia de contenido pillar-cluster
+            - Creación de contenido long-form (2000+ palabras)
+            - Optimización de meta tags y headings
+            - Link building estratégico
+
+            **Herramientas Esenciales:**
+            - Google Search Console (gratis)
+            - Google Analytics 4
+            - Ahrefs o Semrush ($99-199/mes)
+            - Screaming Frog (auditoría técnica)
+            - Surfer SEO (optimización de contenido)
+
+            **Métricas Clave a Seguir:**
+            - Posiciones en SERPs
+            - Tráfico orgánico mensual
+            - Tasa de clics (CTR)
+            - Tiempo en página
+            - Tasa de rebote
+
+            **Cronograma de Resultados:**
+            - Mes 1-3: Indexación y primeras posiciones
+            - Mes 4-6: Posicionamiento para keywords de cola larga
+            - Mes 7-12: Keywords principales y tráfico sostenido
+
+            **Inversión Mensual SEO:**
+            - Básico (10-20 keywords): $500 - $800 USD/mes
+            - Profesional (30-50 keywords): $1,000 - $1,500 USD/mes
+            - Enterprise (100+ keywords): $2,000+ USD/mes
+
+            **¿Cuál es tu nicho específico?**`
+            },
+
+            "tecnologias": {
+                title: "⚙️ Análisis de Stack Tecnológico",
+                response: `La elección tecnológica depende de **tus objetivos, presupuesto y escalabilidad**:
+
+            **Para MVP o Startups:**
+            - **Frontend:** React.js o Vue.js
+            - **Backend:** Node.js + Express
+            - **Base de datos:** MongoDB (flexible) o PostgreSQL
+            - **Hosting:** Vercel (frontend) + Railway (backend)
+            - **Costo:** $3,000 - $6,000 USD
+            - **Tiempo:** 4-6 semanas
+
+            **Para E-commerce Medio:**
+            - **Frontend:** Next.js (SSR para SEO)
+            - **Backend:** Laravel (PHP) o Django (Python)
+            - **Base de datos:** PostgreSQL con Redis cache
+            - **Hosting:** AWS EC2 o DigitalOcean Droplet
+            - **Costo:** $5,000 - $10,000 USD
+            - **Tiempo:** 8-12 semanas
+
+            **Para Aplicaciones Empresariales:**
+            - **Frontend:** React + TypeScript
+            - **Backend:** .NET Core o Java Spring Boot
+            - **Base de datos:** SQL Server o Oracle
+            - **Hosting:** Azure o AWS enterprise
+            - **Costo:** $15,000 - $50,000+ USD
+            - **Tiempo:** 3-6 meses
+
+            **Factores Decisivos:**
+            1. **Performance:** React/Vue para SPA, Next.js/Nuxt.js para SSR
+            2. **SEO:** Next.js o WordPress para mejor indexación
+            3. **Escalabilidad:** Microservicios vs Monolith
+            4. **Mantenimiento:** Popularidad del stack en el mercado
+            5. **Equipo:** Disponibilidad de desarrolladores
+
+            **Mi Recomendación Personalizada:**
+            Para la mayoría de emprendimientos, recomiendo **Next.js + Node.js + PostgreSQL**:
+            - Excelente para SEO (SSR)
+            - Alto rendimiento
+            - Gran ecosistema
+            - Fácil de escalar
+
+            **¿Qué tipo de aplicación necesitas específicamente?**`
+            },
+
+            "default": {
+                title: "💡 Análisis de Proyecto Web",
+                response: `Basado en tu consulta, puedo identificar **oportunidades clave**:
+
+            **Recomendaciones Inmediatas:**
+            1. **Arquitectura de Información:**
+               - Mapa del sitio jerárquico (máx 3 niveles)
+               - URLs semánticas y optimizadas
+               - Navegación intuitiva con breadcrumbs
+
+            2. **Experiencia de Usuario:**
+               - Mobile-first responsive design
+               - Tiempos de carga optimizados (< 2s)
+               - Accesibilidad WCAG 2.1 Level AA
+               - Micro-interacciones para engagement
+
+            3. **Conversión y Analytics:**
+               - Funnel de conversión definido
+               - Formularios optimizados (mínimo campos)
+               - Integración Google Analytics 4
+               - Event tracking para medición
+
+            **Stack Tecnológico Sugerido:**
+            - **Frontend:** Vue.js 3 + Composition API
+            - **Backend:** Node.js + Express + TypeScript
+            - **Base de datos:** PostgreSQL con Prisma ORM
+            - **Hosting:** Vercel (frontend) + Supabase (backend)
+            - **CMS:** Sanity.io para contenido dinámico
+
+            **Fases de Desarrollo:**
+            - **Fase 1 (1 semana):** Discovery & Wireframes
+            - **Fase 2 (2 semanas):** UI/UX Design
+            - **Fase 3 (3 semanas):** Frontend Development
+            - **Fase 4 (2 semanas):** Backend Development
+            - **Fase 5 (1 semana):** Testing & Deployment
+
+            **Presupuesto Estimado:**
+            - MVP (funcionalidades básicas): $3,000 - $5,000 USD
+            - Proyecto medio: $6,000 - $12,000 USD
+            - Solución completa: $15,000 - $25,000+ USD
+
+            **¿Te gustaría profundizar en algún aspecto específico?**`
+            }
+        };
+
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const chatContainer = document.getElementById('chatContainer');
+
+        function detectQueryType(message) {
+            const msg = message.toLowerCase();
+
+            if (msg.includes('corporativa') || msg.includes('empresa') || msg.includes('empresarial')) {
+                return 'corporativa';
+            } else if (msg.includes('tienda') || msg.includes('ecommerce') || msg.includes('vender') || msg.includes('producto')) {
+                return 'ecommerce';
+            } else if (msg.includes('seo') || msg.includes('posicionamiento') || msg.includes('google')) {
+                return 'seo';
+            } else if (msg.includes('tecnolog') || msg.includes('stack') || msg.includes('framework')) {
+                return 'tecnologias';
+            }
+
+            return 'default';
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message message-ai';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="message-content">
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        function addMessage(content, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'message-user' : 'message-ai'}`;
+
+            const avatarIcon = isUser ? 'fas fa-user' : 'fas fa-code';
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="${avatarIcon}"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">${content}</div>
+                </div>
+            `;
+
+            chatMessages.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function formatAIResponse(responseType) {
+            const response = aiKnowledge[responseType];
+            return `
+                <h4 style="color: var(--wp-primary); margin-bottom: 15px; font-family: 'Montserrat', sans-serif;">
+                    ${response.title}
+                </h4>
+                <div style="line-height: 1.8;">
+                    ${response.response}
+                </div>
+                <div style="margin-top: 25px; padding: 20px; background: #F0F9FF; border-radius: var(--wp-radius); border-left: 4px solid var(--wp-accent);">
+                    <strong style="color: var(--wp-dark);">📋 Próximos Pasos Recomendados:</strong>
+                    <div style="margin-top: 10px;">
+                        1. <strong>Análisis detallado</strong> de tu proyecto específico<br>
+                        2. <strong>Propuesta técnica</strong> personalizada<br>
+                        3. <strong>Presupuesto transparente</strong> sin sorpresas<br>
+                        4. <strong>Cronograma realista</strong> con hitos claros
+                    </div>
+                    <div style="margin-top: 15px; font-style: italic; color: var(--wp-gray);">
+                        <i class="fas fa-calendar-alt"></i> ¿Te gustaría agendar una consultoría gratuita de 30 minutos?
+                    </div>
+                </div>
+            `;
+        }
+
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            userInput.value = '';
+
+            showTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator();
+
+                const queryType = detectQueryType(message);
+                const aiResponse = formatAIResponse(queryType);
+
+                addMessage(aiResponse, false);
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function askQuestion(question) {
+            userInput.value = question;
+            sendMessage();
+        }
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // ===== CATÁLOGO DE PROYECTOS DESDE GITHUB =====
+        const GITHUB_USERNAME = 'ronhy1989';
+
+        async function fetchRepos() {
+            try {
+                const url = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`;
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                }
+
+                const repos = await response.json();
+                return repos;
+            } catch (error) {
+                console.error('Error al cargar repositorios:', error);
+                return [];
+            }
+        }
+
+        function getProjectCategory(repo) {
+            const name = (repo.name + ' ' + (repo.description || '')).toLowerCase();
+            if (name.includes('ecom') || name.includes('shop') || name.includes('tienda') || name.includes('cart')) return 'ecommerce';
+            if (name.includes('landing') || name.includes('page') || name.includes('presentacion')) return 'landing';
+            if (name.includes('app') || name.includes('mobile') || name.includes('android') || name.includes('ios')) return 'app';
+            if (name.includes('web') || name.includes('site') || name.includes('portfolio') || name.includes('blog')) return 'web';
+            return 'web';
+        }
+
+        function createProjectCard(repo) {
+            const category = getProjectCategory(repo);
+            const languages = repo.language ? `<span class="lang-tag">${repo.language}</span>` : '';
+            const description = repo.description ? repo.description.substring(0, 120) + (repo.description.length > 120 ? '...' : '') : 'Sin descripción disponible';
+            const updatedDate = new Date(repo.updated_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+
+            return `
+                <div class="project-card" data-category="${category}" onclick="openModal('${repo.name}', '${(repo.description || 'Sin descripción').replace(/'/g, "\\'")}', '${repo.html_url}', '${repo.language || 'N/A'}', '${category}', '${repo.updated_at}')">
+                    <div style="padding: var(--wp-spacing-lg);">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--wp-spacing-sm);">
+                            <span class="category-tag">${category}</span>
+                            ${languages}
+                        </div>
+                        <h3 style="font-size: 1.25rem; margin-bottom: 8px; color: var(--wp-dark);">
+                            <i class="fab fa-github" style="color: var(--wp-gray); margin-right: 8px;"></i>
+                            ${repo.name}
+                        </h3>
+                        <p style="color: var(--wp-gray); font-size: 0.95rem; margin-bottom: var(--wp-spacing-md); line-height: 1.6;">${description}</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--wp-gray);">
+                            <span><i class="far fa-star"></i> ${repo.stargazers_count || 0}</span>
+                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count || 0}</span>
+                            <span><i class="far fa-calendar-alt"></i> ${updatedDate}</span>
+                        </div>
+                    </div>
+                    <div style="padding: 12px var(--wp-spacing-lg); background: var(--wp-light); border-top: 1px solid var(--wp-border); display: flex; gap: 12px; justify-content: flex-end;">
+                        <a href="${repo.html_url}" target="_blank" style="font-size: 0.875rem; font-weight: 600; color: var(--wp-primary);" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Ver en GitHub
+                        </a>
+                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="font-size: 0.875rem; font-weight: 600; color: var(--wp-accent);" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            const repos = await fetchRepos();
+
+            if (!repos || repos.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                        <i class="fas fa-folder-open" style="font-size: 4rem; color: var(--wp-gray);"></i>
+                        <h3 style="margin-top: 20px; color: var(--wp-secondary);">No se encontraron proyectos</h3>
+                        <p style="color: var(--wp-gray);">¿Has subido algún repositorio a GitHub?</p>
+                        <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" style="display: inline-block; margin-top: 20px; padding: 12px 32px; background: var(--wp-primary); color: white; border-radius: var(--wp-radius); text-decoration: none; font-weight: 600;">Ver perfil de GitHub</a>
+                    </div>
+                `;
+                return;
+            }
+
+            repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+            const cards = repos.map(repo => createProjectCard(repo)).join('');
+            grid.innerHTML = cards;
+
+            setupFilters();
+        }
+
+        function setupFilters() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.project-card');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+
+                    cards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.4s ease';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // ===== MODAL =====
+        function openModal(name, description, url, language, category, updated) {
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+            const date = new Date(updated).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            const langColors = {
+                'JavaScript': '#f1e05a',
+                'HTML': '#e34c26',
+                'CSS': '#563d7c',
+                'Python': '#3572A5',
+                'PHP': '#4F5D95',
+                'TypeScript': '#2b7489',
+                'Vue': '#41b883',
+                'React': '#61dafb',
+                'Ruby': '#701516',
+                'Java': '#b07219',
+                'C#': '#178600'
+            };
+            const color = langColors[language] || '#6c757d';
+
+            content.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <span style="display: inline-block; padding: 4px 16px; background: var(--wp-primary); color: white; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">${category}</span>
+                    <span style="display: inline-block; padding: 4px 16px; background: ${color}; color: white; border-radius: 50px; font-size: 0.75rem; font-weight: 600; margin-left: 8px;">${language}</span>
+                </div>
+                <h2 style="font-size: 2rem; margin-bottom: 8px; display: flex; align-items: center; gap: 12px;">
+                    <i class="fab fa-github" style="color: var(--wp-gray);"></i>
+                    ${name}
+                </h2>
+                <p style="font-size: 1.1rem; color: var(--wp-secondary); margin: var(--wp-spacing-md) 0; line-height: 1.8;">${description}</p>
+                <div style="background: var(--wp-light); padding: var(--wp-spacing-md); border-radius: var(--wp-radius); margin: var(--wp-spacing-md) 0; border: 1px solid var(--wp-border);">
+                    <p><strong><i class="far fa-calendar-alt"></i> Última actualización:</strong> ${date}</p>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: var(--wp-spacing-md);">
+                    <a href="${url}" target="_blank" style="flex: 1; padding: 14px 24px; background: var(--wp-dark); color: white; border-radius: var(--wp-radius); text-align: center; font-weight: 600; text-decoration: none; transition: var(--wp-transition);">
+                        <i class="fab fa-github"></i> Ver en GitHub
+                    </a>
+                    <button onclick="closeModal()" style="flex: 1; padding: 14px 24px; background: var(--wp-light); color: var(--wp-secondary); border: 1px solid var(--wp-border); border-radius: var(--wp-radius); font-weight: 600; cursor: pointer; transition: var(--wp-transition);">
+                        Cerrar
+                    </button>
+                </div>
+                <div style="margin-top: var(--wp-spacing-lg); padding-top: var(--wp-spacing-lg); border-top: 1px solid var(--wp-border); text-align: center; color: var(--wp-gray);">
+                    <i class="fas fa-code"></i> Proyecto open source · ¿Te interesa colaborar?
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
