@@ -121,6 +121,26 @@
             color: white;
             transform: translateY(-3px);
         }
+        .btn-success {
+            background: var(--wp-success);
+            color: white;
+            box-shadow: var(--wp-shadow);
+        }
+        .btn-success:hover {
+            background: #2F855A;
+            transform: translateY(-3px);
+            box-shadow: var(--wp-shadow-lg);
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: var(--wp-shadow);
+        }
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: var(--wp-shadow-lg);
+        }
 
         /* ===== HEADER ===== */
         .wp-header {
@@ -255,7 +275,6 @@
             color: white;
         }
 
-        /* Fondo animado con partículas SVG */
         .hero-particles {
             position: absolute;
             inset: 0;
@@ -268,7 +287,6 @@
             display: block;
         }
 
-        /* Círculos decorativos flotantes */
         .hero-orb {
             position: absolute;
             border-radius: 50%;
@@ -377,7 +395,6 @@
             opacity: 0.7;
         }
 
-        /* Hero Visual - Gráfico 3D con CSS */
         .hero-visual {
             position: relative;
             display: flex;
@@ -393,7 +410,6 @@
             perspective: 1000px;
         }
 
-        /* Cubo 3D animado con CSS */
         .cube-3d {
             width: 200px;
             height: 200px;
@@ -431,7 +447,6 @@
             100% { transform: translate(-50%, -50%) rotateX(-20deg) rotateY(360deg); }
         }
 
-        /* Círculo de brillo alrededor del cubo */
         .glow-ring {
             position: absolute;
             top: 50%;
@@ -485,7 +500,6 @@
             border-color: var(--wp-primary);
         }
 
-        /* Gráfico de barras animado en feature card */
         .feature-chart {
             display: flex;
             justify-content: center;
@@ -574,7 +588,6 @@
         .service-header h3 { color: white; margin: 0; }
         .service-body { padding: 2rem; }
 
-        /* Gráfico de donut circular para habilidades */
         .skill-ring {
             width: 100px;
             height: 100px;
@@ -666,7 +679,7 @@
             box-shadow: var(--wp-shadow);
             border: 1px solid var(--wp-border);
             transition: var(--wp-transition);
-            cursor: pointer;
+            cursor: default;
         }
         .project-card:hover {
             transform: translateY(-8px);
@@ -1102,9 +1115,9 @@
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <a href="https://wa.me/5491122334455" class="whatsapp-header" target="_blank">
+                <a href="https://wa.me/51914724078" class="whatsapp-header" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
+                    <span>914 724 078</span>
                 </a>
                 <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
@@ -1115,11 +1128,9 @@
 
     <!-- HERO CON GRÁFICOS PERSONALIZADOS -->
     <section class="wp-hero" id="inicio">
-        <!-- Partículas animadas con Canvas -->
         <div class="hero-particles">
             <canvas id="particlesCanvas"></canvas>
         </div>
-        <!-- Orbes flotantes -->
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
@@ -1138,8 +1149,8 @@
                     <a href="#ia" class="btn btn-accent pulse">
                         <i class="fas fa-robot"></i> Consultar a la IA
                     </a>
-                    <a href="#contacto" class="btn btn-secondary">
-                        <i class="fas fa-calendar"></i> Agenda una consulta
+                    <a href="https://wa.me/51914724078" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> 914 724 078
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -1221,12 +1232,12 @@
         </div>
     </section>
 
-    <!-- CATÁLOGO DE TRABAJOS -->
+    <!-- CATÁLOGO DE TRABAJOS CON PREVIEW -->
     <section class="section catalogo-section" id="catalogo">
         <div class="container">
             <div class="section-title animate-in">
                 <h2>🚀 Mis Proyectos</h2>
-                <p>Una muestra de mi trabajo en desarrollo web y aplicaciones. Todos los proyectos son funcionales y están optimizados.</p>
+                <p>Una muestra de mi trabajo en desarrollo web y aplicaciones. Cada proyecto tiene su propia <strong>Vista Previa</strong> en vivo.</p>
             </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Todos</button>
@@ -1392,8 +1403,8 @@
                         <div style="text-align:center;font-size:2rem;font-weight:800;color:var(--wp-dark);margin:1.5rem 0;">
                             $200 <span style="font-size:1rem;color:var(--wp-gray);font-weight:400;">/mes</span>
                         </div>
-                        <a href="#contacto" class="btn btn-secondary" style="width:100%;justify-content:center;">
-                            <i class="fas fa-calendar"></i> Agendar consulta
+                        <a href="https://wa.me/51914724078" class="btn btn-whatsapp" style="width:100%;justify-content:center;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
                         </a>
                     </div>
                 </div>
@@ -1451,9 +1462,10 @@
                 <div class="footer-widget">
                     <h3 class="widget-title">Contacto</h3>
                     <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> +54 9 11 2233-4455</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+51914724078">914 724 078</a></p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51914724078" target="_blank">914 724 078</a></p>
                         <p><i class="fas fa-envelope"></i> hola@webconronhy.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
                         <p><i class="fas fa-clock"></i> Lun-Vie: 9:00 - 18:00</p>
                     </div>
                 </div>
@@ -1467,14 +1479,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- MODAL -->
-    <div class="project-modal" id="projectModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:20px;">
-        <div class="modal-content" style="background:white;max-width:700px;width:100%;border-radius:var(--wp-radius-xl);padding:2rem;position:relative;max-height:90vh;overflow-y:auto;box-shadow:var(--wp-shadow-xl);">
-            <button class="modal-close" onclick="closeModal()" style="position:sticky;top:0;float:right;background:none;border:none;font-size:28px;cursor:pointer;color:var(--wp-gray);transition:var(--wp-transition);">&times;</button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
 
     <script>
         // ============================================================
@@ -1532,7 +1536,6 @@
                 p.update();
                 p.draw();
             });
-            // Dibujar conexiones entre partículas cercanas
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -1820,6 +1823,11 @@
                     <div style="margin-top:15px;font-style:italic;color:var(--wp-gray);">
                         <i class="fas fa-calendar-alt"></i> ¿Te gustaría agendar una consultoría gratuita?
                     </div>
+                    <div style="margin-top:15px;">
+                        <a href="https://wa.me/51914724078" target="_blank" class="btn btn-whatsapp" style="padding:10px 24px;font-size:0.9rem;">
+                            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                        </a>
+                    </div>
                 </div>
             `;
         }
@@ -1868,9 +1876,23 @@
         userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
 
         // ============================================================
-        // 6. CATÁLOGO DE PROYECTOS DESDE GITHUB
+        // 6. CATÁLOGO DE PROYECTOS DESDE GITHUB CON PREVIEW
         // ============================================================
         const GITHUB_USERNAME = 'ronhy1989';
+
+        function getPreviewUrl(repoName) {
+            return `https://html-preview.github.io/?url=https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
+        }
+
+        async function hasIndexHtml(repoName) {
+            try {
+                const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch {
+                return false;
+            }
+        }
 
         async function fetchRepos() {
             try {
@@ -1891,13 +1913,15 @@
             return 'web';
         }
 
-        function createCard(repo) {
+        function createCard(repo, hasPreview) {
             const cat = getCategory(repo);
             const lang = repo.language ? `<span class="lang-tag">${repo.language}</span>` : '';
             const desc = repo.description ? repo.description.substring(0, 120) + (repo.description.length > 120 ? '...' : '') : 'Sin descripción';
             const date = new Date(repo.updated_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+            const previewUrl = getPreviewUrl(repo.name);
+
             return `
-                <div class="project-card" data-category="${cat}" onclick="openModal('${repo.name}','${(repo.description || 'Sin descripción').replace(/'/g,"\\'")}','${repo.html_url}','${repo.language || 'N/A'}','${cat}','${repo.updated_at}')">
+                <div class="project-card" data-category="${cat}">
                     <div style="padding:1.5rem;">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
                             <span class="category-tag">${cat}</span>
@@ -1914,9 +1938,16 @@
                             <span><i class="far fa-calendar-alt"></i> ${date}</span>
                         </div>
                     </div>
-                    <div style="padding:12px 1.5rem;background:var(--wp-light);border-top:1px solid var(--wp-border);display:flex;gap:12px;justify-content:flex-end;">
-                        <a href="${repo.html_url}" target="_blank" style="font-size:0.875rem;font-weight:600;color:var(--wp-primary);" onclick="event.stopPropagation();"><i class="fab fa-github"></i> Ver en GitHub</a>
-                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="font-size:0.875rem;font-weight:600;color:var(--wp-accent);" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                    <div style="padding:12px 1.5rem;background:var(--wp-light);border-top:1px solid var(--wp-border);display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
+                        ${hasPreview ? `
+                            <a href="${previewUrl}" target="_blank" class="btn btn-success" style="padding:8px 16px;font-size:0.8rem;">
+                                <i class="fas fa-eye"></i> Vista Previa
+                            </a>
+                        ` : ''}
+                        <a href="${repo.html_url}" target="_blank" class="btn btn-primary" style="padding:8px 16px;font-size:0.8rem;">
+                            <i class="fab fa-github"></i> Código
+                        </a>
+                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-accent" style="padding:8px 16px;font-size:0.8rem;"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
                     </div>
                 </div>
             `;
@@ -1925,6 +1956,7 @@
         async function renderProjects() {
             const grid = document.getElementById('projectsGrid');
             const repos = await fetchRepos();
+
             if (!repos || repos.length === 0) {
                 grid.innerHTML = `
                     <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
@@ -1936,8 +1968,20 @@
                 `;
                 return;
             }
+
             repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-            grid.innerHTML = repos.map(r => createCard(r)).join('');
+
+            const reposWithPreview = await Promise.all(
+                repos.map(async (repo) => ({
+                    repo,
+                    hasPreview: await hasIndexHtml(repo.name)
+                }))
+            );
+
+            grid.innerHTML = reposWithPreview.map(({ repo, hasPreview }) =>
+                createCard(repo, hasPreview)
+            ).join('');
+
             setupFilters();
         }
 
@@ -1957,53 +2001,10 @@
         }
 
         // ============================================================
-        // 7. MODAL
+        // 7. ESTILO PARA ANIMACIÓN DE TYPING
         // ============================================================
-        function openModal(name, desc, url, lang, cat, updated) {
-            const modal = document.getElementById('projectModal');
-            const content = document.getElementById('modalContent');
-            const date = new Date(updated).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
-            const colors = { 'JavaScript': '#f1e05a', 'HTML': '#e34c26', 'CSS': '#563d7c', 'Python': '#3572A5', 'PHP': '#4F5D95', 'TypeScript': '#2b7489' };
-            const color = colors[lang] || '#6c757d';
-            content.innerHTML = `
-                <div style="margin-bottom:20px;">
-                    <span style="display:inline-block;padding:4px 16px;background:var(--wp-primary);color:white;border-radius:50px;font-size:0.75rem;font-weight:700;text-transform:uppercase;">${cat}</span>
-                    <span style="display:inline-block;padding:4px 16px;background:${color};color:white;border-radius:50px;font-size:0.75rem;font-weight:600;margin-left:8px;">${lang}</span>
-                </div>
-                <h2 style="font-size:2rem;margin-bottom:8px;display:flex;align-items:center;gap:12px;">
-                    <i class="fab fa-github" style="color:var(--wp-gray);"></i>
-                    ${name}
-                </h2>
-                <p style="font-size:1.1rem;color:var(--wp-secondary);margin:1rem 0;line-height:1.8;">${desc}</p>
-                <div style="background:var(--wp-light);padding:1rem;border-radius:var(--wp-radius);margin:1rem 0;border:1px solid var(--wp-border);">
-                    <p><strong><i class="far fa-calendar-alt"></i> Última actualización:</strong> ${date}</p>
-                </div>
-                <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:1rem;">
-                    <a href="${url}" target="_blank" style="flex:1;padding:14px 24px;background:var(--wp-dark);color:white;border-radius:var(--wp-radius);text-align:center;font-weight:600;">Ver en GitHub</a>
-                    <button onclick="closeModal()" style="flex:1;padding:14px 24px;background:var(--wp-light);color:var(--wp-secondary);border:1px solid var(--wp-border);border-radius:var(--wp-radius);font-weight:600;cursor:pointer;">Cerrar</button>
-                </div>
-                <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--wp-border);text-align:center;color:var(--wp-gray);">
-                    <i class="fas fa-code"></i> Proyecto open source · ¿Te interesa colaborar?
-                </div>
-            `;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('projectModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        // ============================================================
-        // 8. ESTILO PARA ANIMACIÓN DE TYPING
-        // ============================================================
-        const style = document.createElement('style');
-        style.textContent = `
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
             .typing-dot {
                 width: 8px;
                 height: 8px;
@@ -2026,7 +2027,7 @@
                 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0); }
             }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(styleSheet);
     </script>
 </body>
 </html>
