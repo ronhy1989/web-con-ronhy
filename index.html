@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web con Ronhy | Desarrollo Web Profesional para Emprendedores</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -142,7 +144,7 @@
             box-shadow: var(--wp-shadow-lg);
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER CON LOGO ===== */
         .wp-header {
             position: fixed;
             top: 0;
@@ -166,27 +168,13 @@
             align-items: center;
             gap: 12px;
         }
-        .logo-icon {
+        .logo-img {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-            border-radius: 14px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--wp-light);
+            box-shadow: var(--wp-shadow-sm);
         }
         .logo-text {
             font-family: 'Montserrat', sans-serif;
@@ -939,7 +927,7 @@
             color: var(--wp-secondary);
         }
 
-        /* ===== FOOTER ===== */
+        /* ===== FOOTER CON LOGO ===== */
         .wp-footer {
             background: var(--wp-dark);
             color: white;
@@ -968,6 +956,27 @@
             background: var(--wp-accent);
             border-radius: var(--wp-radius-full);
         }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .footer-logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+        .footer-logo-text span { color: var(--wp-accent); }
+
         .widget-links {
             list-style: none;
         }
@@ -1071,6 +1080,7 @@
             .filter-btn { padding: 8px 16px !important; font-size: 0.85rem !important; }
             .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
             .stat-number { font-size: 1.8rem; }
+            .logo-text { font-size: 1.3rem; }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 2rem; }
@@ -1090,15 +1100,17 @@
             .cube-face-bottom { transform: rotateX(-90deg) translateZ(50px); }
             .glow-ring { width: 200px; height: 200px; }
             .testimonial-card { padding: 2rem 1.5rem; }
+            .logo-img { width: 40px; height: 40px; }
+            .logo-text { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER CON LOGO -->
     <header class="wp-header" id="header">
         <div class="container header-container">
             <a href="#" class="site-logo">
-                <div class="logo-icon">R</div>
+                <img src="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" alt="Web con Ronhy Logo" class="logo-img">
                 <div class="logo-text">Web con <span>Ronhy</span></div>
             </a>
             <nav class="primary-menu" id="primaryMenu">
@@ -1432,12 +1444,15 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER CON LOGO -->
     <footer class="wp-footer" id="contacto">
         <div class="container">
             <div class="footer-widgets">
                 <div class="footer-widget">
-                    <h3 class="widget-title">Web con Ronhy</h3>
+                    <div class="footer-logo">
+                        <img src="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" alt="Web con Ronhy Logo" class="footer-logo-img">
+                        <div class="footer-logo-text">Web con <span>Ronhy</span></div>
+                    </div>
                     <p style="color:rgba(255,255,255,0.7);margin-bottom:1.5rem;">
                         Desarrollo web profesional para emprendedores que buscan resultados. Transformamos ideas en realidades digitales exitosas.
                     </p>
