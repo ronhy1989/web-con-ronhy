@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web con Ronhy | Desarrollo Web Profesional para Emprendedores</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Desarrollo web profesional para emprendedores. Sitios web modernos, optimizados y escalables. Transformamos tu idea en una plataforma digital exitosa.">
+    <!-- SEO Meta -->
+    <meta name="description" content="Desarrollo web profesional para emprendedores. Sitios web modernos, optimizados y escalables.">
     <meta name="keywords" content="desarrollo web, emprendedores, sitios web profesionales, ecommerce, landing page">
     <meta name="author" content="Ronhy - Web con Ronhy">
     <meta property="og:title" content="Web con Ronhy | Desarrollo Web Profesional">
-    <meta property="og:description" content="Transforma tu emprendimiento con una web poderosa. Desarrollo profesional para emprendedores.">
+    <meta property="og:description" content="Transforma tu emprendimiento con una web poderosa.">
     <meta property="og:image" content="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg">
-    <meta name="twitter:card" content="summary_large_image">
     
     <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" type="image/jpeg">
@@ -32,7 +31,6 @@
             --wp-accent: #FF6B35;
             --wp-accent-light: #FF8B66;
             --wp-dark: #0B1120;
-            --wp-dark-card: #141D2B;
             --wp-light: #F8FAFC;
             --wp-white: #FFFFFF;
             --wp-gray: #94A3B8;
@@ -40,10 +38,10 @@
             --wp-success: #10B981;
             --wp-warning: #F59E0B;
             
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.06);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            --glass-blur: 12px;
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-blur: 16px;
             
             --radius-sm: 8px;
             --radius-md: 12px;
@@ -60,7 +58,7 @@
         }
 
         /* ============================================================
-           RESET Y BASE
+           RESET Y BASE CON FONDO ANIME
            ============================================================ */
         * {
             margin: 0;
@@ -75,18 +73,115 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--wp-dark);
             color: var(--wp-light);
             overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
+            background: var(--wp-dark);
+            position: relative;
         }
 
+        /* ===== FONDO ANIME PRINCIPAL ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: 
+                /* Overlay oscuro para legibilidad */
+                linear-gradient(180deg, 
+                    rgba(11, 17, 32, 0.88) 0%,
+                    rgba(11, 17, 32, 0.75) 30%,
+                    rgba(11, 17, 32, 0.70) 60%,
+                    rgba(11, 17, 32, 0.85) 100%
+                ),
+                /* Imagen de fondo anime */
+                url('Img/Fondo.jpeg') center/cover fixed;
+            animation: animeBgPulse 8s ease-in-out infinite;
+        }
+
+        /* ===== OVERLAY DE BRILLO ANIME ===== */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 30%, 
+                    rgba(0, 115, 230, 0.08) 0%, 
+                    transparent 50%
+                ),
+                radial-gradient(ellipse at 80% 70%, 
+                    rgba(255, 107, 53, 0.06) 0%, 
+                    transparent 50%
+                ),
+                radial-gradient(ellipse at 50% 50%, 
+                    rgba(255, 107, 53, 0.04) 0%, 
+                    transparent 60%
+                );
+            animation: animeGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes animeBgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.92; }
+        }
+
+        @keyframes animeGlow {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* ===== PARTICULAS ANIME ===== */
+        .anime-particles-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .anime-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 115, 230, 0.3);
+            animation: floatParticle linear infinite;
+        }
+
+        .anime-particle:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; }
+        .anime-particle:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: 2s; }
+        .anime-particle:nth-child(3) { left: 40%; animation-duration: 20s; animation-delay: 4s; }
+        .anime-particle:nth-child(4) { left: 55%; animation-duration: 16s; animation-delay: 1s; }
+        .anime-particle:nth-child(5) { left: 70%; animation-duration: 22s; animation-delay: 3s; }
+        .anime-particle:nth-child(6) { left: 85%; animation-duration: 19s; animation-delay: 5s; }
+        .anime-particle:nth-child(7) { left: 15%; animation-duration: 17s; animation-delay: 6s; }
+        .anime-particle:nth-child(8) { left: 50%; animation-duration: 21s; animation-delay: 2s; }
+        .anime-particle:nth-child(9) { left: 65%; animation-duration: 14s; animation-delay: 4s; }
+        .anime-particle:nth-child(10) { left: 35%; animation-duration: 23s; animation-delay: 1s; }
+
+        .anime-particle:nth-child(odd) {
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 107, 53, 0.2);
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* ===== SCROLLBAR ANIME ===== */
         ::-webkit-scrollbar {
             width: 8px;
-            background: var(--wp-dark);
+            background: rgba(11, 17, 32, 0.5);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--wp-primary);
+            background: linear-gradient(180deg, var(--wp-primary), var(--wp-accent));
             border-radius: var(--radius-full);
         }
 
@@ -94,6 +189,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .section {
@@ -115,6 +212,7 @@
             letter-spacing: 0.1em;
             color: var(--wp-primary-light);
             margin-bottom: 1rem;
+            backdrop-filter: blur(10px);
         }
 
         .section-title {
@@ -140,7 +238,7 @@
         }
 
         /* ============================================================
-           GLASSMORPHISM COMPONENTS
+           GLASSMORPHISM
            ============================================================ */
         .glass-card {
             background: var(--glass-bg);
@@ -159,7 +257,7 @@
         }
 
         /* ============================================================
-           BOTONES MODERNOS
+           BOTONES
            ============================================================ */
         .btn {
             display: inline-flex;
@@ -229,29 +327,8 @@
             transform: translateY(-2px);
         }
 
-        .btn-glow {
-            position: relative;
-        }
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: var(--radius-md);
-            padding: 2px;
-            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .btn-glow:hover::before {
-            opacity: 1;
-        }
-
         /* ============================================================
-           HEADER MODERNO
+           HEADER
            ============================================================ */
         .wp-header {
             position: fixed;
@@ -259,7 +336,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(11, 17, 32, 0.85);
+            background: rgba(11, 17, 32, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -267,7 +344,7 @@
         }
 
         .wp-header.scrolled {
-            background: rgba(11, 17, 32, 0.95);
+            background: rgba(11, 17, 32, 0.9);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -409,7 +486,7 @@
         }
 
         /* ============================================================
-           HERO MODERNO
+           HERO CON FONDO ANIME
            ============================================================ */
         .wp-hero {
             min-height: 100vh;
@@ -418,11 +495,9 @@
             position: relative;
             overflow: hidden;
             padding: 120px 0 80px;
-            background: radial-gradient(ellipse at 20% 50%, rgba(0, 115, 230, 0.08) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 60%),
-                        var(--wp-dark);
         }
 
+        /* ===== HERO PARTICULAS CANVAS ===== */
         .hero-particles {
             position: absolute;
             inset: 0;
@@ -434,6 +509,7 @@
             display: block;
         }
 
+        /* ===== HERO CONTENT ===== */
         .hero-grid {
             position: relative;
             z-index: 1;
@@ -455,6 +531,7 @@
             font-weight: 500;
             color: var(--wp-gray);
             margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
         }
         .hero-badge i {
             color: var(--wp-accent);
@@ -514,7 +591,7 @@
             margin-top: 4px;
         }
 
-        /* Hero Visual - 3D Cube Moderno */
+        /* ===== CUBO 3D ===== */
         .hero-visual {
             position: relative;
             display: flex;
@@ -583,7 +660,7 @@
             width: 380px;
             height: 380px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 115, 230, 0.06), transparent 70%);
+            background: radial-gradient(circle, rgba(0, 115, 230, 0.08), transparent 70%);
             animation: pulseGlow 4s ease-in-out infinite;
             pointer-events: none;
         }
@@ -593,39 +670,8 @@
             50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
         }
 
-        /* Floating orbs */
-        .floating-orb {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(60px);
-            opacity: 0.3;
-        }
-        .floating-orb-1 {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            right: -100px;
-            background: var(--wp-primary);
-            animation: floatOrb 20s ease-in-out infinite;
-        }
-        .floating-orb-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -50px;
-            left: -50px;
-            background: var(--wp-accent);
-            animation: floatOrb 25s ease-in-out infinite reverse;
-        }
-
-        @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(40px, -60px) scale(1.2); }
-            66% { transform: translate(-30px, 40px) scale(0.8); }
-        }
-
         /* ============================================================
-           FEATURES MODERNOS
+           FEATURES
            ============================================================ */
         .features-grid {
             display: grid;
@@ -647,7 +693,7 @@
         .feature-card:hover {
             transform: translateY(-8px);
             border-color: rgba(0, 115, 230, 0.3);
-            box-shadow: 0 12px 48px rgba(0, 115, 230, 0.1);
+            box-shadow: 0 12px 48px rgba(0, 115, 230, 0.15);
         }
 
         .feature-icon {
@@ -719,12 +765,8 @@
         }
 
         /* ============================================================
-           PROYECTOS / CATÁLOGO
+           PROYECTOS
            ============================================================ */
-        .catalogo-section {
-            background: radial-gradient(ellipse at 50% 0%, rgba(0, 115, 230, 0.03), transparent 70%);
-        }
-
         .filter-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -844,7 +886,7 @@
         }
 
         /* ============================================================
-           IA ASISTENTE MODERNO
+           IA ASISTENTE
            ============================================================ */
         .ia-container {
             background: var(--glass-bg);
@@ -877,6 +919,12 @@
             color: white;
             flex-shrink: 0;
             position: relative;
+            animation: iaAvatarPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes iaAvatarPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 115, 230, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.3); }
         }
 
         .ia-avatar::after {
@@ -987,15 +1035,23 @@
             margin-bottom: 0.5rem;
         }
 
-        .message-list {
+        .message-text ul {
             margin: 0.5rem 0 0 1.5rem;
             list-style: none;
         }
 
-        .message-list li::before {
+        .message-text ul li::before {
             content: '▸ ';
             color: var(--wp-accent);
             font-weight: 700;
+        }
+
+        .message-text ol {
+            margin: 0.5rem 0 0 1.5rem;
+        }
+
+        .message-text ol li {
+            margin-bottom: 0.25rem;
         }
 
         .ia-input-area {
@@ -1076,7 +1132,7 @@
         }
 
         /* ============================================================
-           SERVICIOS MODERNOS
+           SERVICIOS
            ============================================================ */
         .services-grid {
             display: grid;
@@ -1213,7 +1269,7 @@
         }
 
         /* ============================================================
-           TESTIMONIOS MODERNOS
+           TESTIMONIOS
            ============================================================ */
         .testimonials-grid {
             display: grid;
@@ -1270,10 +1326,11 @@
         }
 
         /* ============================================================
-           FOOTER MODERNO
+           FOOTER
            ============================================================ */
         .wp-footer {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding: 4rem 0 2rem;
             margin-top: 4rem;
@@ -1645,7 +1702,23 @@
 </head>
 <body>
     <!-- ============================================================
-    HEADER MODERNO
+    PARTICULAS ANIME FLOTANTES
+    ============================================================ -->
+    <div class="anime-particles-container">
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+        <div class="anime-particle"></div>
+    </div>
+
+    <!-- ============================================================
+    HEADER
     ============================================================ -->
     <header class="wp-header" id="header">
         <div class="container header-container">
@@ -1679,15 +1752,12 @@
     </header>
 
     <!-- ============================================================
-    HERO MODERNO
+    HERO
     ============================================================ -->
     <section class="wp-hero" id="inicio">
         <div class="hero-particles">
             <canvas id="particlesCanvas"></canvas>
         </div>
-
-        <div class="floating-orb floating-orb-1"></div>
-        <div class="floating-orb floating-orb-2"></div>
 
         <div class="container">
             <div class="hero-grid">
@@ -1745,7 +1815,7 @@
     </section>
 
     <!-- ============================================================
-    FEATURES MODERNOS
+    FEATURES
     ============================================================ -->
     <section class="section" id="features">
         <div class="container">
@@ -1801,7 +1871,7 @@
     <!-- ============================================================
     CATÁLOGO DE PROYECTOS
     ============================================================ -->
-    <section class="section catalogo-section" id="catalogo">
+    <section class="section" id="catalogo">
         <div class="container">
             <div class="section-title animate-in">
                 <span class="section-label"><i class="fas fa-code"></i> Portfolio</span>
@@ -1827,7 +1897,7 @@
     </section>
 
     <!-- ============================================================
-    IA ASISTENTE MODERNO
+    IA ASISTENTE - MEJORADA
     ============================================================ -->
     <section class="section" id="ia">
         <div class="container">
@@ -1861,7 +1931,7 @@
                                 <p>¡Hola! Soy <strong>DevBot Pro</strong>, tu asistente IA especializado en desarrollo web.</p>
                                 <p>Puedo ayudarte con análisis técnicos detallados, recomendaciones personalizadas y estrategias para tu proyecto web.</p>
                                 <p><strong>¿Qué tipo de sitio web necesitas?</strong></p>
-                                <ul class="message-list">
+                                <ul>
                                     <li>Tienda online (e-commerce)</li>
                                     <li>Sitio corporativo</li>
                                     <li>Landing page</li>
@@ -1891,7 +1961,7 @@
     </section>
 
     <!-- ============================================================
-    SERVICIOS MODERNOS
+    SERVICIOS
     ============================================================ -->
     <section class="section" id="servicios">
         <div class="container">
@@ -1996,7 +2066,7 @@
     </section>
 
     <!-- ============================================================
-    TESTIMONIOS MODERNOS
+    TESTIMONIOS
     ============================================================ -->
     <section class="section" id="testimonios">
         <div class="container">
@@ -2053,7 +2123,7 @@
     </section>
 
     <!-- ============================================================
-    FOOTER MODERNO
+    FOOTER
     ============================================================ -->
     <footer class="wp-footer" id="contacto">
         <div class="container">
@@ -2117,7 +2187,7 @@
     ============================================================ -->
     <script>
         // ============================================================
-        // 1. PARTÍCULAS ANIMADAS
+        // 1. PARTÍCULAS CANVAS
         // ============================================================
         const canvas = document.getElementById('particlesCanvas');
         const ctx = canvas.getContext('2d');
@@ -2278,7 +2348,7 @@
 
             // Inicializar
             renderProjects();
-            setTimeout(() => askQuestion('Presupuesto para web corporativa'), 2000);
+            setTimeout(() => askQuestion('Presupuesto para web corporativa'), 1500);
 
             // Intersection Observer para animaciones
             const observer = new IntersectionObserver(entries => {
@@ -2299,7 +2369,7 @@
         });
 
         // ============================================================
-        // 5. SISTEMA DE IA
+        // 5. SISTEMA DE IA MEJORADO
         // ============================================================
         const aiKnowledge = {
             corporativa: {
@@ -2649,7 +2719,7 @@
         }
 
         // ============================================================
-        // 7. ESTILOS ADICIONALES PARA ANIMACIONES
+        // 7. ESTILOS ADICIONALES
         // ============================================================
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
