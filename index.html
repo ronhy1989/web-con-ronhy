@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ronhy Dev | Desarrollador Fullstack Freelance | Soluciones Web Profesionales</title>
+    <title>Web con Ronhy | Desarrollo Web Profesional para Emprendedores</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Desarrollo web profesional para emprendedores. Sitios web modernos, optimizados y escalables. Transformamos tu idea en una plataforma digital exitosa.">
+    <meta name="keywords" content="desarrollo web, emprendedores, sitios web profesionales, ecommerce, landing page">
+    <meta name="author" content="Ronhy - Web con Ronhy">
+    <meta property="og:title" content="Web con Ronhy | Desarrollo Web Profesional">
+    <meta property="og:description" content="Transforma tu emprendimiento con una web poderosa. Desarrollo profesional para emprendedores.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* ===== VARIABLES DE DISEÑO MEJORADAS ===== */
+        /* ============================================================
+           VARIABLES GLOBALES
+           ============================================================ */
         :root {
-            --primary: #6366F1;
-            --primary-dark: #4F46E5;
-            --primary-light: #818CF8;
-            --secondary: #F97316;
-            --accent: #EC4899;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --dark: #0F172A;
-            --light: #F8FAFC;
-            --gray: #64748B;
-            --gray-light: #E2E8F0;
-            --white: #FFFFFF;
-            --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
-            --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1);
-            --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
+            --wp-primary: #0073E6;
+            --wp-primary-dark: #0056B3;
+            --wp-primary-light: #4A9EFF;
+            --wp-accent: #FF6B35;
+            --wp-accent-light: #FF8B66;
+            --wp-dark: #0B1120;
+            --wp-dark-card: #141D2B;
+            --wp-light: #F8FAFC;
+            --wp-white: #FFFFFF;
+            --wp-gray: #94A3B8;
+            --wp-gray-light: #E2E8F0;
+            --wp-success: #10B981;
+            --wp-warning: #F59E0B;
+            
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --glass-blur: 12px;
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.16);
+            
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* ============================================================
+           RESET Y BASE
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -40,38 +70,24 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
-            background: var(--white);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--wp-dark);
+            color: var(--wp-light);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--dark);
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: var(--wp-dark);
         }
-
-        p {
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+        ::-webkit-scrollbar-thumb {
+            background: var(--wp-primary);
+            border-radius: var(--radius-full);
         }
 
         .container {
@@ -81,96 +97,178 @@
         }
 
         .section {
-            padding: 5rem 0;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(0, 115, 230, 0.15);
+            border: 1px solid rgba(0, 115, 230, 0.2);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--wp-primary-light);
+            margin-bottom: 1rem;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 2.75rem;
+            font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--wp-light) 0%, var(--wp-gray) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 1rem;
         }
 
         .section-title p {
             font-size: 1.125rem;
             max-width: 600px;
             margin: 0 auto;
-            color: var(--gray);
+            color: var(--wp-gray);
         }
 
-        /* ===== BOTONES ===== */
+        /* ============================================================
+           GLASSMORPHISM COMPONENTS
+           ============================================================ */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 115, 230, 0.3);
+            box-shadow: 0 12px 48px rgba(0, 115, 230, 0.15);
+        }
+
+        /* ============================================================
+           BOTONES MODERNOS
+           ============================================================ */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 14px 32px;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
-            border-radius: var(--radius);
-            border: 2px solid transparent;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: var(--radius-md);
             cursor: pointer;
             transition: var(--transition);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            box-shadow: var(--shadow);
+            background: var(--wp-primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 115, 230, 0.3);
         }
-
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 115, 230, 0.4);
         }
 
-        .btn-secondary {
-            background: linear-gradient(135deg, var(--secondary), #EA580C);
-            color: var(--white);
-            box-shadow: var(--shadow);
+        .btn-accent {
+            background: var(--wp-accent);
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+        }
+        .btn-accent:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.4);
         }
 
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+        .btn-success {
+            background: var(--wp-success);
+            color: white;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+        }
+        .btn-success:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
         }
 
         .btn-outline {
-            background: var(--white);
-            color: var(--primary);
-            border-color: var(--primary);
+            background: transparent;
+            color: var(--wp-light);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
-
         .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
+            border-color: var(--wp-primary);
+            color: var(--wp-primary);
+            transform: translateY(-2px);
         }
 
-        /* ===== HEADER ===== */
+        .btn-glow {
+            position: relative;
+        }
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: var(--radius-md);
+            padding: 2px;
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .btn-glow:hover::before {
+            opacity: 1;
+        }
+
+        /* ============================================================
+           HEADER MODERNO
+           ============================================================ */
         .wp-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow-sm);
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
         }
 
         .wp-header.scrolled {
-            box-shadow: var(--shadow);
+            background: rgba(11, 17, 32, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .header-container {
@@ -178,30 +276,32 @@
             align-items: center;
             justify-content: space-between;
             height: 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
 
         .site-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+            text-decoration: none;
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
             object-fit: cover;
-            box-shadow: var(--shadow-sm);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .logo-text {
-            font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--wp-light);
+            letter-spacing: -0.5px;
+        }
+        .logo-text span {
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -211,33 +311,36 @@
             display: flex;
             list-style: none;
             gap: 2px;
+            align-items: center;
         }
 
         .menu-link {
-            padding: 10px 18px;
-            font-weight: 600;
-            color: var(--dark);
-            border-radius: var(--radius);
+            padding: 10px 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--wp-gray);
+            border-radius: var(--radius-sm);
             transition: var(--transition);
-            font-size: 0.95rem;
+            text-decoration: none;
             position: relative;
         }
 
         .menu-link:hover,
         .menu-link.active {
-            color: var(--primary);
+            color: var(--wp-light);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .menu-link.active::after {
             content: '';
             position: absolute;
-            bottom: 8px;
+            bottom: 4px;
             left: 50%;
             transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--primary);
-            border-radius: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--wp-primary);
+            border-radius: var(--radius-full);
         }
 
         .menu-link i {
@@ -254,33 +357,39 @@
         .social-link {
             width: 40px;
             height: 40px;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
-            color: var(--gray);
+            color: var(--wp-gray);
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .social-link:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
+            background: var(--wp-primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 10px 24px;
-            border-radius: var(--radius);
+        .whatsapp-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #25D366;
+            color: white;
+            border-radius: var(--radius-md);
             font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
             transition: var(--transition);
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+        .whatsapp-header:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
         }
 
         .mobile-toggle {
@@ -288,120 +397,88 @@
             background: none;
             border: none;
             font-size: 24px;
-            color: var(--dark);
+            color: var(--wp-light);
             cursor: pointer;
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius);
+            padding: 8px;
+            border-radius: var(--radius-sm);
             transition: var(--transition);
         }
 
         .mobile-toggle:hover {
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        /* ===== HERO ===== */
+        /* ============================================================
+           HERO MODERNO
+           ============================================================ */
         .wp-hero {
-            padding: 140px 0 80px;
-            background: linear-gradient(135deg, var(--dark) 0%, #1E293B 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
-            color: var(--white);
+            padding: 120px 0 80px;
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 115, 230, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 60%),
+                        var(--wp-dark);
         }
 
-        .hero-blob {
+        .hero-particles {
             position: absolute;
-            border-radius: 50%;
-            opacity: 0.08;
-            pointer-events: none;
+            inset: 0;
             z-index: 0;
         }
-
-        .blob-1 {
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            right: -100px;
-            background: var(--primary);
-            animation: floatBlob 20s ease-in-out infinite;
+        .hero-particles canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
 
-        .blob-2 {
-            width: 350px;
-            height: 350px;
-            bottom: -50px;
-            left: -50px;
-            background: var(--secondary);
-            animation: floatBlob 25s ease-in-out infinite reverse;
-        }
-
-        .blob-3 {
-            width: 300px;
-            height: 300px;
-            top: 30%;
-            right: 10%;
-            background: var(--accent);
-            animation: floatBlob 18s ease-in-out infinite 2s;
-        }
-
-        @keyframes floatBlob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -40px) scale(1.1); }
-            50% { transform: translate(-20px, 20px) scale(0.9); }
-            75% { transform: translate(40px, 30px) scale(1.05); }
-        }
-
-        .hero-container {
+        .hero-grid {
             position: relative;
-            z-index: 2;
+            z-index: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .hero-content {
-            max-width: 600px;
-        }
-
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 2rem;
-            width: fit-content;
+            gap: 10px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--wp-gray);
+            margin-bottom: 1.5rem;
         }
-
         .hero-badge i {
-            color: var(--secondary);
-            font-size: 1rem;
+            color: var(--wp-accent);
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 4rem;
+            font-weight: 900;
             line-height: 1.1;
-            color: var(--white);
+            color: var(--wp-light);
             margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
         .hero-title .highlight {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-description {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--wp-gray);
             max-width: 500px;
             margin-bottom: 2.5rem;
             line-height: 1.8;
@@ -409,265 +486,243 @@
 
         .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
 
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-item {
-            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            display: block;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 0.5rem;
+            color: var(--wp-gray);
+            margin-top: 4px;
         }
 
+        /* Hero Visual - 3D Cube Moderno */
         .hero-visual {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 400px;
         }
 
-        .cube-container {
-            width: 250px;
-            height: 250px;
+        .hero-3d-wrapper {
             position: relative;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .cube {
             width: 100%;
-            height: 100%;
-            position: relative;
+            max-width: 500px;
+            aspect-ratio: 1;
+            perspective: 1200px;
+        }
+
+        .cube-3d {
+            width: 220px;
+            height: 220px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(-15deg) rotateY(30deg);
             transform-style: preserve-3d;
-            animation: rotateCube 20s infinite linear;
+            animation: rotateCube 25s infinite linear;
         }
 
         .cube-face {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
+            width: 220px;
+            height: 220px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
+            font-size: 64px;
+            color: white;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: inset 0 0 60px rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
         }
 
-        .cube-face:nth-child(1) { 
-            transform: translateZ(125px);
-            background: rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.3);
+        .cube-face:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 115, 230, 0.3);
         }
 
-        .cube-face:nth-child(2) { 
-            transform: rotateY(180deg) translateZ(125px);
-            background: rgba(249, 115, 22, 0.15);
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-
-        .cube-face:nth-child(3) { 
-            transform: rotateY(90deg) translateZ(125px);
-            background: rgba(236, 72, 153, 0.15);
-            border-color: rgba(236, 72, 153, 0.3);
-        }
-
-        .cube-face:nth-child(4) { 
-            transform: rotateY(-90deg) translateZ(125px);
-            background: rgba(16, 185, 129, 0.15);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .cube-face:nth-child(5) { 
-            transform: rotateX(90deg) translateZ(125px);
-            background: rgba(245, 158, 11, 0.15);
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .cube-face:nth-child(6) { 
-            transform: rotateX(-90deg) translateZ(125px);
-            background: rgba(99, 102, 241, 0.1);
-            border-color: rgba(99, 102, 241, 0.2);
-        }
+        .cube-face-front  { transform: translateZ(110px); }
+        .cube-face-back   { transform: rotateY(180deg) translateZ(110px); }
+        .cube-face-right  { transform: rotateY(90deg) translateZ(110px); }
+        .cube-face-left   { transform: rotateY(-90deg) translateZ(110px); }
+        .cube-face-top    { transform: rotateX(90deg) translateZ(110px); }
+        .cube-face-bottom { transform: rotateX(-90deg) translateZ(110px); }
 
         @keyframes rotateCube {
-            0% { transform: rotateX(-20deg) rotateY(0deg); }
-            100% { transform: rotateX(-20deg) rotateY(360deg); }
+            0% { transform: translate(-50%, -50%) rotateX(-15deg) rotateY(0deg); }
+            100% { transform: translate(-50%, -50%) rotateX(-15deg) rotateY(360deg); }
         }
 
-        /* ===== CARACTERÍSTICAS ===== */
-        .features-section {
-            background: var(--light);
+        .glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 115, 230, 0.06), transparent 70%);
+            animation: pulseGlow 4s ease-in-out infinite;
+            pointer-events: none;
         }
 
+        @keyframes pulseGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        }
+
+        /* Floating orbs */
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(60px);
+            opacity: 0.3;
+        }
+        .floating-orb-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+            background: var(--wp-primary);
+            animation: floatOrb 20s ease-in-out infinite;
+        }
+        .floating-orb-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -50px;
+            background: var(--wp-accent);
+            animation: floatOrb 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -60px) scale(1.2); }
+            66% { transform: translate(-30px, 40px) scale(0.8); }
+        }
+
+        /* ============================================================
+           FEATURES MODERNOS
+           ============================================================ */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
         .feature-card {
-            background: var(--white);
-            padding: 2.5rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-light);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary);
+            transform: translateY(-8px);
+            border-color: rgba(0, 115, 230, 0.3);
+            box-shadow: 0 12px 48px rgba(0, 115, 230, 0.1);
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 14px;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
+            color: white;
+            position: relative;
         }
 
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(-5deg);
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: calc(var(--radius-md) + 4px);
+            border: 2px solid rgba(0, 115, 230, 0.2);
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0; }
         }
 
         .feature-card h3 {
+            color: var(--wp-light);
             font-size: 1.25rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .feature-card p {
+            color: var(--wp-gray);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        /* ===== SERVICIOS ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-light);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .service-header {
-            padding: 2.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            text-align: center;
-        }
-
-        .service-icon {
-            font-size: 48px;
-            margin-bottom: 1rem;
-        }
-
-        .service-header h3 {
-            color: var(--white);
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .service-body {
-            padding: 2rem;
-        }
-
-        .service-body h4 {
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 10px 0;
+        .feature-bars {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid var(--gray-light);
-            font-size: 0.95rem;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+            height: 50px;
+            margin-top: 1.5rem;
         }
 
-        .skill-list li:last-child {
-            border-bottom: none;
+        .feature-bar {
+            width: 10px;
+            background: linear-gradient(180deg, var(--wp-primary), var(--wp-accent));
+            border-radius: 4px 4px 0 0;
+            animation: barGrow 1.5s ease-out forwards;
+            transform-origin: bottom;
+            opacity: 0;
+        }
+        .feature-bar:nth-child(1) { height: 25px; animation-delay: 0.1s; }
+        .feature-bar:nth-child(2) { height: 40px; animation-delay: 0.2s; }
+        .feature-bar:nth-child(3) { height: 35px; animation-delay: 0.3s; }
+        .feature-bar:nth-child(4) { height: 50px; animation-delay: 0.4s; }
+        .feature-bar:nth-child(5) { height: 30px; animation-delay: 0.5s; }
+
+        @keyframes barGrow {
+            0% { transform: scaleY(0); opacity: 0; }
+            100% { transform: scaleY(1); opacity: 1; }
         }
 
-        .skill-list i {
-            color: var(--success);
-            font-size: 1.1rem;
-        }
-
-        /* ===== PORTAFOLIO/TRABAJOS ===== */
-        .portfolio-section {
-            background: var(--light);
+        /* ============================================================
+           PROYECTOS / CATÁLOGO
+           ============================================================ */
+        .catalogo-section {
+            background: radial-gradient(ellipse at 50% 0%, rgba(0, 115, 230, 0.03), transparent 70%);
         }
 
         .filter-buttons {
@@ -680,23 +735,28 @@
 
         .filter-btn {
             padding: 10px 24px;
-            border: 2px solid var(--gray-light);
-            background: var(--white);
-            color: var(--dark);
-            border-radius: 50px;
-            font-weight: 600;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            color: var(--wp-gray);
+            font-weight: 500;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: var(--transition);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
         }
 
-        .filter-btn:hover,
+        .filter-btn:hover {
+            border-color: var(--wp-primary);
+            color: var(--wp-light);
+        }
+
         .filter-btn.active {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-            transform: translateY(-2px);
+            background: var(--wp-primary);
+            border-color: var(--wp-primary);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 115, 230, 0.3);
         }
 
         .projects-grid {
@@ -706,303 +766,756 @@
         }
 
         .project-card {
-            background: var(--white);
-            border-radius: var(--radius-xl);
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-light);
             transition: var(--transition);
-            cursor: pointer;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary);
+            transform: translateY(-6px);
+            border-color: rgba(0, 115, 230, 0.3);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
         }
 
-        .project-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .project-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .project-card .card-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: hidden;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
-        .project-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-image::after {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .project-info {
-            padding: 2rem;
-        }
-
-        .project-category {
+        .category-tag {
             display: inline-block;
-            padding: 4px 12px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white);
-            border-radius: 50px;
+            padding: 4px 14px;
+            background: var(--wp-primary);
+            color: white;
+            border-radius: var(--radius-full);
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--wp-gray);
+        }
+
+        .project-card h3 {
+            color: var(--wp-light);
+            font-size: 1.15rem;
+            margin: 0.5rem 0;
+        }
+
+        .project-card p {
+            color: var(--wp-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
             margin-bottom: 1rem;
         }
 
-        .project-title {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--dark);
-        }
-
-        .project-description {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-tags {
+        .project-meta {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--wp-gray);
         }
 
-        .tag {
-            padding: 4px 10px;
-            background: var(--light);
-            color: var(--gray);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        /* ===== TESTIMONIOS ===== */
-        .testimonials-section {
-            background: var(--white);
-        }
-
-        .testimonial-card {
-            background: var(--light);
-            padding: 2.5rem;
+        /* ============================================================
+           IA ASISTENTE MODERNO
+           ============================================================ */
+        .ia-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
-            border: 1px solid var(--gray-light);
-            transition: var(--transition);
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .ia-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 115, 230, 0.1), rgba(255, 107, 53, 0.05));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .ia-avatar {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            flex-shrink: 0;
             position: relative;
         }
 
-        .testimonial-card::before {
-            content: '"';
+        .ia-avatar::after {
+            content: '';
             position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.1;
-            font-family: serif;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .testimonial-avatar {
-            width: 70px;
-            height: 70px;
+            bottom: 2px;
+            right: 2px;
+            width: 16px;
+            height: 16px;
+            background: var(--wp-success);
             border-radius: 50%;
-            margin-bottom: 1.5rem;
-            border: 3px solid var(--primary);
-            object-fit: cover;
+            border: 2px solid var(--wp-dark);
+            animation: pulseDot 2s infinite;
         }
 
-        .testimonial-text {
-            font-size: 1rem;
-            font-style: italic;
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .ia-info h3 {
+            color: var(--wp-light);
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .ia-info p {
+            color: var(--wp-gray);
+            font-size: 0.9rem;
+        }
+
+        .ia-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .ia-tag {
+            padding: 4px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            color: var(--wp-gray);
+        }
+
+        .ia-chat {
+            padding: 2rem;
+            height: 480px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            display: flex;
+            gap: 1rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .message-ai .message-avatar {
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
+        }
+
+        .message-user .message-avatar {
+            background: var(--wp-success);
+        }
+
+        .message-content {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            max-width: 80%;
+        }
+
+        .message-ai .message-content {
+            border-top-left-radius: 4px;
+        }
+
+        .message-user .message-content {
+            border-top-right-radius: 4px;
+            background: rgba(0, 115, 230, 0.08);
+            border-color: rgba(0, 115, 230, 0.15);
+            margin-left: auto;
+        }
+
+        .message-text {
+            color: var(--wp-light);
             line-height: 1.8;
         }
 
-        .testimonial-author h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
+        .message-text p {
+            color: inherit;
+            margin-bottom: 0.5rem;
         }
 
-        .testimonial-role {
-            font-size: 0.85rem;
-            color: var(--gray);
+        .message-list {
+            margin: 0.5rem 0 0 1.5rem;
+            list-style: none;
         }
 
-        /* ===== CTA SECTION ===== */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 4rem 0;
-            border-radius: var(--radius-xl);
+        .message-list li::before {
+            content: '▸ ';
+            color: var(--wp-accent);
+            font-weight: 700;
+        }
+
+        .ia-input-area {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            color: var(--wp-light);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--wp-primary);
+            box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.1);
+        }
+
+        .chat-input::placeholder {
+            color: var(--wp-gray);
+        }
+
+        .send-btn {
+            width: 54px;
+            height: 54px;
+            background: var(--wp-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 18px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-btn:hover {
+            background: var(--wp-primary-dark);
+            transform: scale(1.05);
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .quick-btn {
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-full);
+            color: var(--wp-gray);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .quick-btn:hover {
+            background: var(--wp-primary);
+            color: white;
+            border-color: var(--wp-primary);
+        }
+
+        /* ============================================================
+           SERVICIOS MODERNOS
+           ============================================================ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 115, 230, 0.3);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-header {
+            padding: 2rem;
             text-align: center;
-            color: var(--white);
-            margin: 4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cta-section h2 {
-            color: var(--white);
-            font-size: 2.5rem;
+        .service-icon {
+            font-size: 40px;
+            color: var(--wp-primary);
             margin-bottom: 1rem;
         }
 
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.9);
+        .service-header h3 {
+            color: var(--wp-light);
+            font-size: 1.25rem;
+        }
+
+        .service-body {
+            padding: 2rem;
+        }
+
+        .service-body p {
+            color: var(--wp-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-ring {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .skill-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .skill-ring circle {
+            fill: none;
+            stroke-width: 8;
+            cx: 50;
+            cy: 50;
+            r: 42;
+        }
+
+        .skill-ring .bg {
+            stroke: rgba(255, 255, 255, 0.06);
+        }
+
+        .skill-ring .progress {
+            stroke: var(--wp-primary);
+            stroke-linecap: round;
+            transition: stroke-dashoffset 2s ease;
+            stroke-dasharray: 263.89;
+            stroke-dashoffset: 263.89;
+        }
+
+        .skill-ring .progress.animated {
+            stroke-dashoffset: var(--offset);
+        }
+
+        .skill-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
             font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--wp-light);
         }
 
-        /* ===== FOOTER ===== */
-        .wp-footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 4rem 0 2rem;
+        .service-features {
+            list-style: none;
+            margin: 1.5rem 0;
         }
 
-        .footer-widgets {
+        .service-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--wp-gray);
+            font-size: 0.9rem;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features i {
+            color: var(--wp-success);
+        }
+
+        .service-price {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--wp-light);
+            padding: 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 1rem;
+        }
+
+        .service-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--wp-gray);
+        }
+
+        /* ============================================================
+           TESTIMONIOS MODERNOS
+           ============================================================ */
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 115, 230, 0.2);
+        }
+
+        .testimonial-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+            border: 2px solid rgba(0, 115, 230, 0.2);
+        }
+
+        .testimonial-text {
+            color: var(--wp-light);
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--wp-light);
+        }
+
+        .testimonial-role {
+            color: var(--wp-gray);
+            font-size: 0.85rem;
+        }
+
+        .testimonial-stars {
+            color: #F59E0B;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ============================================================
+           FOOTER MODERNO
+           ============================================================ */
+        .wp-footer {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
-        .widget-title {
-            font-size: 1.2rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .footer-logo {
+        .footer-brand .footer-logo {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 1rem;
         }
 
-        .footer-logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+        .footer-brand .footer-logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
             object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        .footer-logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
+        .footer-brand .footer-logo-text {
+            font-size: 1.25rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--wp-light);
+        }
+
+        .footer-brand .footer-logo-text span {
+            background: linear-gradient(135deg, var(--wp-primary), var(--wp-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .footer-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .widget-links {
-            list-style: none;
-        }
-
-        .widget-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .widget-links a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .widget-links a:hover {
-            color: var(--secondary);
-            padding-left: 8px;
+        .footer-brand p {
+            color: var(--wp-gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 300px;
         }
 
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: 10px;
+            margin-top: 1.5rem;
         }
 
         .footer-social a {
             width: 40px;
             height: 40px;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
-            color: var(--white);
+            color: var(--wp-gray);
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
         }
 
         .footer-social a:hover {
-            background: var(--primary);
-            border-color: var(--primary);
+            background: var(--wp-primary);
+            color: white;
             transform: translateY(-3px);
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+        .footer-widget h4 {
+            color: var(--wp-light);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
 
-        /* ===== RESPONSIVE ===== */
+        .footer-widget ul {
+            list-style: none;
+        }
+
+        .footer-widget ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-widget ul a {
+            color: var(--wp-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-widget ul a:hover {
+            color: var(--wp-light);
+            padding-left: 4px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--wp-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-contact i {
+            color: var(--wp-primary);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--wp-gray);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--wp-primary);
+            text-decoration: none;
+        }
+
+        /* ============================================================
+           ANIMACIONES
+           ============================================================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-3d-wrapper {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .cube-3d {
+                width: 160px;
+                height: 160px;
+            }
+
+            .cube-face {
+                width: 160px;
+                height: 160px;
+                font-size: 40px;
+            }
+            .cube-face-front  { transform: translateZ(80px); }
+            .cube-face-back   { transform: rotateY(180deg) translateZ(80px); }
+            .cube-face-right  { transform: rotateY(90deg) translateZ(80px); }
+            .cube-face-left   { transform: rotateY(-90deg) translateZ(80px); }
+            .cube-face-top    { transform: rotateX(90deg) translateZ(80px); }
+            .cube-face-bottom { transform: rotateX(-90deg) translateZ(80px); }
+
+            .glow-ring {
+                width: 280px;
+                height: 280px;
+            }
+
+            .features-grid,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .header-container {
-                height: 70px;
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 2.25rem;
             }
 
             .primary-menu {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(11, 17, 32, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition);
+                overflow-y: auto;
+            }
+
+            .primary-menu.active {
+                left: 0;
             }
 
             .mobile-toggle {
                 display: flex;
             }
 
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-visual {
-                height: 300px;
-                margin-top: 2rem;
-            }
-
-            .cube-face {
-                width: 200px;
-                height: 200px;
+            .header-actions .social-link,
+            .whatsapp-header span {
+                display: none;
             }
 
             .hero-title {
@@ -1010,152 +1523,220 @@
             }
 
             .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
             }
 
-            .section-title h2 {
+            .stat-number {
                 font-size: 2rem;
             }
 
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            .features-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
-            .footer-widgets {
+            .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .ia-chat {
+                height: 350px;
+                padding: 1rem;
+            }
+
+            .message-content {
+                max-width: 90%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .send-btn {
+                width: 100%;
+                height: 48px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .cube-3d {
+                width: 120px;
+                height: 120px;
+            }
+
+            .cube-face {
+                width: 120px;
+                height: 120px;
+                font-size: 30px;
+            }
+            .cube-face-front  { transform: translateZ(60px); }
+            .cube-face-back   { transform: rotateY(180deg) translateZ(60px); }
+            .cube-face-right  { transform: rotateY(90deg) translateZ(60px); }
+            .cube-face-left   { transform: rotateY(-90deg) translateZ(60px); }
+            .cube-face-top    { transform: rotateX(90deg) translateZ(60px); }
+            .cube-face-bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+            .glow-ring {
+                width: 200px;
+                height: 200px;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .ia-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .quick-questions {
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
             .hero-title {
                 font-size: 2rem;
             }
 
             .hero-actions {
                 flex-direction: column;
+                align-items: stretch;
             }
 
             .btn {
-                width: 100%;
                 justify-content: center;
             }
 
-            .hero-stats {
-                grid-template-columns: 1fr;
+            .stat-number {
+                font-size: 1.5rem;
             }
 
-            .section-title h2 {
-                font-size: 1.75rem;
+            .service-price {
+                font-size: 1.5rem;
             }
-        }
 
-        /* ===== ANIMACIONES ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            .service-card .btn {
+                width: 100%;
+                justify-content: center;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature-card,
-        .service-card,
-        .project-card {
-            animation: fadeInUp 0.6s ease-out forwards;
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="wp-header">
-        <div class="header-container">
-            <div class="site-logo">
-                <img src="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" alt="Logo" class="logo-img">
-                <span class="logo-text">Ronhy<span>.Dev</span></span>
-            </div>
+    <!-- ============================================================
+    HEADER MODERNO
+    ============================================================ -->
+    <header class="wp-header" id="header">
+        <div class="container header-container">
+            <a href="#inicio" class="site-logo">
+                <img src="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" alt="Web con Ronhy Logo" class="logo-img">
+                <div class="logo-text">Web con <span>Ronhy</span></div>
+            </a>
 
-            <nav class="primary-menu">
-                <a href="#home" class="menu-link active"><i class="fas fa-home"></i>Inicio</a>
-                <a href="#services" class="menu-link"><i class="fas fa-briefcase"></i>Servicios</a>
-                <a href="#portfolio" class="menu-link"><i class="fas fa-code"></i>Portafolio</a>
-                <a href="#testimonios" class="menu-link"><i class="fas fa-star"></i>Testimonios</a>
-                <a href="#contacto" class="menu-link"><i class="fas fa-envelope"></i>Contacto</a>
+            <nav class="primary-menu" id="primaryMenu">
+                <a href="#inicio" class="menu-link active"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#catalogo" class="menu-link"><i class="fas fa-code"></i> Proyectos</a>
+                <a href="#servicios" class="menu-link"><i class="fas fa-briefcase"></i> Servicios</a>
+                <a href="#ia" class="menu-link"><i class="fas fa-robot"></i> IA Asistente</a>
+                <a href="#testimonios" class="menu-link"><i class="fas fa-star"></i> Testimonios</a>
+                <a href="#contacto" class="menu-link"><i class="fas fa-envelope"></i> Contacto</a>
             </nav>
 
             <div class="header-actions">
-                <a href="https://wa.me/1234567890" class="cta-button" target="_blank">
-                    <i class="fab fa-whatsapp"></i>WhatsApp
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/51914724078" class="whatsapp-header" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>914 724 078</span>
                 </a>
-                <button class="mobile-toggle">
+                <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="wp-hero" id="home">
-        <div class="hero-blob blob-1"></div>
-        <div class="hero-blob blob-2"></div>
-        <div class="hero-blob blob-3"></div>
+    <!-- ============================================================
+    HERO MODERNO
+    ============================================================ -->
+    <section class="wp-hero" id="inicio">
+        <div class="hero-particles">
+            <canvas id="particlesCanvas"></canvas>
+        </div>
+
+        <div class="floating-orb floating-orb-1"></div>
+        <div class="floating-orb floating-orb-2"></div>
 
         <div class="container">
-            <div class="hero-container">
-                <div class="hero-content">
+            <div class="hero-grid">
+                <div class="hero-content animate-in">
                     <div class="hero-badge">
-                        <i class="fas fa-rocket"></i>
-                        <span>Desarrollador Fullstack Certificado</span>
+                        <i class="fas fa-bolt"></i>
+                        Desarrollo Web Profesional
                     </div>
-
-                    <h1 class="hero-title">Soluciones Web <span class="highlight">Innovadoras</span> para tu Negocio</h1>
-
-                    <p class="hero-description">
-                        Transformo ideas en aplicaciones web profesionales. Especialista en frontend, backend y soluciones completas scalables.
+                    <h1 class="hero-title">
+                        Transforma tu emprendimiento con una <span class="highlight">web poderosa</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Creo sitios web profesionales, optimizados y escalables que convierten visitantes en clientes. 
+                        Diseño personalizado, desarrollo técnico impecable y resultados reales.
                     </p>
-
                     <div class="hero-actions">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-arrow-right"></i>
-                            Ver Proyectos
-                        </button>
-                        <button class="btn btn-outline">
-                            <i class="fas fa-phone"></i>
-                            Contactar
-                        </button>
+                        <a href="#ia" class="btn btn-accent">
+                            <i class="fas fa-robot"></i> Consultar a la IA
+                        </a>
+                        <a href="https://wa.me/51914724078" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> 914 724 078
+                        </a>
                     </div>
-
                     <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">25+</span>
-                            <span class="stat-label">Proyectos Completados</span>
+                        <div>
+                            <div class="stat-number" data-count="150">0</div>
+                            <div class="stat-label">Proyectos Completados</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Clientes Satisfechos</span>
+                        <div>
+                            <div class="stat-number" data-count="99.9">0</div>
+                            <div class="stat-label">% Satisfacción</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">8+</span>
-                            <span class="stat-label">Años de Experiencia</span>
+                        <div>
+                            <div class="stat-number" data-count="24">0</div>
+                            <div class="stat-label">/7 Soporte Técnico</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="hero-visual">
-                    <div class="cube-container">
-                        <div class="cube">
-                            <div class="cube-face" style="color: var(--white);"><i class="fas fa-code"></i></div>
-                            <div class="cube-face" style="color: var(--white);"><i class="fas fa-database"></i></div>
-                            <div class="cube-face" style="color: var(--white);"><i class="fas fa-server"></i></div>
-                            <div class="cube-face" style="color: var(--white);"><i class="fas fa-mobile-alt"></i></div>
-                            <div class="cube-face" style="color: var(--white);"><i class="fas fa-chart-line"></i></div>
-                            <div class="cube-face" style="color: var(--white);"><i class="fas fa-cloud"></i></div>
+                <div class="hero-visual animate-in" style="animation-delay:0.2s;">
+                    <div class="hero-3d-wrapper">
+                        <div class="glow-ring"></div>
+                        <div class="cube-3d">
+                            <div class="cube-face cube-face-front"><i class="fas fa-code"></i></div>
+                            <div class="cube-face cube-face-back"><i class="fas fa-rocket"></i></div>
+                            <div class="cube-face cube-face-right"><i class="fas fa-cogs"></i></div>
+                            <div class="cube-face cube-face-left"><i class="fas fa-paint-brush"></i></div>
+                            <div class="cube-face cube-face-top"><i class="fas fa-database"></i></div>
+                            <div class="cube-face cube-face-bottom"><i class="fas fa-cloud"></i></div>
                         </div>
                     </div>
                 </div>
@@ -1163,412 +1744,921 @@
         </div>
     </section>
 
-    <!-- CARACTERÍSTICAS -->
-    <section class="section features-section">
+    <!-- ============================================================
+    FEATURES MODERNOS
+    ============================================================ -->
+    <section class="section" id="features">
         <div class="container">
-            <div class="section-title">
-                <h2>¿Por Qué Elegirme?</h2>
-                <p>Ofrezco soluciones de desarrollo web completas con tecnología de punta</p>
+            <div class="section-title animate-in">
+                <span class="section-label"><i class="fas fa-star"></i> Características</span>
+                <h2>¿Por qué elegir Web con Ronhy?</h2>
+                <p>Combinamos diseño moderno, desarrollo técnico impecable y estrategias que generan resultados reales.</p>
             </div>
 
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-zap"></i>
-                    </div>
-                    <h3>Desarrollo Rápido</h3>
-                    <p>Entrega ágil manteniendo la máxima calidad. Procesos optimizados para proyectos rápidos.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Seguridad Garantizada</h3>
-                    <p>Cumplimiento de estándares de seguridad. Protección de datos con encriptación avanzada.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Responsive Design</h3>
-                    <p>Sitios optimizados para todos los dispositivos. Experiencia perfecta en móvil y desktop.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>SEO Optimizado</h3>
-                    <p>Posicionamiento en buscadores garantizado. Técnicas SEO implementadas desde el inicio.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Soporte 24/7</h3>
-                    <p>Atención permanente post-lanzamiento. Mantenimiento y actualizaciones incluidas.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Mantenimiento Continuo</h3>
-                    <p>Actualizaciones periódicas y mejoras. Monitoreo constante del rendimiento.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mis Servicios</h2>
-                <p>Soluciones completas de desarrollo web personalizado</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <h3>Desarrollo Frontend</h3>
-                    </div>
-                    <div class="service-body">
-                        <h4>Tecnologías</h4>
-                        <ul class="skill-list">
-                            <li><i class="fas fa-check-circle"></i>React.js / Vue.js</li>
-                            <li><i class="fas fa-check-circle"></i>HTML5 / CSS3 / SASS</li>
-                            <li><i class="fas fa-check-circle"></i>JavaScript Avanzado</li>
-                            <li><i class="fas fa-check-circle"></i>Responsive Design</li>
-                            <li><i class="fas fa-check-circle"></i>Webpack / Vite</li>
-                        </ul>
+                <div class="feature-card animate-in">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Rendimiento Óptimo</h3>
+                    <p>Sitios web ultra rápidos con tiempos de carga optimizados para mejor SEO y experiencia de usuario.</p>
+                    <div class="feature-bars">
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
                     </div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>Desarrollo Backend</h3>
-                    </div>
-                    <div class="service-body">
-                        <h4>Tecnologías</h4>
-                        <ul class="skill-list">
-                            <li><i class="fas fa-check-circle"></i>Node.js / Express</li>
-                            <li><i class="fas fa-check-circle"></i>Python / Django / Flask</li>
-                            <li><i class="fas fa-check-circle"></i>Bases de Datos</li>
-                            <li><i class="fas fa-check-circle"></i>APIs RESTful</li>
-                            <li><i class="fas fa-check-circle"></i>Autenticación JWT</li>
-                        </ul>
+                <div class="feature-card animate-in" style="animation-delay:0.15s;">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>100% Responsive</h3>
+                    <p>Diseño perfecto en todos los dispositivos: móviles, tablets y escritorio. Mobile-first approach.</p>
+                    <div class="feature-bars">
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
                     </div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h3>Desarrollo Fullstack</h3>
-                    </div>
-                    <div class="service-body">
-                        <h4>Stack Tecnológico</h4>
-                        <ul class="skill-list">
-                            <li><i class="fas fa-check-circle"></i>MERN Stack</li>
-                            <li><i class="fas fa-check-circle"></i>LAMP Stack</li>
-                            <li><i class="fas fa-check-circle"></i>Cloud Deployment</li>
-                            <li><i class="fas fa-check-circle"></i>CI/CD Pipeline</li>
-                            <li><i class="fas fa-check-circle"></i>Docker / Kubernetes</li>
-                        </ul>
+                <div class="feature-card animate-in" style="animation-delay:0.3s;">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Seguridad Máxima</h3>
+                    <p>Implementación de SSL, protección contra ataques y backups automáticos para tu tranquilidad.</p>
+                    <div class="feature-bars">
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
+                        <div class="feature-bar"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PORTAFOLIO -->
-    <section class="section portfolio-section" id="portfolio">
+    <!-- ============================================================
+    CATÁLOGO DE PROYECTOS
+    ============================================================ -->
+    <section class="section catalogo-section" id="catalogo">
         <div class="container">
-            <div class="section-title">
-                <h2>Mi Portafolio</h2>
-                <p>Proyectos destacados que muestran mi experiencia</p>
+            <div class="section-title animate-in">
+                <span class="section-label"><i class="fas fa-code"></i> Portfolio</span>
+                <h2>🚀 Mis Proyectos</h2>
+                <p>Una muestra de mi trabajo en desarrollo web y aplicaciones. Cada proyecto tiene su propia <strong>Vista Previa</strong> en vivo.</p>
             </div>
 
             <div class="filter-buttons">
-                <button class="filter-btn active">Todos</button>
-                <button class="filter-btn">Frontend</button>
-                <button class="filter-btn">Backend</button>
-                <button class="filter-btn">Fullstack</button>
-                <button class="filter-btn">E-Commerce</button>
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">🌐 Web</button>
+                <button class="filter-btn" data-filter="app">📱 App</button>
+                <button class="filter-btn" data-filter="ecommerce">🛒 E-commerce</button>
+                <button class="filter-btn" data-filter="landing">🎯 Landing Page</button>
             </div>
 
-            <div class="projects-grid">
-                <!-- Proyecto 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">E-Commerce</span>
-                        <h3 class="project-title">Tienda Online Moderna</h3>
-                        <p class="project-description">Plataforma de e-commerce completa con carrito, pagos y panel administrativo.</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
+            <div class="projects-grid" id="projectsGrid">
+                <div class="loading-projects" style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--wp-gray);">
+                    <i class="fas fa-spinner fa-spin" style="font-size:3rem;color:var(--wp-primary);"></i>
+                    <p style="margin-top:20px;">Cargando proyectos desde GitHub...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    IA ASISTENTE MODERNO
+    ============================================================ -->
+    <section class="section" id="ia">
+        <div class="container">
+            <div class="section-title animate-in">
+                <span class="section-label"><i class="fas fa-robot"></i> IA Asistente</span>
+                <h2>Asistente IA Especializado</h2>
+                <p>Consulta con nuestra inteligencia artificial experta en desarrollo web. Obtén recomendaciones técnicas personalizadas.</p>
+            </div>
+
+            <div class="ia-container animate-in" style="animation-delay:0.2s;">
+                <div class="ia-header">
+                    <div class="ia-avatar"><i class="fas fa-code"></i></div>
+                    <div class="ia-info">
+                        <h3>DevBot Pro</h3>
+                        <p>Asistente IA especializado en desarrollo web, SEO y estrategias digitales</p>
+                        <div class="ia-tags">
+                            <span class="ia-tag">HTML5/CSS3/JS</span>
+                            <span class="ia-tag">React/Vue.js</span>
+                            <span class="ia-tag">WordPress</span>
+                            <span class="ia-tag">SEO Avanzado</span>
+                            <span class="ia-tag">E-commerce</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Proyecto 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-area"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">Dashboard</span>
-                        <h3 class="project-title">Dashboard Analítico</h3>
-                        <p class="project-description">Panel de control con gráficos interactivos y análisis en tiempo real.</p>
-                        <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Chart.js</span>
-                            <span class="tag">Firebase</span>
+                <div class="ia-chat" id="chatContainer">
+                    <div class="message message-ai">
+                        <div class="message-avatar"><i class="fas fa-code"></i></div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                <p>¡Hola! Soy <strong>DevBot Pro</strong>, tu asistente IA especializado en desarrollo web.</p>
+                                <p>Puedo ayudarte con análisis técnicos detallados, recomendaciones personalizadas y estrategias para tu proyecto web.</p>
+                                <p><strong>¿Qué tipo de sitio web necesitas?</strong></p>
+                                <ul class="message-list">
+                                    <li>Tienda online (e-commerce)</li>
+                                    <li>Sitio corporativo</li>
+                                    <li>Landing page</li>
+                                    <li>Blog profesional</li>
+                                    <li>Aplicación web</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <div id="chatMessages"></div>
                 </div>
 
-                <!-- Proyecto 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-phone-alt"></i>
+                <div class="ia-input-area">
+                    <div class="input-group">
+                        <input type="text" class="chat-input" id="userInput" placeholder="Describe tu proyecto en detalle...">
+                        <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
                     </div>
-                    <div class="project-info">
-                        <span class="project-category">App Mobile</span>
-                        <h3 class="project-title">App de Reservas</h3>
-                        <p class="project-description">Aplicación móvil nativa con geolocalización y notificaciones push.</p>
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">GPS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">Red Social</span>
-                        <h3 class="project-title">Red Social Comunitaria</h3>
-                        <p class="project-description">Plataforma social con mensajería, notificaciones y perfiles de usuario.</p>
-                        <div class="project-tags">
-                            <span class="tag">MERN Stack</span>
-                            <span class="tag">WebSocket</span>
-                            <span class="tag">AWS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 5 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">E-Learning</span>
-                        <h3 class="project-title">Plataforma Educativa</h3>
-                        <p class="project-description">Sistema de aprendizaje en línea con cursos, certificados y seguimiento.</p>
-                        <div class="project-tags">
-                            <span class="tag">Laravel</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Stripe</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 6 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">Logística</span>
-                        <h3 class="project-title">Sistema de Gestión Logística</h3>
-                        <p class="project-description">Plataforma de seguimiento de envíos con integración GPS y reportes.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Google Maps</span>
-                        </div>
+                    <div class="quick-questions">
+                        <button class="quick-btn" onclick="askQuestion('Presupuesto para web corporativa')"><i class="fas fa-briefcase"></i> Web Corporativa</button>
+                        <button class="quick-btn" onclick="askQuestion('¿Cuánto cuesta una tienda online?')"><i class="fas fa-shopping-cart"></i> E-commerce</button>
+                        <button class="quick-btn" onclick="askQuestion('Optimización SEO para mi web')"><i class="fas fa-chart-line"></i> SEO</button>
+                        <button class="quick-btn" onclick="askQuestion('Tecnologías recomendadas para mi proyecto')"><i class="fas fa-cogs"></i> Tecnologías</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section">
+    <!-- ============================================================
+    SERVICIOS MODERNOS
+    ============================================================ -->
+    <section class="section" id="servicios">
         <div class="container">
-            <div class="cta-section">
-                <h2>¿Listo para tu Proyecto?</h2>
-                <p>Contáctame hoy mismo y convierte tu idea en una realidad</p>
-                <a href="https://wa.me/1234567890" class="btn btn-secondary" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    Iniciar Proyecto
-                </a>
+            <div class="section-title animate-in">
+                <span class="section-label"><i class="fas fa-briefcase"></i> Servicios</span>
+                <h2>Servicios Premium</h2>
+                <p>Soluciones web completas diseñadas para impulsar tu presencia digital y generar resultados tangibles.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card animate-in">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Desarrollo Web Personalizado</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Sitios web hechos a medida con las últimas tecnologías y mejores prácticas de desarrollo.</p>
+                        <div class="skill-ring">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="bg" cx="50" cy="50" r="42"/>
+                                <circle class="progress" cx="50" cy="50" r="42" id="progress1" style="--offset:52.78;"/>
+                            </svg>
+                            <div class="skill-label">95%</div>
+                        </div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Diseño 100% responsive</li>
+                            <li><i class="fas fa-check"></i> Optimización SEO técnica</li>
+                            <li><i class="fas fa-check"></i> Integración de APIs</li>
+                            <li><i class="fas fa-check"></i> Panel de administración</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico 6 meses</li>
+                        </ul>
+                        <div class="service-price">
+                            $1,200 <span>USD</span>
+                        </div>
+                        <a href="#ia" class="btn btn-primary" style="width:100%;justify-content:center;">
+                            <i class="fas fa-robot"></i> Consultar con IA
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card animate-in" style="animation-delay:0.15s;">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <h3>Tienda Online Premium</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>E-commerce completo con todas las funcionalidades para vender exitosamente en línea.</p>
+                        <div class="skill-ring">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="bg" cx="50" cy="50" r="42"/>
+                                <circle class="progress" cx="50" cy="50" r="42" id="progress2" style="--offset:26.39;"/>
+                            </svg>
+                            <div class="skill-label">90%</div>
+                        </div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Catálogo ilimitado de productos</li>
+                            <li><i class="fas fa-check"></i> Carrito y checkout optimizado</li>
+                            <li><i class="fas fa-check"></i> 3+ pasarelas de pago</li>
+                            <li><i class="fas fa-check"></i> Sistema de inventario</li>
+                            <li><i class="fas fa-check"></i> Reportes avanzados</li>
+                        </ul>
+                        <div class="service-price">
+                            $2,500 <span>USD</span>
+                        </div>
+                        <a href="#ia" class="btn btn-accent" style="width:100%;justify-content:center;">
+                            <i class="fas fa-robot"></i> Presupuesto con IA
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card animate-in" style="animation-delay:0.3s;">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Mantenimiento Web</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>Servicio continuo para mantener tu web segura, actualizada y funcionando perfectamente.</p>
+                        <div class="skill-ring">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="bg" cx="50" cy="50" r="42"/>
+                                <circle class="progress" cx="50" cy="50" r="42" id="progress3" style="--offset:79.17;"/>
+                            </svg>
+                            <div class="skill-label">70%</div>
+                        </div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Backups diarios automáticos</li>
+                            <li><i class="fas fa-check"></i> Actualizaciones de seguridad</li>
+                            <li><i class="fas fa-check"></i> Monitoreo 24/7</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico prioritario</li>
+                            <li><i class="fas fa-check"></i> Reportes mensuales</li>
+                        </ul>
+                        <div class="service-price">
+                            $200 <span>/mes</span>
+                        </div>
+                        <a href="https://wa.me/51914724078" class="btn btn-whatsapp" style="width:100%;justify-content:center;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIOS -->
-    <section class="section testimonials-section" id="testimonios">
+    <!-- ============================================================
+    TESTIMONIOS MODERNOS
+    ============================================================ -->
+    <section class="section" id="testimonios">
         <div class="container">
-            <div class="section-title">
-                <h2>Testimonios de Clientes</h2>
-                <p>Lo que dicen mis clientes sobre mi trabajo</p>
+            <div class="section-title animate-in">
+                <span class="section-label"><i class="fas fa-star"></i> Testimonios</span>
+                <h2>Clientes Satisfechos</h2>
+                <p>Lo que dicen emprendedores que han transformado su negocio con Web con Ronhy.</p>
             </div>
 
-            <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/70?img=1" alt="Cliente" class="testimonial-avatar">
-                    <p class="testimonial-text">
-                        "Ronhy es un desarrollador excepcional. Entregó nuestro proyecto a tiempo y con excelente calidad. Altamente recomendado."
-                    </p>
-                    <div class="testimonial-author">
-                        <h4>Carlos Martínez</h4>
-                        <p class="testimonial-role">CEO - Empresa Tech</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-in">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="María González" class="testimonial-avatar">
+                    <p class="testimonial-text">"El trabajo de Ronhy transformó completamente mi negocio. La web que creó no solo es hermosa, sino que convierte un 40% mejor que antes. ¡Recomendado 100%!"</p>
+                    <div class="testimonial-author">María González</div>
+                    <div class="testimonial-role">CEO - Boutique Online</div>
                 </div>
 
-                <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/70?img=2" alt="Cliente" class="testimonial-avatar">
-                    <p class="testimonial-text">
-                        "Gracias por convertir nuestra idea en una aplicación funcional. El soporte post-lanzamiento ha sido excelente."
-                    </p>
-                    <div class="testimonial-author">
-                        <h4>María García</h4>
-                        <p class="testimonial-role">Fundadora - StartUp</p>
+                <div class="testimonial-card animate-in" style="animation-delay:0.15s;">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Carlos Ramírez" class="testimonial-avatar">
+                    <p class="testimonial-text">"Excelente profesional. Entendió perfectamente nuestras necesidades y nos entregó una solución técnica impecable. El soporte post-lanzamiento ha sido excepcional."</p>
+                    <div class="testimonial-author">Carlos Ramírez</div>
+                    <div class="testimonial-role">Director - Agencia Digital</div>
                 </div>
 
-                <div class="testimonial-card">
-                    <img src="https://i.pravatar.cc/70?img=3" alt="Cliente" class="testimonial-avatar">
-                    <p class="testimonial-text">
-                        "Profesional, atento y muy comunicativo. Ronhy entiende exactamente lo que necesitas. Perfecto para trabajar."
-                    </p>
-                    <div class="testimonial-author">
-                        <h4>Juan Rodríguez</h4>
-                        <p class="testimonial-role">Director - Agencia Digital</p>
+                <div class="testimonial-card animate-in" style="animation-delay:0.3s;">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Laura Fernández" class="testimonial-avatar">
+                    <p class="testimonial-text">"Mi tienda online pasó de tener 100 visitas mensuales a más de 2000 en solo 3 meses. La estrategia SEO y el diseño de conversión de Ronhy son simplemente increíbles."</p>
+                    <div class="testimonial-author">Laura Fernández</div>
+                    <div class="testimonial-role">Fundadora - Tienda Natural</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="wp-footer">
+    <!-- ============================================================
+    FOOTER MODERNO
+    ============================================================ -->
+    <footer class="wp-footer" id="contacto">
         <div class="container">
-            <div class="footer-widgets">
-                <div>
+            <div class="footer-grid">
+                <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" alt="Logo" class="footer-logo-img">
-                        <span class="footer-logo-text">Ronhy<span>.Dev</span></span>
+                        <img src="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" alt="Web con Ronhy" class="footer-logo-img">
+                        <div class="footer-logo-text">Web con <span>Ronhy</span></div>
                     </div>
-                    <p class="footer-description">
-                        Desarrollador Fullstack especializado en crear soluciones web innovadoras que transforman negocios.
-                    </p>
+                    <p>Desarrollo web profesional para emprendedores que buscan resultados. Transformamos ideas en realidades digitales exitosas.</p>
                     <div class="footer-social">
-                        <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
 
-                <div>
-                    <h3 class="widget-title">Servicios</h3>
-                    <ul class="widget-links">
-                        <li><a href="#services"><i class="fas fa-arrow-right"></i>Frontend</a></li>
-                        <li><a href="#services"><i class="fas fa-arrow-right"></i>Backend</a></li>
-                        <li><a href="#services"><i class="fas fa-arrow-right"></i>Fullstack</a></li>
-                        <li><a href="#services"><i class="fas fa-arrow-right"></i>E-Commerce</a></li>
-                        <li><a href="#services"><i class="fas fa-arrow-right"></i>Consultoría</a></li>
+                <div class="footer-widget">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#catalogo">Proyectos</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#ia">IA Asistente</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3 class="widget-title">Enlaces</h3>
-                    <ul class="widget-links">
-                        <li><a href="#home"><i class="fas fa-arrow-right"></i>Inicio</a></li>
-                        <li><a href="#portfolio"><i class="fas fa-arrow-right"></i>Portafolio</a></li>
-                        <li><a href="#testimonios"><i class="fas fa-arrow-right"></i>Testimonios</a></li>
-                        <li><a href="#contacto"><i class="fas fa-arrow-right"></i>Contacto</a></li>
-                        <li><a href="#"><i class="fas fa-arrow-right"></i>Blog</a></li>
+                <div class="footer-widget">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Casos de Éxito</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3 class="widget-title">Contacto</h3>
-                    <ul class="widget-links" style="list-style: none;">
-                        <li style="margin-bottom: 1rem;">
-                            <i class="fas fa-phone" style="color: var(--secondary);"></i>
-                            <a href="tel:+1234567890">+1 (234) 567-890</a>
-                        </li>
-                        <li style="margin-bottom: 1rem;">
-                            <i class="fas fa-envelope" style="color: var(--secondary);"></i>
-                            <a href="mailto:hello@ronhy.dev">hello@ronhy.dev</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-whatsapp" style="color: var(--secondary);"></i>
-                            <a href="https://wa.me/1234567890">WhatsApp</a>
-                        </li>
-                    </ul>
+                <div class="footer-widget">
+                    <h4>Contacto</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> <a href="tel:+51914724078" style="color:var(--wp-gray);">914 724 078</a></p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51914724078" target="_blank" style="color:var(--wp-gray);">914 724 078</a></p>
+                        <p><i class="fas fa-envelope"></i> hola@webconronhy.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
+                        <p><i class="fas fa-clock"></i> Lun-Vie: 9:00 - 18:00</p>
+                    </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 Ronhy Dev. Todos los derechos reservados. | Desarrollado con <i class="fas fa-heart" style="color: var(--secondary);"></i> por Ronhy Dev</p>
+                <p>&copy; 2024 Web con Ronhy. Todos los derechos reservados. 
+                   Desarrollado con ❤️ para emprendedores digitales</p>
             </div>
         </div>
     </footer>
 
+    <!-- ============================================================
+    JAVASCRIPT COMPLETO
+    ============================================================ -->
     <script>
-        // Scroll effect on header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.wp-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // ============================================================
+        // 1. PARTÍCULAS ANIMADAS
+        // ============================================================
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let w, h;
+
+        function resizeCanvas() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            w = rect.width;
+            h = rect.height;
+            canvas.width = w;
+            canvas.height = h;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.reset();
             }
-        });
+            reset() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.speedY = (Math.random() - 0.5) * 0.6;
+                this.opacity = Math.random() * 0.4 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > w) this.speedX *= -1;
+                if (this.y < 0 || this.y > h) this.speedY *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
 
-        // Menu active link
-        document.querySelectorAll('.menu-link').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.06 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
                 }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ============================================================
+        // 2. CONTADORES
+        // ============================================================
+        function animateCounters() {
+            document.querySelectorAll('.stat-number').forEach(counter => {
+                const target = parseFloat(counter.dataset.count);
+                const duration = 2000;
+                const steps = 60;
+                const increment = target / steps;
+                let current = 0;
+                let step = 0;
+
+                const update = () => {
+                    step++;
+                    current += increment;
+                    if (step >= steps) {
+                        counter.textContent = target + (Number.isInteger(target) ? '' : '%');
+                        return;
+                    }
+                    counter.textContent = Math.floor(current) + (Number.isInteger(target) ? '' : '%');
+                    requestAnimationFrame(update);
+                };
+                update();
             });
+        }
+
+        // ============================================================
+        // 3. ANILLOS DE PROGRESO
+        // ============================================================
+        function animateProgressRings() {
+            document.querySelectorAll('.progress').forEach(el => {
+                el.classList.add('animated');
+            });
+        }
+
+        // ============================================================
+        // 4. HEADER Y NAVEGACIÓN
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Mobile menu
+            const mobileToggle = document.getElementById('mobileToggle');
+            const primaryMenu = document.getElementById('primaryMenu');
+            mobileToggle.addEventListener('click', function() {
+                primaryMenu.classList.toggle('active');
+                mobileToggle.innerHTML = primaryMenu.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            document.querySelectorAll('.menu-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    primaryMenu.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Active menu
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.menu-link');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const top = section.offsetTop - 100;
+                    if (window.scrollY >= top) current = section.id;
+                });
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+                });
+            });
+
+            // Inicializar
+            renderProjects();
+            setTimeout(() => askQuestion('Presupuesto para web corporativa'), 2000);
+
+            // Intersection Observer para animaciones
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        if (entry.target.closest('#servicios')) {
+                            setTimeout(animateProgressRings, 500);
+                        }
+                        if (entry.target.closest('#inicio')) {
+                            setTimeout(animateCounters, 300);
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
         });
+
+        // ============================================================
+        // 5. SISTEMA DE IA
+        // ============================================================
+        const aiKnowledge = {
+            corporativa: {
+                title: '🏢 Web Corporativa Premium',
+                response: `
+                <p>Para una web corporativa profesional, recomiendo una <strong>arquitectura escalable</strong>:</p>
+                <p><strong>Stack Tecnológico Recomendado:</strong></p>
+                <ul>
+                    <li><strong>Frontend:</strong> HTML5, CSS3 (Tailwind CSS), JavaScript (Vue.js para interactividad)</li>
+                    <li><strong>Backend:</strong> Node.js + Express o PHP 8.2 (Laravel para proyectos grandes)</li>
+                    <li><strong>Base de datos:</strong> PostgreSQL (para relaciones complejas) o MySQL</li>
+                    <li><strong>Hosting:</strong> VPS gestionado (DigitalOcean, AWS Lightsail)</li>
+                </ul>
+                <p><strong>Características Esenciales:</strong></p>
+                <ol>
+                    <li>Diseño Responsive: Mobile-first approach</li>
+                    <li>Performance: Lighthouse score > 90</li>
+                    <li>SEO Técnico: Schema markup, sitemap XML</li>
+                    <li>Seguridad: SSL, protección DDoS</li>
+                    <li>Integraciones: Google Analytics 4, CRM</li>
+                </ol>
+                <p><strong>Presupuesto Estimado:</strong></p>
+                <ul>
+                    <li><strong>Básico (5 páginas):</strong> $1,200 - $1,800 USD</li>
+                    <li><strong>Profesional (8-10 páginas + blog):</strong> $2,000 - $3,500 USD</li>
+                    <li><strong>Avanzado (Panel admin + funcionalidades custom):</strong> $4,000+ USD</li>
+                </ul>
+                <p><strong>Timeline:</strong> 4-6 semanas aproximadamente.</p>
+                `
+            },
+            ecommerce: {
+                title: '🛒 Tienda Online (E-commerce) Completa',
+                response: `
+                <p>Para un e-commerce exitoso, necesitas una <strong>plataforma robusta y escalable</strong>:</p>
+                <p><strong>Opciones Tecnológicas:</strong></p>
+                <ol>
+                    <li><strong>WordPress + WooCommerce</strong> (Recomendado para inicio): $2,500 - $4,000 USD</li>
+                    <li><strong>Laravel + Vue.js</strong> (Para crecimiento): $4,000 - $8,000 USD</li>
+                    <li><strong>Shopify Plus</strong> (Para alto volumen): $299+/mes + desarrollo</li>
+                </ol>
+                <p><strong>Funcionalidades Críticas:</strong></p>
+                <ul>
+                    <li>Catálogo de productos con filtros avanzados</li>
+                    <li>Carrito persistente (cookies + database)</li>
+                    <li>Checkout optimizado (máximo 3 pasos)</li>
+                    <li>Múltiples pasarelas de pago</li>
+                    <li>Sistema de inventario en tiempo real</li>
+                    <li>Panel de administración completo</li>
+                </ul>
+                <p><strong>Presupuesto Desglosado:</strong></p>
+                <ul>
+                    <li>Desarrollo: $2,500 - $8,000 USD</li>
+                    <li>Diseño UI/UX: $800 - $1,500 USD</li>
+                    <li>Configuración hosting: $200 - $500 USD</li>
+                    <li>Mantenimiento mensual: $150 - $300 USD</li>
+                </ul>
+                `
+            },
+            seo: {
+                title: '🔍 Estrategia SEO Avanzada',
+                response: `
+                <p>El SEO requiere un <strong>enfoque integral técnico + contenido</strong>:</p>
+                <p><strong>SEO Técnico (Mes 1-2):</strong></p>
+                <ol>
+                    <li>Auditoría completa del sitio</li>
+                    <li>Optimización de velocidad (target: < 2s)</li>
+                    <li>Estructura de URLs semánticas</li>
+                    <li>Implementación de schema markup</li>
+                    <li>Sitemap XML y robots.txt</li>
+                </ol>
+                <p><strong>SEO de Contenido (Mes 3-6):</strong></p>
+                <ul>
+                    <li>Keyword research con Ahrefs/Semrush</li>
+                    <li>Estrategia de contenido pillar-cluster</li>
+                    <li>Creación de contenido long-form (2000+ palabras)</li>
+                    <li>Optimización de meta tags y headings</li>
+                    <li>Link building estratégico</li>
+                </ul>
+                <p><strong>Inversión Mensual SEO:</strong></p>
+                <ul>
+                    <li>Básico (10-20 keywords): $500 - $800 USD/mes</li>
+                    <li>Profesional (30-50 keywords): $1,000 - $1,500 USD/mes</li>
+                    <li>Enterprise (100+ keywords): $2,000+ USD/mes</li>
+                </ul>
+                `
+            },
+            tecnologias: {
+                title: '⚙️ Análisis de Stack Tecnológico',
+                response: `
+                <p>La elección tecnológica depende de <strong>tus objetivos, presupuesto y escalabilidad</strong>:</p>
+                <p><strong>Para MVP o Startups:</strong></p>
+                <ul>
+                    <li>Frontend: React.js o Vue.js | Backend: Node.js + Express</li>
+                    <li>Base de datos: MongoDB o PostgreSQL</li>
+                    <li>Hosting: Vercel + Railway</li>
+                    <li>Costo: $3,000 - $6,000 USD | Tiempo: 4-6 semanas</li>
+                </ul>
+                <p><strong>Para E-commerce Medio:</strong></p>
+                <ul>
+                    <li>Frontend: Next.js (SSR para SEO) | Backend: Laravel o Django</li>
+                    <li>Base de datos: PostgreSQL con Redis cache</li>
+                    <li>Hosting: AWS EC2 o DigitalOcean</li>
+                    <li>Costo: $5,000 - $10,000 USD | Tiempo: 8-12 semanas</li>
+                </ul>
+                <p><strong>Mi Recomendación Personalizada:</strong></p>
+                <p>Para la mayoría de emprendimientos, recomiendo <strong>Next.js + Node.js + PostgreSQL</strong>:</p>
+                <ul>
+                    <li>Excelente para SEO (SSR)</li>
+                    <li>Alto rendimiento</li>
+                    <li>Gran ecosistema</li>
+                    <li>Fácil de escalar</li>
+                </ul>
+                `
+            },
+            default: {
+                title: '💡 Análisis de Proyecto Web',
+                response: `
+                <p>Basado en tu consulta, puedo identificar <strong>oportunidades clave</strong>:</p>
+                <p><strong>Recomendaciones Inmediatas:</strong></p>
+                <ol>
+                    <li><strong>Arquitectura de Información:</strong> Mapa del sitio jerárquico, URLs semánticas</li>
+                    <li><strong>Experiencia de Usuario:</strong> Mobile-first, tiempos de carga < 2s, accesibilidad</li>
+                    <li><strong>Conversión:</strong> Funnel de conversión definido, formularios optimizados</li>
+                </ol>
+                <p><strong>Stack Tecnológico Sugerido:</strong></p>
+                <ul>
+                    <li>Frontend: Vue.js 3 + Composition API</li>
+                    <li>Backend: Node.js + Express + TypeScript</li>
+                    <li>Base de datos: PostgreSQL con Prisma ORM</li>
+                    <li>Hosting: Vercel + Supabase</li>
+                </ul>
+                <p><strong>Presupuesto Estimado:</strong></p>
+                <ul>
+                    <li>MVP: $3,000 - $5,000 USD</li>
+                    <li>Proyecto medio: $6,000 - $12,000 USD</li>
+                    <li>Solución completa: $15,000 - $25,000+ USD</li>
+                </ul>
+                `
+            }
+        };
+
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const chatContainer = document.getElementById('chatContainer');
+
+        function detectQueryType(message) {
+            const m = message.toLowerCase();
+            if (m.includes('corporativa') || m.includes('empresa')) return 'corporativa';
+            if (m.includes('tienda') || m.includes('ecommerce') || m.includes('vender')) return 'ecommerce';
+            if (m.includes('seo') || m.includes('posicionamiento')) return 'seo';
+            if (m.includes('tecnolog') || m.includes('stack') || m.includes('framework')) return 'tecnologias';
+            return 'default';
+        }
+
+        function addMessage(content, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `message ${isUser ? 'message-user' : 'message-ai'}`;
+            div.innerHTML = `
+                <div class="message-avatar"><i class="${isUser ? 'fas fa-user' : 'fas fa-code'}"></i></div>
+                <div class="message-content">
+                    <div class="message-text">${content}</div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function formatAIResponse(type) {
+            const data = aiKnowledge[type];
+            const waButton = `
+                <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+                    <a href="https://wa.me/51914724078" target="_blank" class="btn btn-whatsapp" style="padding:10px 24px;font-size:0.85rem;display:inline-flex;">
+                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                    </a>
+                </div>
+            `;
+            return `
+                <h4 style="color:var(--wp-primary);margin-bottom:15px;font-weight:700;">${data.title}</h4>
+                ${data.response}
+                ${waButton}
+            `;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'message message-ai';
+            div.id = 'typingIndicator';
+            div.innerHTML = `
+                <div class="message-avatar"><i class="fas fa-code"></i></div>
+                <div class="message-content">
+                    <div style="display:flex;gap:5px;padding:10px;">
+                        <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite;"></div>
+                        <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite 0.2s;"></div>
+                        <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite 0.4s;"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function removeTyping() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        function sendMessage() {
+            const msg = userInput.value.trim();
+            if (!msg) return;
+            addMessage(msg, true);
+            userInput.value = '';
+            showTyping();
+            setTimeout(() => {
+                removeTyping();
+                const type = detectQueryType(msg);
+                addMessage(formatAIResponse(type), false);
+            }, 1200 + Math.random() * 800);
+        }
+
+        function askQuestion(q) {
+            userInput.value = q;
+            sendMessage();
+        }
+
+        userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+        // ============================================================
+        // 6. CATÁLOGO DE PROYECTOS DESDE GITHUB
+        // ============================================================
+        const GITHUB_USERNAME = 'ronhy1989';
+
+        function getPreviewUrl(repoName) {
+            return `https://html-preview.github.io/?url=https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
+        }
+
+        async function hasIndexHtml(repoName) {
+            try {
+                const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch {
+                return false;
+            }
+        }
+
+        async function fetchRepos() {
+            try {
+                const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`);
+                if (!res.ok) throw new Error(`Error ${res.status}`);
+                return await res.json();
+            } catch (e) {
+                console.error('Error al cargar repositorios:', e);
+                return [];
+            }
+        }
+
+        function getCategory(repo) {
+            const n = (repo.name + ' ' + (repo.description || '')).toLowerCase();
+            if (n.includes('ecom') || n.includes('shop') || n.includes('tienda') || n.includes('cart')) return 'ecommerce';
+            if (n.includes('landing') || n.includes('page') || n.includes('presentacion')) return 'landing';
+            if (n.includes('app') || n.includes('mobile') || n.includes('android')) return 'app';
+            return 'web';
+        }
+
+        function createCard(repo, hasPreview) {
+            const cat = getCategory(repo);
+            const lang = repo.language ? `<span class="lang-tag">${repo.language}</span>` : '';
+            const desc = repo.description ? repo.description.substring(0, 120) + (repo.description.length > 120 ? '...' : '') : 'Sin descripción';
+            const date = new Date(repo.updated_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+            const previewUrl = getPreviewUrl(repo.name);
+
+            return `
+                <div class="project-card" data-category="${cat}">
+                    <div class="card-body">
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                            <span class="category-tag">${cat}</span>
+                            ${lang}
+                        </div>
+                        <h3><i class="fab fa-github" style="color:var(--wp-gray);margin-right:8px;"></i> ${repo.name}</h3>
+                        <p>${desc}</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-star"></i> ${repo.stargazers_count || 0}</span>
+                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count || 0}</span>
+                            <span><i class="far fa-calendar-alt"></i> ${date}</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        ${hasPreview ? `
+                            <a href="${previewUrl}" target="_blank" class="btn btn-success" style="padding:8px 16px;font-size:0.8rem;">
+                                <i class="fas fa-eye"></i> Vista Previa
+                            </a>
+                        ` : ''}
+                        <a href="${repo.html_url}" target="_blank" class="btn btn-primary" style="padding:8px 16px;font-size:0.8rem;">
+                            <i class="fab fa-github"></i> Código
+                        </a>
+                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-accent" style="padding:8px 16px;font-size:0.8rem;"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            const repos = await fetchRepos();
+
+            if (!repos || repos.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
+                        <i class="fas fa-folder-open" style="font-size:4rem;color:var(--wp-gray);"></i>
+                        <h3 style="margin-top:20px;color:var(--wp-light);">No se encontraron proyectos</h3>
+                        <p style="color:var(--wp-gray);">¿Has subido algún repositorio a GitHub?</p>
+                        <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" style="display:inline-block;margin-top:20px;padding:12px 32px;background:var(--wp-primary);color:white;border-radius:var(--radius-md);font-weight:600;text-decoration:none;">Ver perfil de GitHub</a>
+                    </div>
+                `;
+                return;
+            }
+
+            repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+            const reposWithPreview = await Promise.all(
+                repos.map(async (repo) => ({
+                    repo,
+                    hasPreview: await hasIndexHtml(repo.name)
+                }))
+            );
+
+            grid.innerHTML = reposWithPreview.map(({ repo, hasPreview }) =>
+                createCard(repo, hasPreview)
+            ).join('');
+
+            setupFilters();
+        }
+
+        function setupFilters() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.project-card');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.dataset.filter;
+                    cards.forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+                    });
+                });
+            });
+        }
+
+        // ============================================================
+        // 7. ESTILOS ADICIONALES PARA ANIMACIONES
+        // ============================================================
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes typingAnim {
+                0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+                40% { transform: scale(1); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(styleSheet);
     </script>
 </body>
 </html>
