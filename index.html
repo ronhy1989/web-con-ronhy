@@ -49,7 +49,7 @@
         }
 
         /* ============================================================
-           RESET Y FONDO ANIME 100% RESPONSIVO
+           RESET
            ============================================================ */
         * {
             margin: 0;
@@ -72,7 +72,9 @@
             position: relative;
         }
 
-        /* ===== FONDO ANIME PRINCIPAL - RESPONSIVO ===== */
+        /* ============================================================
+           FONDO ANIME - CORREGIDO (NO SE PARTE EN CELULAR)
+           ============================================================ */
         .anime-bg {
             position: fixed;
             top: 0;
@@ -82,47 +84,35 @@
             z-index: -2;
             background-color: var(--wp-dark);
             background-image: url('Img/Fondo.jpeg');
-            background-position: center center;
             background-repeat: no-repeat;
+            background-position: center center;
             background-size: cover;
             background-attachment: scroll;
-            will-change:transform;
+            animation: animeBgPulse 10s ease-in-out infinite;
         }
 
-        /* Overlay oscuro para legibilidad - RESPONSIVO */
+        /* === OVERLAY OSCURO === */
         .anime-bg::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg, 
-                rgba(11, 17, 32, 0.92) 0%,
-                rgba(11, 17, 32, 0.80) 30%,
-                rgba(11, 17, 32, 0.75) 60%,
-                rgba(11, 17, 32, 0.90) 100%
+                rgba(11, 17, 32, 0.85) 0%,
+                rgba(11, 17, 32, 0.75) 30%,
+                rgba(11, 17, 32, 0.70) 60%,
+                rgba(11, 17, 32, 0.85) 100%
             );
         }
 
-        /* Ajustes para diferentes tamaños de pantalla */
-        @media (max-width: 1024px) {
-            .anime-bg {
-                background-size: cover;
-                background-position: center center;
-            }
-            .anime-bg::after {
-                background: linear-gradient(180deg, 
-                    rgba(11, 17, 32, 0.90) 0%,
-                    rgba(11, 17, 32, 0.80) 30%,
-                    rgba(11, 17, 32, 0.75) 60%,
-                    rgba(11, 17, 32, 0.90) 100%
-                );
-            }
-        }
-
+        /* ============================================================
+           CORRECCIÓN PARA CELULAR - EVITA QUE SE PARTE
+           ============================================================ */
         @media (max-width: 768px) {
             .anime-bg {
-                background-size: cover;
-                background-position: center center;
-                background-attachment: scroll;
+                background-size: contain !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+                background-attachment: scroll !important;
             }
             .anime-bg::after {
                 background: linear-gradient(180deg, 
@@ -130,23 +120,32 @@
                     rgba(11, 17, 32, 0.85) 30%,
                     rgba(11, 17, 32, 0.80) 60%,
                     rgba(11, 17, 32, 0.92) 100%
-                );
+                ) !important;
             }
         }
 
         @media (max-width: 480px) {
             .anime-bg {
-                background-size: cover;
-                background-position: center center;
-                background-attachment: scroll;
+                background-size: contain !important;
+                background-position: center center !important;
+                background-repeat: no-repeat !important;
+                background-attachment: scroll !important;
             }
             .anime-bg::after {
                 background: linear-gradient(180deg, 
                     rgba(11, 17, 32, 0.95) 0%,
                     rgba(11, 17, 32, 0.88) 30%,
-                    rgba(11, 17, 32, 0.82) 60%,
+                    rgba(11, 17, 32, 0.85) 60%,
                     rgba(11, 17, 32, 0.95) 100%
-                );
+                ) !important;
+            }
+        }
+
+        /* === ORIENTACIÓN HORIZONTAL EN CELULAR === */
+        @media (max-height: 500px) and (max-width: 800px) {
+            .anime-bg {
+                background-size: cover !important;
+                background-position: center center !important;
             }
         }
 
@@ -155,7 +154,9 @@
             50% { opacity: 0.95; }
         }
 
-        /* ===== OVERLAY DE BRILLO ===== */
+        /* ============================================================
+           OVERLAY DE BRILLO
+           ============================================================ */
         .anime-glow {
             position: fixed;
             inset: 0;
@@ -163,22 +164,38 @@
             pointer-events: none;
             background: 
                 radial-gradient(ellipse at 20% 30%, 
-                    rgba(0, 115, 230, 0.08) 0%, 
+                    rgba(0, 115, 230, 0.06) 0%, 
                     transparent 50%
                 ),
                 radial-gradient(ellipse at 80% 70%, 
-                    rgba(255, 107, 53, 0.06) 0%, 
+                    rgba(255, 107, 53, 0.04) 0%, 
                     transparent 50%
                 );
             animation: animeGlow 6s ease-in-out infinite alternate;
         }
 
-        @keyframes animeGlow {
-            0% { opacity: 0.6; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.02); }
+        @media (max-width: 480px) {
+            .anime-glow {
+                background: 
+                    radial-gradient(ellipse at 20% 30%, 
+                        rgba(0, 115, 230, 0.04) 0%, 
+                        transparent 50%
+                    ),
+                    radial-gradient(ellipse at 80% 70%, 
+                        rgba(255, 107, 53, 0.03) 0%, 
+                        transparent 50%
+                    );
+            }
         }
 
-        /* ===== PARTICULAS ANIME ===== */
+        @keyframes animeGlow {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        /* ============================================================
+           PARTICULAS ANIME
+           ============================================================ */
         .anime-particles-container {
             position: fixed;
             inset: 0;
@@ -221,7 +238,9 @@
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        /* ===== SCROLLBAR ===== */
+        /* ============================================================
+           SCROLLBAR
+           ============================================================ */
         ::-webkit-scrollbar {
             width: 8px;
             background: rgba(11, 17, 32, 0.5);
@@ -801,7 +820,7 @@
         }
 
         /* ============================================================
-           PROYECTOS - CON VISTA PREVIA
+           PROYECTOS
            ============================================================ */
         .filter-buttons {
             display: flex;
@@ -1793,7 +1812,7 @@
     </style>
 </head>
 <body>
-    <!-- ===== FONDO ANIME 100% RESPONSIVO ===== -->
+    <!-- ===== FONDO ANIME ===== -->
     <div class="anime-bg"></div>
     <div class="anime-glow"></div>
 
@@ -1963,7 +1982,7 @@
     </section>
 
     <!-- ============================================================
-    CATÁLOGO DE PROYECTOS CON VISTA PREVIA
+    CATÁLOGO DE PROYECTOS
     ============================================================ -->
     <section class="section" id="catalogo">
         <div class="container">
@@ -2277,7 +2296,7 @@
     </footer>
 
     <!-- ============================================================
-    JAVASCRIPT COMPLETO
+    JAVASCRIPT
     ============================================================ -->
     <script>
         // ============================================================
@@ -2463,7 +2482,7 @@
         });
 
         // ============================================================
-        // 5. SISTEMA DE IA MEJORADO
+        // 5. SISTEMA DE IA
         // ============================================================
         const aiKnowledge = {
             corporativa: {
@@ -2691,7 +2710,7 @@
         userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
 
         // ============================================================
-        // 6. CATÁLOGO DE PROYECTOS CON VISTA PREVIA
+        // 6. CATÁLOGO DE PROYECTOS DESDE GITHUB
         // ============================================================
         const GITHUB_USERNAME = 'ronhy1989';
 
