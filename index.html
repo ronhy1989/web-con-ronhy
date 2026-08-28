@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web con Ronhy | Desarrollo Web Profesional para Emprendedores</title>
+    <title>Web con Ronhy | Desarrollo Web Profesional</title>
     
-    <!-- SEO Meta -->
+    <!-- SEO -->
     <meta name="description" content="Desarrollo web profesional para emprendedores. Sitios web modernos, optimizados y escalables.">
-    <meta name="keywords" content="desarrollo web, emprendedores, sitios web profesionales, ecommerce, landing page">
     <meta name="author" content="Ronhy - Web con Ronhy">
     <meta property="og:title" content="Web con Ronhy | Desarrollo Web Profesional">
-    <meta property="og:description" content="Transforma tu emprendimiento con una web poderosa.">
     <meta property="og:image" content="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg">
     
     <!-- Favicon -->
@@ -22,7 +20,7 @@
     
     <style>
         /* ============================================================
-           VARIABLES GLOBALES
+           VARIABLES
            ============================================================ */
         :root {
             --wp-primary: #0073E6;
@@ -34,9 +32,7 @@
             --wp-light: #F8FAFC;
             --wp-white: #FFFFFF;
             --wp-gray: #94A3B8;
-            --wp-gray-light: #E2E8F0;
             --wp-success: #10B981;
-            --wp-warning: #F59E0B;
             
             --glass-bg: rgba(255, 255, 255, 0.06);
             --glass-border: rgba(255, 255, 255, 0.08);
@@ -49,16 +45,11 @@
             --radius-xl: 24px;
             --radius-full: 9999px;
             
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.12);
-            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.16);
-            
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* ============================================================
-           RESET Y BASE CON FONDO ANIME
+           RESET Y FONDO ANIME RESPONSIVO
            ============================================================ */
         * {
             margin: 0;
@@ -81,28 +72,60 @@
             position: relative;
         }
 
-        /* ===== FONDO ANIME PRINCIPAL ===== */
-        body::before {
-            content: '';
+        /* ===== FONDO ANIME RESPONSIVO ===== */
+        .anime-bg {
             position: fixed;
             inset: 0;
             z-index: -2;
             background: 
                 /* Overlay oscuro para legibilidad */
                 linear-gradient(180deg, 
-                    rgba(11, 17, 32, 0.88) 0%,
-                    rgba(11, 17, 32, 0.75) 30%,
-                    rgba(11, 17, 32, 0.70) 60%,
-                    rgba(11, 17, 32, 0.85) 100%
+                    rgba(11, 17, 32, 0.92) 0%,
+                    rgba(11, 17, 32, 0.80) 30%,
+                    rgba(11, 17, 32, 0.75) 60%,
+                    rgba(11, 17, 32, 0.90) 100%
                 ),
                 /* Imagen de fondo anime */
-                url('Img/Fondo.jpeg') center/cover fixed;
+                url('Img/Fondo.jpeg') center/cover no-repeat fixed;
             animation: animeBgPulse 8s ease-in-out infinite;
         }
 
-        /* ===== OVERLAY DE BRILLO ANIME ===== */
-        body::after {
-            content: '';
+        /* Responsive: diferentes tamaños de fondo */
+        @media (max-width: 768px) {
+            .anime-bg {
+                background: 
+                    linear-gradient(180deg, 
+                        rgba(11, 17, 32, 0.92) 0%,
+                        rgba(11, 17, 32, 0.80) 30%,
+                        rgba(11, 17, 32, 0.75) 60%,
+                        rgba(11, 17, 32, 0.90) 100%
+                    ),
+                    url('Img/Fondo.jpeg') center/cover no-repeat fixed;
+                background-size: cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .anime-bg {
+                background: 
+                    linear-gradient(180deg, 
+                        rgba(11, 17, 32, 0.95) 0%,
+                        rgba(11, 17, 32, 0.85) 30%,
+                        rgba(11, 17, 32, 0.80) 60%,
+                        rgba(11, 17, 32, 0.95) 100%
+                    ),
+                    url('Img/Fondo.jpeg') center/cover no-repeat fixed;
+                background-size: cover;
+            }
+        }
+
+        @keyframes animeBgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.92; }
+        }
+
+        /* ===== OVERLAY DE BRILLO ===== */
+        .anime-glow {
             position: fixed;
             inset: 0;
             z-index: -1;
@@ -114,17 +137,8 @@
                 radial-gradient(ellipse at 80% 70%, 
                     rgba(255, 107, 53, 0.06) 0%, 
                     transparent 50%
-                ),
-                radial-gradient(ellipse at 50% 50%, 
-                    rgba(255, 107, 53, 0.04) 0%, 
-                    transparent 60%
                 );
             animation: animeGlow 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes animeBgPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.92; }
         }
 
         @keyframes animeGlow {
@@ -175,7 +189,7 @@
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        /* ===== SCROLLBAR ANIME ===== */
+        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar {
             width: 8px;
             background: rgba(11, 17, 32, 0.5);
@@ -272,8 +286,6 @@
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
@@ -314,17 +326,6 @@
         .btn-whatsapp:hover {
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--wp-light);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        .btn-outline:hover {
-            border-color: var(--wp-primary);
-            color: var(--wp-primary);
-            transform: translateY(-2px);
         }
 
         /* ============================================================
@@ -486,7 +487,7 @@
         }
 
         /* ============================================================
-           HERO CON FONDO ANIME
+           HERO
            ============================================================ */
         .wp-hero {
             min-height: 100vh;
@@ -497,7 +498,6 @@
             padding: 120px 0 80px;
         }
 
-        /* ===== HERO PARTICULAS CANVAS ===== */
         .hero-particles {
             position: absolute;
             inset: 0;
@@ -509,7 +509,6 @@
             display: block;
         }
 
-        /* ===== HERO CONTENT ===== */
         .hero-grid {
             position: relative;
             z-index: 1;
@@ -765,7 +764,7 @@
         }
 
         /* ============================================================
-           PROYECTOS
+           PROYECTOS - CON VISTA PREVIA DE LA WEB
            ============================================================ */
         .filter-buttons {
             display: flex;
@@ -803,7 +802,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
         }
 
@@ -821,6 +820,55 @@
             transform: translateY(-6px);
             border-color: rgba(0, 115, 230, 0.3);
             box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== PREVIEW DE LA WEB ===== */
+        .project-preview {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transform: scale(0.8);
+            transform-origin: top left;
+            width: 125%;
+            height: 125%;
+            pointer-events: none;
+        }
+
+        .project-preview .preview-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--wp-gray);
+            gap: 12px;
+        }
+
+        .project-preview .preview-placeholder i {
+            font-size: 48px;
+            opacity: 0.3;
+        }
+
+        .project-preview .preview-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            color: var(--wp-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .project-card .card-body {
@@ -883,6 +931,11 @@
             display: flex;
             align-items: center;
             gap: 4px;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.8rem;
         }
 
         /* ============================================================
@@ -1669,6 +1722,10 @@
             .quick-questions {
                 justify-content: center;
             }
+
+            .project-preview {
+                height: 150px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1697,13 +1754,19 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .project-preview {
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- ============================================================
-    PARTICULAS ANIME FLOTANTES
-    ============================================================ -->
+    <!-- ===== FONDO ANIME ===== -->
+    <div class="anime-bg"></div>
+    <div class="anime-glow"></div>
+
+    <!-- ===== PARTICULAS ANIME ===== -->
     <div class="anime-particles-container">
         <div class="anime-particle"></div>
         <div class="anime-particle"></div>
@@ -1869,7 +1932,7 @@
     </section>
 
     <!-- ============================================================
-    CATÁLOGO DE PROYECTOS
+    CATÁLOGO DE PROYECTOS CON VISTA PREVIA
     ============================================================ -->
     <section class="section" id="catalogo">
         <div class="container">
@@ -1897,7 +1960,7 @@
     </section>
 
     <!-- ============================================================
-    IA ASISTENTE - MEJORADA
+    IA ASISTENTE
     ============================================================ -->
     <section class="section" id="ia">
         <div class="container">
@@ -2597,7 +2660,7 @@
         userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
 
         // ============================================================
-        // 6. CATÁLOGO DE PROYECTOS DESDE GITHUB
+        // 6. CATÁLOGO DE PROYECTOS CON VISTA PREVIA
         // ============================================================
         const GITHUB_USERNAME = 'ronhy1989';
 
@@ -2641,8 +2704,25 @@
             const date = new Date(repo.updated_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
             const previewUrl = getPreviewUrl(repo.name);
 
+            // Sección de preview con iframe o placeholder
+            const previewHtml = hasPreview ? `
+                <div class="project-preview">
+                    <iframe src="${previewUrl}" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                    <span class="preview-badge"><i class="fas fa-eye"></i> Vista Previa</span>
+                </div>
+            ` : `
+                <div class="project-preview">
+                    <div class="preview-placeholder">
+                        <i class="fas fa-code"></i>
+                        <span>Sin vista previa disponible</span>
+                        <small style="opacity:0.5;">El repositorio no contiene index.html</small>
+                    </div>
+                </div>
+            `;
+
             return `
                 <div class="project-card" data-category="${cat}">
+                    ${previewHtml}
                     <div class="card-body">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
                             <span class="category-tag">${cat}</span>
@@ -2657,15 +2737,10 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        ${hasPreview ? `
-                            <a href="${previewUrl}" target="_blank" class="btn btn-success" style="padding:8px 16px;font-size:0.8rem;">
-                                <i class="fas fa-eye"></i> Vista Previa
-                            </a>
-                        ` : ''}
-                        <a href="${repo.html_url}" target="_blank" class="btn btn-primary" style="padding:8px 16px;font-size:0.8rem;">
+                        <a href="${repo.html_url}" target="_blank" class="btn btn-primary btn-sm">
                             <i class="fab fa-github"></i> Código
                         </a>
-                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-accent" style="padding:8px 16px;font-size:0.8rem;"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-accent btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
                     </div>
                 </div>
             `;
