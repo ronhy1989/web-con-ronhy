@@ -73,7 +73,7 @@
         }
 
         /* ============================================================
-           FONDO ANIME - CORREGIDO (NO SE PARTE EN CELULAR)
+           FONDO ANIME - 1920x1080 FULL COVER
            ============================================================ */
         .anime-bg {
             position: fixed;
@@ -105,12 +105,23 @@
         }
 
         /* ============================================================
-           CORRECCIÓN PARA CELULAR - EVITA QUE SE PARTE
+           RESPONSIVE - FULL COVER EN TODOS LOS DISPOSITIVOS
            ============================================================ */
+
+        /* === TABLET Y ESCRITORIO === */
+        @media (min-width: 769px) {
+            .anime-bg {
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+            }
+        }
+
+        /* === CELULAR (hasta 768px) === */
         @media (max-width: 768px) {
             .anime-bg {
-                background-size: contain !important;
-                background-position: center center !important;
+                background-size: cover !important;
+                background-position: 50% 50% !important;
                 background-repeat: no-repeat !important;
                 background-attachment: scroll !important;
             }
@@ -124,10 +135,11 @@
             }
         }
 
+        /* === CELULAR PEQUEÑO (hasta 480px) === */
         @media (max-width: 480px) {
             .anime-bg {
-                background-size: contain !important;
-                background-position: center center !important;
+                background-size: cover !important;
+                background-position: 50% 50% !important;
                 background-repeat: no-repeat !important;
                 background-attachment: scroll !important;
             }
@@ -145,7 +157,7 @@
         @media (max-height: 500px) and (max-width: 800px) {
             .anime-bg {
                 background-size: cover !important;
-                background-position: center center !important;
+                background-position: 50% 50% !important;
             }
         }
 
@@ -1573,7 +1585,7 @@
         }
 
         /* ============================================================
-           RESPONSIVE
+           RESPONSIVE GENERAL
            ============================================================ */
         @media (max-width: 1024px) {
             .hero-grid {
@@ -1812,7 +1824,7 @@
     </style>
 </head>
 <body>
-    <!-- ===== FONDO ANIME ===== -->
+    <!-- ===== FONDO ANIME 1920x1080 ===== -->
     <div class="anime-bg"></div>
     <div class="anime-glow"></div>
 
