@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Web con Ronhy | Desarrollo Web Profesional</title>
     
+    <!-- SEO -->
     <meta name="description" content="Desarrollo web profesional para emprendedores. Sitios web modernos, optimizados y escalables.">
     <meta name="author" content="Ronhy - Web con Ronhy">
     <meta property="og:title" content="Web con Ronhy | Desarrollo Web Profesional">
     <meta property="og:image" content="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg">
     
+    <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/ronhy1989/web-con-ronhy/main/Img/Logo.jpg" type="image/jpeg">
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ============================================================
+           VARIABLES
+           ============================================================ */
         :root {
             --wp-primary: #0073E6;
             --wp-primary-dark: #0056B3;
@@ -41,6 +48,9 @@
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* ============================================================
+           RESET
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -63,9 +73,9 @@
         }
 
         /* ============================================================
-           FONDO ANIME - SOLUCIÓN DEFINITIVA
+           FONDO ANIME - CORREGIDO PARA CELULAR (1920x1080)
            ============================================================ */
-        
+
         /* === ESCRITORIO: cover === */
         .anime-bg {
             position: fixed;
@@ -135,7 +145,7 @@
             }
         }
 
-        /* === ORIENTACIÓN HORIZONTAL EN CELULAR === */
+        /* === CELULAR HORIZONTAL === */
         @media (max-height: 500px) and (max-width: 800px) {
             .anime-bg {
                 background-size: cover !important;
@@ -232,6 +242,9 @@
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
+        /* ============================================================
+           SCROLLBAR
+           ============================================================ */
         ::-webkit-scrollbar {
             width: 8px;
             background: rgba(11, 17, 32, 0.5);
@@ -293,6 +306,9 @@
             color: var(--wp-gray);
         }
 
+        /* ============================================================
+           GLASSMORPHISM
+           ============================================================ */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(var(--glass-blur));
@@ -309,6 +325,9 @@
             box-shadow: 0 12px 48px rgba(0, 115, 230, 0.15);
         }
 
+        /* ============================================================
+           BOTONES
+           ============================================================ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -369,6 +388,9 @@
             font-size: 0.8rem;
         }
 
+        /* ============================================================
+           HEADER
+           ============================================================ */
         .wp-header {
             position: fixed;
             top: 0;
@@ -524,6 +546,9 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
+        /* ============================================================
+           HERO
+           ============================================================ */
         .wp-hero {
             min-height: 100vh;
             display: flex;
@@ -625,6 +650,7 @@
             margin-top: 4px;
         }
 
+        /* ===== CUBO 3D ===== */
         .hero-visual {
             position: relative;
             display: flex;
@@ -703,6 +729,9 @@
             50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
         }
 
+        /* ============================================================
+           FEATURES
+           ============================================================ */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -794,6 +823,9 @@
             100% { transform: scaleY(1); opacity: 1; }
         }
 
+        /* ============================================================
+           PROYECTOS
+           ============================================================ */
         .filter-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -960,6 +992,9 @@
             gap: 4px;
         }
 
+        /* ============================================================
+           IA ASISTENTE
+           ============================================================ */
         .ia-container {
             background: var(--glass-bg);
             backdrop-filter: blur(var(--glass-blur));
@@ -1203,6 +1238,9 @@
             border-color: var(--wp-primary);
         }
 
+        /* ============================================================
+           SERVICIOS
+           ============================================================ */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1337,6 +1375,9 @@
             color: var(--wp-gray);
         }
 
+        /* ============================================================
+           TESTIMONIOS
+           ============================================================ */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1391,6 +1432,9 @@
             margin-bottom: 0.5rem;
         }
 
+        /* ============================================================
+           FOOTER
+           ============================================================ */
         .wp-footer {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
@@ -1519,6 +1563,9 @@
             text-decoration: none;
         }
 
+        /* ============================================================
+           ANIMACIONES
+           ============================================================ */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1529,6 +1576,9 @@
             opacity: 0;
         }
 
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (max-width: 1024px) {
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -1766,9 +1816,11 @@
     </style>
 </head>
 <body>
+    <!-- ===== FONDO ANIME ===== -->
     <div class="anime-bg"></div>
     <div class="anime-glow"></div>
 
+    <!-- ===== PARTICULAS ANIME ===== -->
     <div class="anime-particles-container">
         <div class="anime-particle"></div>
         <div class="anime-particle"></div>
@@ -1782,6 +1834,9 @@
         <div class="anime-particle"></div>
     </div>
 
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
     <header class="wp-header" id="header">
         <div class="container header-container">
             <a href="#inicio" class="site-logo">
@@ -1813,6 +1868,9 @@
         </div>
     </header>
 
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
     <section class="wp-hero" id="inicio">
         <div class="hero-particles">
             <canvas id="particlesCanvas"></canvas>
@@ -1873,6 +1931,9 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    FEATURES
+    ============================================================ -->
     <section class="section" id="features">
         <div class="container">
             <div class="section-title animate-in">
@@ -1924,6 +1985,9 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    CATÁLOGO DE PROYECTOS
+    ============================================================ -->
     <section class="section" id="catalogo">
         <div class="container">
             <div class="section-title animate-in">
@@ -1949,6 +2013,9 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    IA ASISTENTE
+    ============================================================ -->
     <section class="section" id="ia">
         <div class="container">
             <div class="section-title animate-in">
@@ -2010,6 +2077,9 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    SERVICIOS
+    ============================================================ -->
     <section class="section" id="servicios">
         <div class="container">
             <div class="section-title animate-in">
@@ -2112,6 +2182,9 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    TESTIMONIOS
+    ============================================================ -->
     <section class="section" id="testimonios">
         <div class="container">
             <div class="section-title animate-in">
@@ -2166,6 +2239,9 @@
         </div>
     </section>
 
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
     <footer class="wp-footer" id="contacto">
         <div class="container">
             <div class="footer-grid">
@@ -2223,6 +2299,9 @@
         </div>
     </footer>
 
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
     <script>
         // ============================================================
         // 1. PARTÍCULAS CANVAS
@@ -2336,11 +2415,13 @@
         // 4. HEADER Y NAVEGACIÓN
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll
             window.addEventListener('scroll', function() {
                 const header = document.getElementById('header');
                 header.classList.toggle('scrolled', window.scrollY > 50);
             });
 
+            // Mobile menu
             const mobileToggle = document.getElementById('mobileToggle');
             const primaryMenu = document.getElementById('primaryMenu');
             mobileToggle.addEventListener('click', function() {
@@ -2357,6 +2438,7 @@
                 });
             });
 
+            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2367,6 +2449,7 @@
                 });
             });
 
+            // Active menu
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.menu-link');
             window.addEventListener('scroll', function() {
@@ -2380,9 +2463,11 @@
                 });
             });
 
+            // Inicializar
             renderProjects();
             setTimeout(() => askQuestion('Presupuesto para web corporativa'), 1500);
 
+            // Intersection Observer para animaciones
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -2761,6 +2846,9 @@
             });
         }
 
+        // ============================================================
+        // 7. ESTILOS ADICIONALES
+        // ============================================================
         const styleSheet = document.createElement('style');
         styleSheet.textContent = `
             @keyframes typingAnim {
