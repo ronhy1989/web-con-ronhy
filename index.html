@@ -62,11 +62,6 @@
             position: relative;
         }
 
-        /* ============================================================
-           FONDO ANIME - AUTO AJUSTE PARA TODOS LOS CELULARES
-           ============================================================ */
-
-        /* === TODOS LOS DISPOSITIVOS === */
         .anime-bg {
             position: fixed;
             top: 0;
@@ -83,7 +78,6 @@
             animation: animeBgPulse 10s ease-in-out infinite;
         }
 
-        /* === OVERLAY OSCURO === */
         .anime-bg::after {
             content: '';
             position: absolute;
@@ -96,11 +90,6 @@
             );
         }
 
-        /* ============================================================
-           AUTO AJUSTE PARA TODOS LOS CELULARES
-           ============================================================ */
-
-        /* === CELULAR (ancho hasta 768px) === */
         @media (max-width: 768px) {
             .anime-bg {
                 background-size: cover !important;
@@ -118,7 +107,6 @@
             }
         }
 
-        /* === CELULAR PEQUEÑO (ancho hasta 480px) === */
         @media (max-width: 480px) {
             .anime-bg {
                 background-size: cover !important;
@@ -141,9 +129,6 @@
             50% { opacity: 0.95; }
         }
 
-        /* ============================================================
-           OVERLAY DE BRILLO
-           ============================================================ */
         .anime-glow {
             position: fixed;
             inset: 0;
@@ -180,9 +165,6 @@
             100% { opacity: 0.8; transform: scale(1.02); }
         }
 
-        /* ============================================================
-           PARTICULAS ANIME
-           ============================================================ */
         .anime-particles-container {
             position: fixed;
             inset: 0;
@@ -1990,13 +1972,13 @@
                 <div class="ia-input-area">
                     <div class="input-group">
                         <input type="text" class="chat-input" id="userInput" placeholder="Describe tu proyecto en detalle...">
-                        <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                        <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
                     </div>
                     <div class="quick-questions">
-                        <button class="quick-btn" onclick="askQuestion('Presupuesto para web corporativa')"><i class="fas fa-briefcase"></i> Web Corporativa</button>
-                        <button class="quick-btn" onclick="askQuestion('¿Cuánto cuesta una tienda online?')"><i class="fas fa-shopping-cart"></i> E-commerce</button>
-                        <button class="quick-btn" onclick="askQuestion('Optimización SEO para mi web')"><i class="fas fa-chart-line"></i> SEO</button>
-                        <button class="quick-btn" onclick="askQuestion('Tecnologías recomendadas para mi proyecto')"><i class="fas fa-cogs"></i> Tecnologías</button>
+                        <button class="quick-btn" data-question="Presupuesto para web corporativa"><i class="fas fa-briefcase"></i> Web Corporativa</button>
+                        <button class="quick-btn" data-question="¿Cuánto cuesta una tienda online?"><i class="fas fa-shopping-cart"></i> E-commerce</button>
+                        <button class="quick-btn" data-question="Optimización SEO para mi web"><i class="fas fa-chart-line"></i> SEO</button>
+                        <button class="quick-btn" data-question="Tecnologías recomendadas para mi proyecto"><i class="fas fa-cogs"></i> Tecnologías</button>
                     </div>
                 </div>
             </div>
@@ -2217,140 +2199,131 @@
     </footer>
 
     <script>
-        const canvas = document.getElementById('particlesCanvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let w, h;
+        // ============================================================
+        // TODO EL CÓDIGO JS VA DENTRO DE DOMContentLoaded
+        // para asegurar que todos los elementos existen antes de usarlos
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function () {
 
-        function resizeCanvas() {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            w = rect.width;
-            h = rect.height;
-            canvas.width = w;
-            canvas.height = h;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+            // ============================
+            // PARTÍCULAS DEL HERO
+            // ============================
+            const canvas = document.getElementById('particlesCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                let w, h;
 
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * w;
-                this.y = Math.random() * h;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = (Math.random() - 0.5) * 0.6;
-                this.speedY = (Math.random() - 0.5) * 0.6;
-                this.opacity = Math.random() * 0.4 + 0.1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > w) this.speedX *= -1;
-                if (this.y < 0 || this.y > h) this.speedY *= -1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
+                function resizeCanvas() {
+                    const rect = canvas.parentElement.getBoundingClientRect();
+                    w = rect.width;
+                    h = rect.height;
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
 
-        for (let i = 0; i < 100; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, w, h);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 150) {
+                class Particle {
+                    constructor() { this.reset(); }
+                    reset() {
+                        this.x = Math.random() * w;
+                        this.y = Math.random() * h;
+                        this.size = Math.random() * 3 + 1;
+                        this.speedX = (Math.random() - 0.5) * 0.6;
+                        this.speedY = (Math.random() - 0.5) * 0.6;
+                        this.opacity = Math.random() * 0.4 + 0.1;
+                    }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        if (this.x < 0 || this.x > w) this.speedX *= -1;
+                        if (this.y < 0 || this.y > h) this.speedY *= -1;
+                    }
+                    draw() {
                         ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.06 * (1 - dist / 150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                        ctx.fill();
                     }
                 }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
 
-        function animateCounters() {
-            document.querySelectorAll('.stat-number').forEach(counter => {
-                const target = parseFloat(counter.dataset.count);
-                const duration = 2000;
-                const steps = 60;
-                const increment = target / steps;
-                let current = 0;
-                let step = 0;
+                for (let i = 0; i < 100; i++) particles.push(new Particle());
 
-                const update = () => {
-                    step++;
-                    current += increment;
-                    if (step >= steps) {
-                        counter.textContent = target + (Number.isInteger(target) ? '' : '%');
-                        return;
+                function animateParticles() {
+                    ctx.clearRect(0, 0, w, h);
+                    particles.forEach(p => { p.update(); p.draw(); });
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 150) {
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = `rgba(255, 255, 255, ${0.06 * (1 - dist / 150)})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
                     }
-                    counter.textContent = Math.floor(current) + (Number.isInteger(target) ? '' : '%');
-                    requestAnimationFrame(update);
-                };
-                update();
-            });
-        }
+                    requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+            }
 
-        function animateProgressRings() {
-            document.querySelectorAll('.progress').forEach(el => {
-                el.classList.add('animated');
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            window.addEventListener('scroll', function() {
-                const header = document.getElementById('header');
-                header.classList.toggle('scrolled', window.scrollY > 50);
+            // ============================
+            // HEADER SCROLL
+            // ============================
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function () {
+                if (header) header.classList.toggle('scrolled', window.scrollY > 50);
             });
 
+            // ============================
+            // MENÚ MÓVIL
+            // ============================
             const mobileToggle = document.getElementById('mobileToggle');
             const primaryMenu = document.getElementById('primaryMenu');
-            mobileToggle.addEventListener('click', function() {
-                primaryMenu.classList.toggle('active');
-                mobileToggle.innerHTML = primaryMenu.classList.contains('active')
-                    ? '<i class="fas fa-times"></i>'
-                    : '<i class="fas fa-bars"></i>';
-            });
-
-            document.querySelectorAll('.menu-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    primaryMenu.classList.remove('active');
-                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            if (mobileToggle && primaryMenu) {
+                mobileToggle.addEventListener('click', function () {
+                    primaryMenu.classList.toggle('active');
+                    mobileToggle.innerHTML = primaryMenu.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
                 });
-            });
 
+                document.querySelectorAll('.menu-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        primaryMenu.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // ============================
+            // SCROLL SUAVE PARA ENLACES INTERNOS
+            // ============================
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
                     if (target) {
-                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                        e.preventDefault();
+                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
                     }
                 });
             });
 
+            // ============================
+            // RESALTAR MENÚ ACTIVO AL SCROLL
+            // ============================
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.menu-link');
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 let current = '';
                 sections.forEach(section => {
                     const top = section.offsetTop - 100;
@@ -2361,9 +2334,44 @@
                 });
             });
 
-            renderProjects();
-            setTimeout(() => askQuestion('Presupuesto para web corporativa'), 1500);
+            // ============================
+            // CONTADORES ANIMADOS
+            // ============================
+            function animateCounters() {
+                document.querySelectorAll('.stat-number').forEach(counter => {
+                    const target = parseFloat(counter.dataset.count);
+                    const duration = 2000;
+                    const steps = 60;
+                    const increment = target / steps;
+                    let current = 0;
+                    let step = 0;
 
+                    const update = () => {
+                        step++;
+                        current += increment;
+                        if (step >= steps) {
+                            counter.textContent = target + (Number.isInteger(target) ? '' : '%');
+                            return;
+                        }
+                        counter.textContent = Math.floor(current) + (Number.isInteger(target) ? '' : '%');
+                        requestAnimationFrame(update);
+                    };
+                    update();
+                });
+            }
+
+            // ============================
+            // ANILLOS DE PROGRESO
+            // ============================
+            function animateProgressRings() {
+                document.querySelectorAll('.progress').forEach(el => {
+                    el.classList.add('animated');
+                });
+            }
+
+            // ============================
+            // INTERSECTION OBSERVER
+            // ============================
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -2374,376 +2382,399 @@
                         if (entry.target.closest('#inicio')) {
                             setTimeout(animateCounters, 300);
                         }
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-        });
 
-        const aiKnowledge = {
-            corporativa: {
-                title: '🏢 Web Corporativa Premium',
-                response: `
-                <p>Para una web corporativa profesional, recomiendo una <strong>arquitectura escalable</strong>:</p>
-                <p><strong>Stack Tecnológico Recomendado:</strong></p>
-                <ul>
-                    <li><strong>Frontend:</strong> HTML5, CSS3 (Tailwind CSS), JavaScript (Vue.js para interactividad)</li>
-                    <li><strong>Backend:</strong> Node.js + Express o PHP 8.2 (Laravel para proyectos grandes)</li>
-                    <li><strong>Base de datos:</strong> PostgreSQL (para relaciones complejas) o MySQL</li>
-                    <li><strong>Hosting:</strong> VPS gestionado (DigitalOcean, AWS Lightsail)</li>
-                </ul>
-                <p><strong>Características Esenciales:</strong></p>
-                <ol>
-                    <li>Diseño Responsive: Mobile-first approach</li>
-                    <li>Performance: Lighthouse score > 90</li>
-                    <li>SEO Técnico: Schema markup, sitemap XML</li>
-                    <li>Seguridad: SSL, protección DDoS</li>
-                    <li>Integraciones: Google Analytics 4, CRM</li>
-                </ol>
-                <p><strong>Presupuesto Estimado:</strong></p>
-                <ul>
-                    <li><strong>Básico (5 páginas):</strong> $1,200 - $1,800 USD</li>
-                    <li><strong>Profesional (8-10 páginas + blog):</strong> $2,000 - $3,500 USD</li>
-                    <li><strong>Avanzado (Panel admin + funcionalidades custom):</strong> $4,000+ USD</li>
-                </ul>
-                <p><strong>Timeline:</strong> 4-6 semanas aproximadamente.</p>
-                `
-            },
-            ecommerce: {
-                title: '🛒 Tienda Online (E-commerce) Completa',
-                response: `
-                <p>Para un e-commerce exitoso, necesitas una <strong>plataforma robusta y escalable</strong>:</p>
-                <p><strong>Opciones Tecnológicas:</strong></p>
-                <ol>
-                    <li><strong>WordPress + WooCommerce</strong> (Recomendado para inicio): $2,500 - $4,000 USD</li>
-                    <li><strong>Laravel + Vue.js</strong> (Para crecimiento): $4,000 - $8,000 USD</li>
-                    <li><strong>Shopify Plus</strong> (Para alto volumen): $299+/mes + desarrollo</li>
-                </ol>
-                <p><strong>Funcionalidades Críticas:</strong></p>
-                <ul>
-                    <li>Catálogo de productos con filtros avanzados</li>
-                    <li>Carrito persistente (cookies + database)</li>
-                    <li>Checkout optimizado (máximo 3 pasos)</li>
-                    <li>Múltiples pasarelas de pago</li>
-                    <li>Sistema de inventario en tiempo real</li>
-                    <li>Panel de administración completo</li>
-                </ul>
-                <p><strong>Presupuesto Desglosado:</strong></p>
-                <ul>
-                    <li>Desarrollo: $2,500 - $8,000 USD</li>
-                    <li>Diseño UI/UX: $800 - $1,500 USD</li>
-                    <li>Configuración hosting: $200 - $500 USD</li>
-                    <li>Mantenimiento mensual: $150 - $300 USD</li>
-                </ul>
-                `
-            },
-            seo: {
-                title: '🔍 Estrategia SEO Avanzada',
-                response: `
-                <p>El SEO requiere un <strong>enfoque integral técnico + contenido</strong>:</p>
-                <p><strong>SEO Técnico (Mes 1-2):</strong></p>
-                <ol>
-                    <li>Auditoría completa del sitio</li>
-                    <li>Optimización de velocidad (target: < 2s)</li>
-                    <li>Estructura de URLs semánticas</li>
-                    <li>Implementación de schema markup</li>
-                    <li>Sitemap XML y robots.txt</li>
-                </ol>
-                <p><strong>SEO de Contenido (Mes 3-6):</strong></p>
-                <ul>
-                    <li>Keyword research con Ahrefs/Semrush</li>
-                    <li>Estrategia de contenido pillar-cluster</li>
-                    <li>Creación de contenido long-form (2000+ palabras)</li>
-                    <li>Optimización de meta tags y headings</li>
-                    <li>Link building estratégico</li>
-                </ul>
-                <p><strong>Inversión Mensual SEO:</strong></p>
-                <ul>
-                    <li>Básico (10-20 keywords): $500 - $800 USD/mes</li>
-                    <li>Profesional (30-50 keywords): $1,000 - $1,500 USD/mes</li>
-                    <li>Enterprise (100+ keywords): $2,000+ USD/mes</li>
-                </ul>
-                `
-            },
-            tecnologias: {
-                title: '⚙️ Análisis de Stack Tecnológico',
-                response: `
-                <p>La elección tecnológica depende de <strong>tus objetivos, presupuesto y escalabilidad</strong>:</p>
-                <p><strong>Para MVP o Startups:</strong></p>
-                <ul>
-                    <li>Frontend: React.js o Vue.js | Backend: Node.js + Express</li>
-                    <li>Base de datos: MongoDB o PostgreSQL</li>
-                    <li>Hosting: Vercel + Railway</li>
-                    <li>Costo: $3,000 - $6,000 USD | Tiempo: 4-6 semanas</li>
-                </ul>
-                <p><strong>Para E-commerce Medio:</strong></p>
-                <ul>
-                    <li>Frontend: Next.js (SSR para SEO) | Backend: Laravel o Django</li>
-                    <li>Base de datos: PostgreSQL con Redis cache</li>
-                    <li>Hosting: AWS EC2 o DigitalOcean</li>
-                    <li>Costo: $5,000 - $10,000 USD | Tiempo: 8-12 semanas</li>
-                </ul>
-                <p><strong>Mi Recomendación Personalizada:</strong></p>
-                <p>Para la mayoría de emprendimientos, recomiendo <strong>Next.js + Node.js + PostgreSQL</strong>:</p>
-                <ul>
-                    <li>Excelente para SEO (SSR)</li>
-                    <li>Alto rendimiento</li>
-                    <li>Gran ecosistema</li>
-                    <li>Fácil de escalar</li>
-                </ul>
-                `
-            },
-            default: {
-                title: '💡 Análisis de Proyecto Web',
-                response: `
-                <p>Basado en tu consulta, puedo identificar <strong>oportunidades clave</strong>:</p>
-                <p><strong>Recomendaciones Inmediatas:</strong></p>
-                <ol>
-                    <li><strong>Arquitectura de Información:</strong> Mapa del sitio jerárquico, URLs semánticas</li>
-                    <li><strong>Experiencia de Usuario:</strong> Mobile-first, tiempos de carga < 2s, accesibilidad</li>
-                    <li><strong>Conversión:</strong> Funnel de conversión definido, formularios optimizados</li>
-                </ol>
-                <p><strong>Stack Tecnológico Sugerido:</strong></p>
-                <ul>
-                    <li>Frontend: Vue.js 3 + Composition API</li>
-                    <li>Backend: Node.js + Express + TypeScript</li>
-                    <li>Base de datos: PostgreSQL con Prisma ORM</li>
-                    <li>Hosting: Vercel + Supabase</li>
-                </ul>
-                <p><strong>Presupuesto Estimado:</strong></p>
-                <ul>
-                    <li>MVP: $3,000 - $5,000 USD</li>
-                    <li>Proyecto medio: $6,000 - $12,000 USD</li>
-                    <li>Solución completa: $15,000 - $25,000+ USD</li>
-                </ul>
-                `
+            // Forzar contadores si el hero ya está visible
+            setTimeout(animateCounters, 500);
+
+            // ============================
+            // CHAT IA
+            // ============================
+            const chatMessages = document.getElementById('chatMessages');
+            const userInput = document.getElementById('userInput');
+            const chatContainer = document.getElementById('chatContainer');
+            const sendBtn = document.getElementById('sendBtn');
+
+            const aiKnowledge = {
+                corporativa: {
+                    title: '🏢 Web Corporativa Premium',
+                    response: `
+                        <p>Para una web corporativa profesional, recomiendo una <strong>arquitectura escalable</strong>:</p>
+                        <p><strong>Stack Tecnológico Recomendado:</strong></p>
+                        <ul>
+                            <li><strong>Frontend:</strong> HTML5, CSS3 (Tailwind CSS), JavaScript (Vue.js para interactividad)</li>
+                            <li><strong>Backend:</strong> Node.js + Express o PHP 8.2 (Laravel para proyectos grandes)</li>
+                            <li><strong>Base de datos:</strong> PostgreSQL (para relaciones complejas) o MySQL</li>
+                            <li><strong>Hosting:</strong> VPS gestionado (DigitalOcean, AWS Lightsail)</li>
+                        </ul>
+                        <p><strong>Características Esenciales:</strong></p>
+                        <ol>
+                            <li>Diseño Responsive: Mobile-first approach</li>
+                            <li>Performance: Lighthouse score > 90</li>
+                            <li>SEO Técnico: Schema markup, sitemap XML</li>
+                            <li>Seguridad: SSL, protección DDoS</li>
+                            <li>Integraciones: Google Analytics 4, CRM</li>
+                        </ol>
+                        <p><strong>Presupuesto Estimado:</strong></p>
+                        <ul>
+                            <li><strong>Básico (5 páginas):</strong> $1,200 - $1,800 USD</li>
+                            <li><strong>Profesional (8-10 páginas + blog):</strong> $2,000 - $3,500 USD</li>
+                            <li><strong>Avanzado (Panel admin + funcionalidades custom):</strong> $4,000+ USD</li>
+                        </ul>
+                        <p><strong>Timeline:</strong> 4-6 semanas aproximadamente.</p>
+                    `
+                },
+                ecommerce: {
+                    title: '🛒 Tienda Online (E-commerce) Completa',
+                    response: `
+                        <p>Para un e-commerce exitoso, necesitas una <strong>plataforma robusta y escalable</strong>:</p>
+                        <p><strong>Opciones Tecnológicas:</strong></p>
+                        <ol>
+                            <li><strong>WordPress + WooCommerce</strong> (Recomendado para inicio): $2,500 - $4,000 USD</li>
+                            <li><strong>Laravel + Vue.js</strong> (Para crecimiento): $4,000 - $8,000 USD</li>
+                            <li><strong>Shopify Plus</strong> (Para alto volumen): $299+/mes + desarrollo</li>
+                        </ol>
+                        <p><strong>Funcionalidades Críticas:</strong></p>
+                        <ul>
+                            <li>Catálogo de productos con filtros avanzados</li>
+                            <li>Carrito persistente (cookies + database)</li>
+                            <li>Checkout optimizado (máximo 3 pasos)</li>
+                            <li>Múltiples pasarelas de pago</li>
+                            <li>Sistema de inventario en tiempo real</li>
+                            <li>Panel de administración completo</li>
+                        </ul>
+                        <p><strong>Presupuesto Desglosado:</strong></p>
+                        <ul>
+                            <li>Desarrollo: $2,500 - $8,000 USD</li>
+                            <li>Diseño UI/UX: $800 - $1,500 USD</li>
+                            <li>Configuración hosting: $200 - $500 USD</li>
+                            <li>Mantenimiento mensual: $150 - $300 USD</li>
+                        </ul>
+                    `
+                },
+                seo: {
+                    title: '🔍 Estrategia SEO Avanzada',
+                    response: `
+                        <p>El SEO requiere un <strong>enfoque integral técnico + contenido</strong>:</p>
+                        <p><strong>SEO Técnico (Mes 1-2):</strong></p>
+                        <ol>
+                            <li>Auditoría completa del sitio</li>
+                            <li>Optimización de velocidad (target: < 2s)</li>
+                            <li>Estructura de URLs semánticas</li>
+                            <li>Implementación de schema markup</li>
+                            <li>Sitemap XML y robots.txt</li>
+                        </ol>
+                        <p><strong>SEO de Contenido (Mes 3-6):</strong></p>
+                        <ul>
+                            <li>Keyword research con Ahrefs/Semrush</li>
+                            <li>Estrategia de contenido pillar-cluster</li>
+                            <li>Creación de contenido long-form (2000+ palabras)</li>
+                            <li>Optimización de meta tags y headings</li>
+                            <li>Link building estratégico</li>
+                        </ul>
+                        <p><strong>Inversión Mensual SEO:</strong></p>
+                        <ul>
+                            <li>Básico (10-20 keywords): $500 - $800 USD/mes</li>
+                            <li>Profesional (30-50 keywords): $1,000 - $1,500 USD/mes</li>
+                            <li>Enterprise (100+ keywords): $2,000+ USD/mes</li>
+                        </ul>
+                    `
+                },
+                tecnologias: {
+                    title: '⚙️ Análisis de Stack Tecnológico',
+                    response: `
+                        <p>La elección tecnológica depende de <strong>tus objetivos, presupuesto y escalabilidad</strong>:</p>
+                        <p><strong>Para MVP o Startups:</strong></p>
+                        <ul>
+                            <li>Frontend: React.js o Vue.js | Backend: Node.js + Express</li>
+                            <li>Base de datos: MongoDB o PostgreSQL</li>
+                            <li>Hosting: Vercel + Railway</li>
+                            <li>Costo: $3,000 - $6,000 USD | Tiempo: 4-6 semanas</li>
+                        </ul>
+                        <p><strong>Para E-commerce Medio:</strong></p>
+                        <ul>
+                            <li>Frontend: Next.js (SSR para SEO) | Backend: Laravel o Django</li>
+                            <li>Base de datos: PostgreSQL con Redis cache</li>
+                            <li>Hosting: AWS EC2 o DigitalOcean</li>
+                            <li>Costo: $5,000 - $10,000 USD | Tiempo: 8-12 semanas</li>
+                        </ul>
+                        <p><strong>Mi Recomendación Personalizada:</strong></p>
+                        <p>Para la mayoría de emprendimientos, recomiendo <strong>Next.js + Node.js + PostgreSQL</strong>:</p>
+                        <ul>
+                            <li>Excelente para SEO (SSR)</li>
+                            <li>Alto rendimiento</li>
+                            <li>Gran ecosistema</li>
+                            <li>Fácil de escalar</li>
+                        </ul>
+                    `
+                },
+                default: {
+                    title: '💡 Análisis de Proyecto Web',
+                    response: `
+                        <p>Basado en tu consulta, puedo identificar <strong>oportunidades clave</strong>:</p>
+                        <p><strong>Recomendaciones Inmediatas:</strong></p>
+                        <ol>
+                            <li><strong>Arquitectura de Información:</strong> Mapa del sitio jerárquico, URLs semánticas</li>
+                            <li><strong>Experiencia de Usuario:</strong> Mobile-first, tiempos de carga < 2s, accesibilidad</li>
+                            <li><strong>Conversión:</strong> Funnel de conversión definido, formularios optimizados</li>
+                        </ol>
+                        <p><strong>Stack Tecnológico Sugerido:</strong></p>
+                        <ul>
+                            <li>Frontend: Vue.js 3 + Composition API</li>
+                            <li>Backend: Node.js + Express + TypeScript</li>
+                            <li>Base de datos: PostgreSQL con Prisma ORM</li>
+                            <li>Hosting: Vercel + Supabase</li>
+                        </ul>
+                        <p><strong>Presupuesto Estimado:</strong></p>
+                        <ul>
+                            <li>MVP: $3,000 - $5,000 USD</li>
+                            <li>Proyecto medio: $6,000 - $12,000 USD</li>
+                            <li>Solución completa: $15,000 - $25,000+ USD</li>
+                        </ul>
+                    `
+                }
+            };
+
+            function detectQueryType(message) {
+                const m = message.toLowerCase();
+                if (m.includes('corporativa') || m.includes('empresa')) return 'corporativa';
+                if (m.includes('tienda') || m.includes('ecommerce') || m.includes('vender')) return 'ecommerce';
+                if (m.includes('seo') || m.includes('posicionamiento')) return 'seo';
+                if (m.includes('tecnolog') || m.includes('stack') || m.includes('framework')) return 'tecnologias';
+                return 'default';
             }
-        };
 
-        const chatMessages = document.getElementById('chatMessages');
-        const userInput = document.getElementById('userInput');
-        const chatContainer = document.getElementById('chatContainer');
-
-        function detectQueryType(message) {
-            const m = message.toLowerCase();
-            if (m.includes('corporativa') || m.includes('empresa')) return 'corporativa';
-            if (m.includes('tienda') || m.includes('ecommerce') || m.includes('vender')) return 'ecommerce';
-            if (m.includes('seo') || m.includes('posicionamiento')) return 'seo';
-            if (m.includes('tecnolog') || m.includes('stack') || m.includes('framework')) return 'tecnologias';
-            return 'default';
-        }
-
-        function addMessage(content, isUser = false) {
-            const div = document.createElement('div');
-            div.className = `message ${isUser ? 'message-user' : 'message-ai'}`;
-            div.innerHTML = `
-                <div class="message-avatar"><i class="${isUser ? 'fas fa-user' : 'fas fa-code'}"></i></div>
-                <div class="message-content">
-                    <div class="message-text">${content}</div>
-                </div>
-            `;
-            chatMessages.appendChild(div);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        function formatAIResponse(type) {
-            const data = aiKnowledge[type];
-            const waButton = `
-                <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
-                    <a href="https://wa.me/51914724078" target="_blank" class="btn btn-whatsapp" style="padding:10px 24px;font-size:0.85rem;display:inline-flex;">
-                        <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-                    </a>
-                </div>
-            `;
-            return `
-                <h4 style="color:var(--wp-primary);margin-bottom:15px;font-weight:700;">${data.title}</h4>
-                ${data.response}
-                ${waButton}
-            `;
-        }
-
-        function showTyping() {
-            const div = document.createElement('div');
-            div.className = 'message message-ai';
-            div.id = 'typingIndicator';
-            div.innerHTML = `
-                <div class="message-avatar"><i class="fas fa-code"></i></div>
-                <div class="message-content">
-                    <div style="display:flex;gap:5px;padding:10px;">
-                        <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite;"></div>
-                        <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite 0.2s;"></div>
-                        <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite 0.4s;"></div>
-                    </div>
-                </div>
-            `;
-            chatMessages.appendChild(div);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-
-        function removeTyping() {
-            const el = document.getElementById('typingIndicator');
-            if (el) el.remove();
-        }
-
-        function sendMessage() {
-            const msg = userInput.value.trim();
-            if (!msg) return;
-            addMessage(msg, true);
-            userInput.value = '';
-            showTyping();
-            setTimeout(() => {
-                removeTyping();
-                const type = detectQueryType(msg);
-                addMessage(formatAIResponse(type), false);
-            }, 1200 + Math.random() * 800);
-        }
-
-        function askQuestion(q) {
-            userInput.value = q;
-            sendMessage();
-        }
-
-        userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
-
-        const GITHUB_USERNAME = 'ronhy1989';
-
-        function getPreviewUrl(repoName) {
-            return `https://html-preview.github.io/?url=https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
-        }
-
-        async function hasIndexHtml(repoName) {
-            try {
-                const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
-                const response = await fetch(url, { method: 'HEAD' });
-                return response.ok;
-            } catch {
-                return false;
-            }
-        }
-
-        async function fetchRepos() {
-            try {
-                const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`);
-                if (!res.ok) throw new Error(`Error ${res.status}`);
-                return await res.json();
-            } catch (e) {
-                console.error('Error al cargar repositorios:', e);
-                return [];
-            }
-        }
-
-        function getCategory(repo) {
-            const n = (repo.name + ' ' + (repo.description || '')).toLowerCase();
-            if (n.includes('ecom') || n.includes('shop') || n.includes('tienda') || n.includes('cart')) return 'ecommerce';
-            if (n.includes('landing') || n.includes('page') || n.includes('presentacion')) return 'landing';
-            if (n.includes('app') || n.includes('mobile') || n.includes('android')) return 'app';
-            return 'web';
-        }
-
-        function createCard(repo, hasPreview) {
-            const cat = getCategory(repo);
-            const lang = repo.language ? `<span class="lang-tag">${repo.language}</span>` : '';
-            const desc = repo.description ? repo.description.substring(0, 120) + (repo.description.length > 120 ? '...' : '') : 'Sin descripción';
-            const date = new Date(repo.updated_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
-            const previewUrl = getPreviewUrl(repo.name);
-
-            const previewHtml = hasPreview ? `
-                <div class="project-preview">
-                    <iframe src="${previewUrl}" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
-                    <span class="preview-badge"><i class="fas fa-eye"></i> Vista Previa</span>
-                </div>
-            ` : `
-                <div class="project-preview">
-                    <div class="preview-placeholder">
-                        <i class="fas fa-code"></i>
-                        <span>Sin vista previa</span>
-                        <small style="opacity:0.5;">No contiene index.html</small>
-                    </div>
-                </div>
-            `;
-
-            return `
-                <div class="project-card" data-category="${cat}">
-                    ${previewHtml}
-                    <div class="card-body">
-                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-                            <span class="category-tag">${cat}</span>
-                            ${lang}
-                        </div>
-                        <h3><i class="fab fa-github" style="color:var(--wp-gray);margin-right:8px;"></i> ${repo.name}</h3>
-                        <p>${desc}</p>
-                        <div class="project-meta">
-                            <span><i class="far fa-star"></i> ${repo.stargazers_count || 0}</span>
-                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count || 0}</span>
-                            <span><i class="far fa-calendar-alt"></i> ${date}</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="${repo.html_url}" target="_blank" class="btn btn-primary btn-sm">
-                            <i class="fab fa-github"></i> Código
-                        </a>
-                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-accent btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
-                    </div>
-                </div>
-            `;
-        }
-
-        async function renderProjects() {
-            const grid = document.getElementById('projectsGrid');
-            const repos = await fetchRepos();
-
-            if (!repos || repos.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
-                        <i class="fas fa-folder-open" style="font-size:4rem;color:var(--wp-gray);"></i>
-                        <h3 style="margin-top:20px;color:var(--wp-light);">No se encontraron proyectos</h3>
-                        <p style="color:var(--wp-gray);">¿Has subido algún repositorio a GitHub?</p>
-                        <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" style="display:inline-block;margin-top:20px;padding:12px 32px;background:var(--wp-primary);color:white;border-radius:var(--radius-md);font-weight:600;text-decoration:none;">Ver perfil de GitHub</a>
+            function addMessage(content, isUser = false) {
+                const div = document.createElement('div');
+                div.className = `message ${isUser ? 'message-user' : 'message-ai'}`;
+                div.innerHTML = `
+                    <div class="message-avatar"><i class="${isUser ? 'fas fa-user' : 'fas fa-code'}"></i></div>
+                    <div class="message-content">
+                        <div class="message-text">${content}</div>
                     </div>
                 `;
-                return;
+                chatMessages.appendChild(div);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
             }
 
-            repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            function formatAIResponse(type) {
+                const data = aiKnowledge[type];
+                const waButton = `
+                    <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);">
+                        <a href="https://wa.me/51914724078" target="_blank" class="btn btn-whatsapp" style="padding:10px 24px;font-size:0.85rem;display:inline-flex;">
+                            <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                        </a>
+                    </div>
+                `;
+                return `
+                    <h4 style="color:var(--wp-primary);margin-bottom:15px;font-weight:700;">${data.title}</h4>
+                    ${data.response}
+                    ${waButton}
+                `;
+            }
 
-            const reposWithPreview = await Promise.all(
-                repos.map(async (repo) => ({
-                    repo,
-                    hasPreview: await hasIndexHtml(repo.name)
-                }))
-            );
+            function showTyping() {
+                const div = document.createElement('div');
+                div.className = 'message message-ai';
+                div.id = 'typingIndicator';
+                div.innerHTML = `
+                    <div class="message-avatar"><i class="fas fa-code"></i></div>
+                    <div class="message-content">
+                        <div style="display:flex;gap:5px;padding:10px;">
+                            <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite;"></div>
+                            <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite 0.2s;"></div>
+                            <div style="width:8px;height:8px;background:var(--wp-gray);border-radius:50%;animation:typingAnim 1.4s infinite 0.4s;"></div>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(div);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
 
-            grid.innerHTML = reposWithPreview.map(({ repo, hasPreview }) =>
-                createCard(repo, hasPreview)
-            ).join('');
+            function removeTyping() {
+                const el = document.getElementById('typingIndicator');
+                if (el) el.remove();
+            }
 
-            setupFilters();
-        }
+            function sendMessage() {
+                const msg = userInput.value.trim();
+                if (!msg) return;
+                addMessage(msg, true);
+                userInput.value = '';
+                showTyping();
+                setTimeout(() => {
+                    removeTyping();
+                    const type = detectQueryType(msg);
+                    addMessage(formatAIResponse(type), false);
+                }, 1200 + Math.random() * 800);
+            }
 
-        function setupFilters() {
-            const buttons = document.querySelectorAll('.filter-btn');
-            const cards = document.querySelectorAll('.project-card');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    buttons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    const filter = this.dataset.filter;
-                    cards.forEach(card => {
-                        card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
-                    });
+            function askQuestion(q) {
+                userInput.value = q;
+                sendMessage();
+            }
+
+            // Eventos del chat
+            if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+            if (userInput) userInput.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+            document.querySelectorAll('.quick-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    askQuestion(this.dataset.question);
                 });
             });
-        }
 
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = `
-            @keyframes typingAnim {
-                0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-                40% { transform: scale(1); opacity: 1; }
+            // ============================
+            // PROYECTOS DESDE GITHUB
+            // ============================
+            const GITHUB_USERNAME = 'ronhy1989';
+            const projectsGrid = document.getElementById('projectsGrid');
+
+            function getPreviewUrl(repoName) {
+                return `https://html-preview.github.io/?url=https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
             }
-        `;
-        document.head.appendChild(styleSheet);
+
+            async function hasIndexHtml(repoName) {
+                try {
+                    const url = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${repoName}/main/index.html`;
+                    const response = await fetch(url, { method: 'HEAD' });
+                    return response.ok;
+                } catch {
+                    return false;
+                }
+            }
+
+            async function fetchRepos() {
+                try {
+                    const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`);
+                    if (!res.ok) throw new Error(`Error ${res.status}`);
+                    return await res.json();
+                } catch (e) {
+                    console.error('Error al cargar repositorios:', e);
+                    return [];
+                }
+            }
+
+            function getCategory(repo) {
+                const n = (repo.name + ' ' + (repo.description || '')).toLowerCase();
+                if (n.includes('ecom') || n.includes('shop') || n.includes('tienda') || n.includes('cart')) return 'ecommerce';
+                if (n.includes('landing') || n.includes('page') || n.includes('presentacion')) return 'landing';
+                if (n.includes('app') || n.includes('mobile') || n.includes('android')) return 'app';
+                return 'web';
+            }
+
+            function createCard(repo, hasPreview) {
+                const cat = getCategory(repo);
+                const lang = repo.language ? `<span class="lang-tag">${repo.language}</span>` : '';
+                const desc = repo.description ? repo.description.substring(0, 120) + (repo.description.length > 120 ? '...' : '') : 'Sin descripción';
+                const date = new Date(repo.updated_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+                const previewUrl = getPreviewUrl(repo.name);
+
+                const previewHtml = hasPreview ? `
+                    <div class="project-preview">
+                        <iframe src="${previewUrl}" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+                        <span class="preview-badge"><i class="fas fa-eye"></i> Vista Previa</span>
+                    </div>
+                ` : `
+                    <div class="project-preview">
+                        <div class="preview-placeholder">
+                            <i class="fas fa-code"></i>
+                            <span>Sin vista previa</span>
+                            <small style="opacity:0.5;">No contiene index.html</small>
+                        </div>
+                    </div>
+                `;
+
+                return `
+                    <div class="project-card" data-category="${cat}">
+                        ${previewHtml}
+                        <div class="card-body">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                                <span class="category-tag">${cat}</span>
+                                ${lang}
+                            </div>
+                            <h3><i class="fab fa-github" style="color:var(--wp-gray);margin-right:8px;"></i> ${repo.name}</h3>
+                            <p>${desc}</p>
+                            <div class="project-meta">
+                                <span><i class="far fa-star"></i> ${repo.stargazers_count || 0}</span>
+                                <span><i class="fas fa-code-branch"></i> ${repo.forks_count || 0}</span>
+                                <span><i class="far fa-calendar-alt"></i> ${date}</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="${repo.html_url}" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-accent btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            function setupFilters() {
+                const buttons = document.querySelectorAll('.filter-btn');
+                const cards = document.querySelectorAll('.project-card');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        buttons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        const filter = this.dataset.filter;
+                        cards.forEach(card => {
+                            card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+                        });
+                    });
+                });
+            }
+
+            async function renderProjects() {
+                if (!projectsGrid) return;
+                const repos = await fetchRepos();
+
+                if (!repos || repos.length === 0) {
+                    projectsGrid.innerHTML = `
+                        <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
+                            <i class="fas fa-folder-open" style="font-size:4rem;color:var(--wp-gray);"></i>
+                            <h3 style="margin-top:20px;color:var(--wp-light);">No se encontraron proyectos</h3>
+                            <p style="color:var(--wp-gray);">¿Has subido algún repositorio a GitHub?</p>
+                            <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" style="display:inline-block;margin-top:20px;padding:12px 32px;background:var(--wp-primary);color:white;border-radius:var(--radius-md);font-weight:600;text-decoration:none;">Ver perfil de GitHub</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+                const reposWithPreview = await Promise.all(
+                    repos.map(async (repo) => ({
+                        repo,
+                        hasPreview: await hasIndexHtml(repo.name)
+                    }))
+                );
+
+                projectsGrid.innerHTML = reposWithPreview.map(({ repo, hasPreview }) =>
+                    createCard(repo, hasPreview)
+                ).join('');
+
+                setupFilters();
+            }
+
+            renderProjects();
+
+            // Estilo para la animación de "typing"
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+                @keyframes typingAnim {
+                    0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+                    40% { transform: scale(1); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+        });
     </script>
 </body>
 </html>
