@@ -390,6 +390,15 @@
         .project-meta { display: flex; align-items: center; gap: 1.5rem; font-size: 0.8rem; color: var(--wp-gray); }
         .project-meta span { display: flex; align-items: center; gap: 4px; }
 
+        .project-card.featured {
+            border-color: rgba(255,107,53,0.4);
+            box-shadow: 0 8px 32px rgba(255,107,53,0.12);
+        }
+        .project-card.featured:hover {
+            border-color: rgba(255,107,53,0.6);
+            box-shadow: 0 12px 48px rgba(255,107,53,0.25);
+        }
+
         .ia-container {
             background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
             -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -1340,11 +1349,14 @@
         });
 
         // =========================================================
-        // 9. PROYECTOS DESDE GITHUB CON VISTA PREVIA
+        // 9. PROYECTOS DESDE GITHUB + TARJETA DESTACADA REPROMT
         // =========================================================
         const GITHUB_USERNAME = 'ronhy1989';
         const projectsGrid = document.getElementById('projectsGrid');
         const filterButtons = document.getElementById('filterButtons');
+
+        // URL de la app fullstack Repromt en Google Cloud
+        const REPROMT_URL = 'https://storage.googleapis.com/repromt-frontend-gmp-demo-project-100798822/index.html';
 
         function getPreviewUrl(repoName) {
             return 'https://html-preview.github.io/?url=https://raw.githubusercontent.com/' +
@@ -1381,6 +1393,46 @@
             if (n.indexOf('landing') !== -1 || n.indexOf('page') !== -1 || n.indexOf('presentacion') !== -1) return 'landing';
             if (n.indexOf('app') !== -1 || n.indexOf('mobile') !== -1 || n.indexOf('android') !== -1) return 'app';
             return 'web';
+        }
+
+        // =========================================================
+        // TARJETA DESTACADA: REPROMT (App Fullstack en Google Cloud)
+        // =========================================================
+        function createRepromtCard() {
+            const previewHtml =
+                '<div class="project-preview">' +
+                    '<iframe src="' + REPROMT_URL + '" loading="lazy" ' +
+                        'sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals" ' +
+                        'referrerpolicy="no-referrer-when-downgrade"></iframe>' +
+                    '<span class="preview-badge" style="background:linear-gradient(135deg, var(--wp-primary), var(--wp-accent));border:none;">' +
+                        '<i class="fas fa-star"></i> Destacado' +
+                    '</span>' +
+                '</div>';
+
+            return '<div class="project-card featured" data-category="app" data-preview="' + REPROMT_URL + '">' +
+                previewHtml +
+                '<div class="card-body">' +
+                    '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">' +
+                        '<span class="category-tag" style="background:var(--wp-accent);">App</span>' +
+                        '<span class="lang-tag">Google Cloud</span>' +
+                    '</div>' +
+                    '<h3><i class="fas fa-robot" style="color:var(--wp-accent);margin-right:8px;"></i> Repromt</h3>' +
+                    '<p>Aplicación fullstack en la nube para gestionar, crear y remixar prompts con IA. Desplegada en Google Cloud Storage.</p>' +
+                    '<div class="project-meta">' +
+                        '<span><i class="fas fa-cloud"></i> Cloud</span>' +
+                        '<span><i class="fas fa-layer-group"></i> Fullstack</span>' +
+                        '<span><i class="fas fa-brain"></i> IA</span>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="card-footer">' +
+                    '<a href="' + REPROMT_URL + '" target="_blank" rel="noopener" ' +
+                        'class="btn btn-accent btn-sm" onclick="event.stopPropagation();">' +
+                        '<i class="fas fa-external-link-alt"></i> Abrir Repromt</a>' +
+                    '<a href="' + REPROMT_URL + '" target="_blank" rel="noopener" ' +
+                        'class="btn btn-primary btn-sm" onclick="event.stopPropagation();">' +
+                        '<i class="fas fa-eye"></i> Ver Web</a>' +
+                '</div>' +
+            '</div>';
         }
 
         function createCard(repo, hasPreview) {
@@ -1459,16 +1511,26 @@
 
         async function renderProjects() {
             if (!projectsGrid) return;
+
+            // Repromt siempre va primero (independiente de GitHub)
+            let cardsHtml = createRepromtCard();
+
             const repos = await fetchRepos();
 
             if (!repos || repos.length === 0) {
-                projectsGrid.innerHTML =
-                    '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;">' +
-                    '<i class="fas fa-folder-open" style="font-size:4rem;color:var(--wp-gray);"></i>' +
-                    '<h3 style="margin-top:20px;color:var(--wp-light);">No se encontraron proyectos</h3>' +
-                    '<p style="color:var(--wp-gray);">Verifica tu usuario de GitHub.</p>' +
-                    '<a href="https://github.com/' + GITHUB_USERNAME + '" target="_blank" style="display:inline-block;margin-top:20px;padding:12px 32px;background:var(--wp-primary);color:white;border-radius:var(--radius-md);font-weight:600;text-decoration:none;">Ver perfil de GitHub</a>' +
+                // Fallback: mostrar Repromt + mensaje informativo
+                cardsHtml +=
+                    '<div style="grid-column:1/-1;text-align:center;padding:40px 20px;">' +
+                        '<i class="fas fa-folder-open" style="font-size:3rem;color:var(--wp-gray);opacity:0.5;"></i>' +
+                        '<h3 style="margin-top:20px;color:var(--wp-light);">No se pudieron cargar más proyectos</h3>' +
+                        '<p style="color:var(--wp-gray);">Verifica tu usuario de GitHub.</p>' +
+                        '<a href="https://github.com/' + GITHUB_USERNAME + '" target="_blank" ' +
+                            'style="display:inline-block;margin-top:20px;padding:12px 32px;background:var(--wp-primary);color:white;border-radius:var(--radius-md);font-weight:600;text-decoration:none;">' +
+                            'Ver perfil de GitHub</a>' +
                     '</div>';
+                projectsGrid.innerHTML = cardsHtml;
+                setupFilters();
+                setupCardClicks();
                 return;
             }
 
@@ -1480,9 +1542,11 @@
                 })
             );
 
-            projectsGrid.innerHTML = reposWithPreview.map(function (item) {
+            cardsHtml += reposWithPreview.map(function (item) {
                 return createCard(item.repo, item.hasPreview);
             }).join('');
+
+            projectsGrid.innerHTML = cardsHtml;
 
             setupFilters();
             setupCardClicks();
